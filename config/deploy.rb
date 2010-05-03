@@ -1,4 +1,5 @@
 set :application, "amble"
+set :scm, "git"
 set :repository, "git@github.com:icyte/website.git"
 set :branch, "production"
 
