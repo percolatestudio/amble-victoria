@@ -1,0 +1,30 @@
+<div>
+  <b>Name:</b>
+  <%=h @place.name %>
+</div>
+
+<div>
+  <b>Location:</b>
+  <%=h @place.location %>
+</div>
+
+<div>
+  <b>Category:</b>
+  <%=h @place.category_id %>
+</div>
+
+<div>
+  <b>Description:</b>
+  <%= simple_format(h(@place.description)) %>
+</div>
+
+
+
+<div>
+  <b>Url:</b>
+  <%=h @place.url %>
+</div>
+
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>

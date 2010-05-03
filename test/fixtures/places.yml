@@ -1,0 +1,30 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  location: MyString
+  category_id: 1
+  description: MyText
+  url: MyString
+
+two:
+  name: MyString
+  location: MyString
+  category_id: 1
+  description: MyText
+  url: MyString
+
+
+# == Schema Info
+# Schema version: 20100502233032
+#
+# Table name: places
+#
+#  id          :integer(4)      not null, primary key
+#  category_id :integer(4)
+#  description :text
+#  location    :string(255)
+#  name        :string(255)
+#  url         :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
