@@ -1,28 +1,8 @@
-<h1>Listing places</h1>
+<%- @places.each do |p| -%>
+  <%= image_tag p.image_url, :alt => p.name, :size => '100x100' %>
+<%- end -%>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Category</th>
-    <th>Description</th>
-    <th>Url</th>
-  </tr>
 
-<% @places.each do |place| %>
-  <tr>
-    <td><%=h place.name %></td>
-    <td><%=h place.location %></td>
-    <td><%=h place.category_id %></td>
-    <td><%=h place.description %></td>
-    <td><%=h place.url %></td>
-    <td><%= link_to 'Show', place %></td>
-    <td><%= link_to 'Edit', edit_place_path(place) %></td>
-    <td><%= link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
 <%= link_to 'New place', new_place_path %>
