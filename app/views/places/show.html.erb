@@ -2,28 +2,32 @@
   <b>Name:</b>
   <%=h @place.name %>
 </div>
-
-<div>
-  <b>Location:</b>
-  <%=h @place.location %>
-</div>
-
 <div>
   <b>Category:</b>
-  <%=h @place.category_id %>
+  <%=h @place.category.name %>
 </div>
-
+<div>
+  <b>Url:</b>
+  <%=h @place.url %>
+</div>
 <div>
   <b>Description:</b>
   <%= simple_format(h(@place.description)) %>
 </div>
 
 
+<div>
+  <b>Location:</b>
+  <i><%=h @place.location %></i>
+</div>
+<iframe width="500px" height="300px" src="http://maps.google.com/maps?q=<%=h @place.location %>&amp;output=embed"></iframe>
 
 <div>
-  <b>Url:</b>
-  <%=h @place.url %>
+  <b>Image:</b>
+  <i><%=h @place.image_url %></i>
 </div>
+<%= image_tag @place.image_url, :size => '200x200' %>
+
 
 
 <%= link_to 'Edit', edit_place_path(@place) %> |

@@ -1,5 +1,7 @@
 <%- @places.each do |p| -%>
-  <%= image_tag p.image_url, :alt => p.name, :size => '100x100' %>
+  <% link_to p do %>
+    <%= image_tag p.image_url, :alt => p.name, :size => '100x100' %>
+  <%- end -%>
 <%- end -%>
 
 
