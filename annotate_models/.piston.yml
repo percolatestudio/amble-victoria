@@ -1,8 +1,0 @@
---- 
-format: 1
-handler: 
-  commit: d2afee82020dbc592b147d92f9beeadbf665a9e0
-  branch: master
-lock: false
-repository_class: Piston::Git::Repository
-repository_url: http://github.com/rotuka/annotate_models.git
