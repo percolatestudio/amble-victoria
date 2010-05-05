@@ -1,6 +1,11 @@
+<script>
+  navigator.geolocation.getCurrentPosition(function(position) { console.log(position); });
+  console.log(window.navigator.standalone);
+</script>
+
 <%- @places.each do |p| -%>
   <% link_to p do %>
-    <%= image_tag p.image_url, :alt => p.name, :size => '100x100' %>
+    <%= image_tag p.image_url, :alt => p.name, :size => '320x350' %>
   <%- end -%>
 <%- end -%>
 
