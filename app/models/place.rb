@@ -4,6 +4,8 @@ class Place < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :location  
   validates_presence_of :category_id
+
+  attr_accessor :lat, :lng
 end
 
 

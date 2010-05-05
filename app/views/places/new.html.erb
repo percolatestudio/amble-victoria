@@ -9,7 +9,11 @@
   </p>
   <p>
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <i>A street address</i>
+      <%= f.text_field :location %><br />
+    <i>Or latitude/longitude</i>
+    <%= f.text_field :lat %>
+    <%= f.text_field :lng %>
   </p>
   <p>
     <%= f.label :category_id %><br />
@@ -23,6 +27,9 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </p>
+  <p>
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url %>
   <p>
     <%= f.submit 'Create' %>
   </p>

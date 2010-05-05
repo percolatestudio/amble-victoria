@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories
 
   map.resources :places
+  map.root :controller => 'places'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
