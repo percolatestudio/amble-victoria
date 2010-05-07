@@ -2,6 +2,12 @@
   <%= f.label :name %><br />
   <%= f.text_field :name %>
 </p>
+
+<p>
+  <%= f.label :url, 'Place URL' %><br />
+  <%= f.text_field :url %>
+</p>
+
 <p>
   <%= f.label :location %><br />
   <i>A street address</i>
@@ -21,15 +27,26 @@
   <%= f.label :description %><br />
   <%= f.text_area :description %>
 </p>
-<p>
-  <%= f.label :url %><br />
-  <%= f.text_field :url %>
-</p>
-<p>
-  <%= f.label :image_url %><br />
-  <%= f.text_field :image_url %>
-</p>
 
-<p>
-  <%= f.file_field :image %>
-</p>
+<div style="border: 1px solid gray; width: 300px;">
+  <p>
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url %>
+  </p>
+  
+  <p>
+  OR
+  </p>
+
+  <p>
+    <%= f.file_field :image %>
+  </p>
+  
+  <p>
+  OR
+  </p>
+  
+  <p> 
+    leave blank and will be set automatically via flickr api
+  </p> 
+</div>
