@@ -1,6 +1,6 @@
 set :application, "amble"
 set :scm, "git"
-set :repository, "git@github.com:icyte/website.git"
+set :repository, "git@github.com:zol/amble.git"
 set :branch, "production"
 
 #keep a remote cache of the source code on the remote server, and
