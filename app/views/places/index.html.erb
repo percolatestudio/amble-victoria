@@ -1,7 +1,7 @@
-<script>
+<!-- <script>
   navigator.geolocation.getCurrentPosition(function(position) { console.log(position); });
   console.log(window.navigator.standalone);
-</script>
+</script> -->
 
 <%- @places.each do |p| -%>
   <% link_to p do %>
@@ -10,6 +10,9 @@
 <%- end -%>
 
 
+<div class="places">
+  <%= render :partial => 'place', :collection => @places %>
+</div>
 
 
 <%= link_to 'New place', new_place_path %>
