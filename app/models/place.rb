@@ -12,15 +12,7 @@ class Place < ActiveRecord::Base
   validates_presence_of :location  
   validates_presence_of :category_id
   
-  before_create { |place|
-    if (!place.image_url.empty?) and (!place.image.file?)
-      begin
-        puts "setting image from url: #{place.image_url}"
-        place.set_image_from_image_url
-      rescue
-      end
-    end
-  }
+  before_create :set_image
   
   has_attached_file :image, 
     :styles => {:medium => ["#{IMAGE_SIZES[:medium][:x]}x#{IMAGE_SIZES[:medium][:y]}#", :jpg],
@@ -36,6 +28,40 @@ class Place < ActiveRecord::Base
   def set_image_from_image_url
     self.image = open(self.image_url)
   end  
+  
+  #return url's of creative common licensed pictures from flickr for this place
+  def potential_images(opts = {:max => 5})
+    flickr = Flickr.new(File.join(RAILS_ROOT, 'config', 'flickr.yml'))
+    photos = flickr.photos.search(:text => self.name, 
+                                  :per_page => opts[:max], 
+                                  :content_type  => 1, 
+                                  :safe_search => 1, 
+                                  :privacy_filter => 1, 
+                                  :sort => 'relevance', 
+                                  :license => '1,2,3,4,5,6,7,8')
+                                  
+    photos.collect { |p| p.image_url }
+  end
+  
+  def set_image_from_flickr
+    self.image_url = potential_images({:max => 1}).first
+    set_image_from_image_url
+  end
+  
+protected
+  def set_image
+    begin
+      if (self.image_url.empty?) and (!self.image.file?)        
+        puts "setting image from flickr"
+        self.set_image_from_flickr
+      elsif (!self.image_url.empty?) and (!self.image.file?)
+        puts "setting image from url: #{self.image_url}"
+        self.set_image_from_image_url
+      end
+    rescue
+      puts "error setting place image"
+    end
+  end
   
 end
 
