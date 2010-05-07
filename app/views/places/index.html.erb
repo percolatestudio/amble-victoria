@@ -5,7 +5,7 @@
 
 <%- @places.each do |p| -%>
   <% link_to p do %>
-    <%= image_tag p.image_url, :alt => p.name, :size => '320x350' %>
+    <%= image_tag p.image.url(:medium), :alt => p.name %>
   <%- end -%>
 <%- end -%>
 

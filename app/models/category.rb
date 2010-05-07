@@ -2,11 +2,11 @@ class Category < ActiveRecord::Base
   has_many :places
   
   validates_presence_of :name
+    
 end
 
-
 # == Schema Info
-# Schema version: 20100502233032
+# Schema version: 20100507144155
 #
 # Table name: categories
 #

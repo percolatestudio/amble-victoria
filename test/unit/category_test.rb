@@ -7,9 +7,8 @@ class CategoryTest < ActiveSupport::TestCase
   end
 end
 
-
 # == Schema Info
-# Schema version: 20100502233032
+# Schema version: 20100507144155
 #
 # Table name: categories
 #

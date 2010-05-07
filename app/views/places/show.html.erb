@@ -26,9 +26,9 @@
   <b>Image:</b>
   <i><%=h @place.image_url %></i>
 </div>
-<%= image_tag @place.image_url, :size => '200x200' %>
 
 
+<%= image_tag @place.image.url(:small), :alt => @place.name %>
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
