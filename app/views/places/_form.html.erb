@@ -4,11 +4,6 @@
 </p>
 
 <p>
-  <%= f.label :url, 'Place URL' %><br />
-  <%= f.text_field :url %>
-</p>
-
-<p>
   <%= f.label :location %><br />
   <i>A street address</i>
     <%= f.text_field :location %><br />
@@ -28,25 +23,41 @@
   <%= f.text_area :description %>
 </p>
 
-<div style="border: 1px solid gray; width: 300px;">
-  <p>
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
-  </p>
+<fieldset>
+  <legend>Webpages</legend>
+  <ul>
+    <% f.fields_for :webpages do |child_form| %>
+      <li>
+        <%= child_form.label :url %>
+        <%= child_form.text_field :url %>
   
-  <p>
-  OR
-  </p>
+      <% unless child_form.object.new_record? %>
+        <%= child_form.check_box '_delete' %>
+        <%= child_form.label '_delete', 'Remove' %>
+      <% end %>  
+  
+      </li>
+    <% end %>
+  </ul>
+</fieldset>
 
-  <p>
-    <%= f.file_field :image %>
-  </p>
-  
-  <p>
-  OR
-  </p>
-  
-  <p> 
-    leave blank and will be set automatically via flickr api
-  </p> 
-</div>
+<fieldset>
+  <legend>Images</legend>
+  <ul>
+  <% f.fields_for :images do |child_form| %>
+    <li>
+      <% unless child_form.object.new_record? %>
+        <%= image_tag @place.primary_image.image.url(:small), :height => '100px' %>
+      <% end %>
+      <%= child_form.label :url %>
+      <%= child_form.text_field :url %>
+
+    <% unless child_form.object.new_record? %>
+      <%= child_form.check_box '_delete' %>
+      <%= child_form.label '_delete', 'Remove' %>
+    <% end %>  
+
+    </li>    
+  <% end %>
+  </ul>
+</fieldset>

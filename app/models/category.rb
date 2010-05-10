@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
 end
 
 # == Schema Info
-# Schema version: 20100507144155
+# Schema version: 20100510021227
 #
 # Table name: categories
 #

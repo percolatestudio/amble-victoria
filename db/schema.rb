@@ -9,10 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507144155) do
+ActiveRecord::Schema.define(:version => 20100510021227) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "place_id"
+    t.string   "url",             :limit => 2048
+    t.string   "image_file_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -22,11 +30,26 @@ ActiveRecord::Schema.define(:version => 20100507144155) do
     t.string   "location"
     t.integer  "category_id"
     t.text     "description"
+    t.decimal  "lat",         :precision => 15, :scale => 10
+    t.decimal  "lng",         :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sources", :force => true do |t|
+    t.string   "url"
+    t.string   "name"
+    t.string   "icon_filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "webpages", :force => true do |t|
+    t.integer  "source_id"
+    t.integer  "place_id"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url"
-    t.string   "image_file_name"
   end
 
 end

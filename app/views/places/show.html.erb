@@ -7,8 +7,12 @@
   <%=h @place.category.name %>
 </div>
 <div>
-  <b>Url:</b>
-  <%=h @place.url %>
+  <b>Urls:</b>
+  <ul>
+  <% @place.webpages.each do |webpage| %>
+    <li><%=h webpage.url %></li>
+  <% end %>
+  </ul>
 </div>
 <div>
   <b>Description:</b>
@@ -22,13 +26,7 @@
 </div>
 <iframe width="500px" height="300px" src="http://maps.google.com/maps?q=<%=h @place.location %>&amp;output=embed"></iframe>
 
-<div>
-  <b>Image:</b>
-  <i><%=h @place.image_url %></i>
-</div>
-
-
-<%= image_tag @place.image.url(:small), :alt => @place.name %>
+<%= image_tag @place.primary_image.image.url(:small) %>
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>

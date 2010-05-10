@@ -24,4 +24,5 @@ module ApplicationHelper
   def body_classes
     "c_#{controller_name.gsub('/', '_')} v_#{view_name}"
   end  
+  
 end

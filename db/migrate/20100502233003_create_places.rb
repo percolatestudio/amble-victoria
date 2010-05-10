@@ -5,7 +5,8 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :location
       t.integer :category_id
       t.text :description
-      t.string :url
+      t.decimal :lat, :precision => 15, :scale => 10
+      t.decimal :lng, :precision => 15, :scale => 10
 
       t.timestamps
     end

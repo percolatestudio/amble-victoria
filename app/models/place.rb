@@ -1,33 +1,27 @@
-require 'open-uri'
-
 class Place < ActiveRecord::Base
-  IMAGE_SIZES = { 
-    :small => {:x => 200, :y => 200}, 
-    :medium => {:x => 320, :y => 350},
-  }            
   
   belongs_to :category
+  has_many :webpages
+  has_many :images
+  has_one :primary_image, :order => 'created_at asc', :class_name => 'Image'
   
   validates_presence_of :name
   validates_presence_of :location  
   validates_presence_of :category_id
   
-  before_create :set_image
+  validates_presence_of :images
+  validates_associated :images
   
-  has_attached_file :image, 
-    :styles => {:medium => ["#{IMAGE_SIZES[:medium][:x]}x#{IMAGE_SIZES[:medium][:y]}#", :jpg],
-                :small => ["#{IMAGE_SIZES[:small][:x]}x#{IMAGE_SIZES[:small][:y]}#", :jpg]},
-    :convert_options => {:all => "-strip"},                                
-    :default_style => :small,
-    :default_url => "/images/default_image_:style.png",
-    :path => ":rails_root/public/system/:attachment/:id_partition/:id/:style.:extension",
-    :url => "/system/:attachment/:id_partition/:id/:style.:extension"
+  accepts_nested_attributes_for :images, :allow_destroy => true
+  accepts_nested_attributes_for :webpages, :allow_destroy => true
   
-  attr_accessor :lat, :lng
-  
-  def set_image_from_image_url
-    self.image = open(self.image_url)
-  end  
+  before_validation_on_create { |place|
+    #set the image from flickr if no images are set
+    if place.images.empty? or place.images.first.url.empty?
+      place.images = []
+      place.add_image_from_flickr 
+    end
+  }
   
   #return url's of creative common licensed pictures from flickr for this place
   def potential_images(opts = {:max => 5})
@@ -43,40 +37,24 @@ class Place < ActiveRecord::Base
     photos.collect { |p| p.image_url }
   end
   
-  def set_image_from_flickr
-    self.image_url = potential_images({:max => 1}).first
-    set_image_from_image_url
-  end
-  
-protected
-  def set_image
-    begin
-      if (self.image_url.empty?) and (!self.image.file?)        
-        puts "setting image from flickr"
-        self.set_image_from_flickr
-      elsif (!self.image_url.empty?) and (!self.image.file?)
-        puts "setting image from url: #{self.image_url}"
-        self.set_image_from_image_url
-      end
-    rescue
-      puts "error setting place image"
+  def add_image_from_flickr
+    potential_images = potential_images({:max => 1})
+    
+    unless potential_images.empty?
+      img = self.images.build(:url => potential_images.first )
     end
   end
-  
 end
 
 # == Schema Info
-# Schema version: 20100507144155
+# Schema version: 20100510021227
 #
 # Table name: places
 #
-#  id              :integer(4)      not null, primary key
-#  category_id     :integer(4)
-#  description     :text
-#  image_file_name :string(255)
-#  image_url       :string(255)
-#  location        :string(255)
-#  name            :string(255)
-#  url             :string(255)
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id          :integer(4)      not null, primary key
+#  category_id :integer(4)
+#  description :text
+#  location    :string(255)
+#  name        :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime

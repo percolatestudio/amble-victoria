@@ -1,6 +1,6 @@
 <div class="place" id="<%= place.id %>">
   <div class="front face">
-    <%= image_tag place.image_url, :alt => place.name, :size => '320x480' %>
+    <%= image_tag place.primary_image.image.url, :alt => place.name, :size => '320x480' %>
     <h2><%=h place.name %></h2>
     <p class="distance"><%= rand(5)+1 %> kms away</p>
   </div>
