@@ -27,14 +27,24 @@
       console.log('creating div');
       this.content = new PKContentView($('div').get(0));
       this.content.autoresizingMask = PKViewAutoresizingFlexibleWidth | PKViewAutoresizingFlexibleHeight;
-      // this.content.size = new PKSize(window.innerWidth, window.innerHeight - 100)
+      // this.content.size = new PKSize(window.innerWidth, window.innerHeight * 2)
       this.scroll.addSubview(this.content);
       PKRootView.sharedRoot.addSubview(this.scroll);
             
       // do some stuff
       var $content = $(this.content.layer);
       // content.css('backgroundColor', 'blue');
-      $content.load('places/');
+      var that = this;
+      $content.load('places/', function() {
+        console.log(that.content.size.height);
+        console.log(that.content.layer.scrollHeight);
+        that.content.size = new PKSize(window.innerWidth, that.content.layer.scrollHeight);
+        console.log(that.content.size.height);
+        // console.log(that.content.size);
+        // that.content.refreshSize();
+        // console.log(that.content.size);
+      });
+      
       
       // var $nav = $(this.nav.layer);
       // $nav.load('nav/')
