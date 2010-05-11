@@ -14,14 +14,17 @@
     <%= javascript_include_tag :all, :recursive => true %>
     <%= stylesheet_link_tag 'site', 'scaffold', 'temp' %>
   </head>
-  <body class="<%= body_classes %>" <%=@body_attribs || '' %>>
+  <body>
     <p style="color: green"><%= flash[:notice] %></p>
 
-    <%= yield %>
+    <div id="content" class="<%= body_classes %>" <%=@body_attribs || '' %>>
+      <%= yield %>
+    </div>
     
     <div id="nav">
       <p>This is the nav</p>
-      <%= link_to 'google', 'http://www.google.com' %>
+      <%= link_to 'test1', {:action => 'show', :controller => 'places', :id => '1'}, :class => 'targetContent' %>
+      <%= link_to 'test2', {:action => 'show', :controller => 'places', :id => '2'}, :class => 'targetContent' %>      
     </div>
   </body>
 </html>

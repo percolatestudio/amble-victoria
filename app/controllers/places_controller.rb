@@ -4,6 +4,9 @@ class PlacesController < ApplicationController
   def index
     @places = Place.all
 
+    # ajax
+    return render :layout => 'content' if request.xhr?
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @places }
@@ -14,6 +17,9 @@ class PlacesController < ApplicationController
   # GET /places/1.xml
   def show
     @place = Place.find(params[:id])
+
+    # ajax
+    return render :layout => 'content' if request.xhr?
 
     respond_to do |format|
       format.html # show.html.erb

@@ -8,7 +8,9 @@
       });
 
       $(window).scroll(function(){
-      });      
+      });
+      
+      $('a.targetContent').targetContent('#content');
     }
   }
 }(jQuery));
