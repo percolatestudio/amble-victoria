@@ -55,6 +55,8 @@
     $(window).bind('ajaxComplete', function(event) {
       $.attach_widgets();
       
+      $('.targetContent').targetContent('#content');
+      
       // do the form focusing again
       $('form:not(.no-auto-focus):last input[type=text]:first').focus();
     });

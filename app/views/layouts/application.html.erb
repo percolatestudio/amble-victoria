@@ -13,17 +13,15 @@
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
     <%= stylesheet_link_tag 'site', 'scaffold', 'lib/PastryKit-ug-compact.css', 'temp' %>
-    <%= javascript_include_tag :all, :recursive => true %>
+    <%= javascript_include_tag 'util', :all, :recursive => true %>
 
   
   </head>
   <body>
-    <p style="color: green"><%= flash[:notice] %></p>
-
-    <!-- TOM: For the moment with what i have going right now -->
-    <!-- <div id="content" class="<%= body_classes %>" <%=@body_attribs || '' %>>
-      <%#= yield %>
-    </div> -->
+    <%# This will get over-written by the framework %>
+    <div id="static">
+      <%= yield %>
+    </div>
     
     <%= render :partial => 'places/nav' %>
   </body>

@@ -1,7 +1,5 @@
 class PlacesController < ApplicationController
-  def base
-    render :text => '', :layout => 'application'
-  end
+  layout 'content'
   
   # GET /places
   # GET /places.xml

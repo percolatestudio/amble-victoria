@@ -1,11 +1,11 @@
 <ol id="nav">
   <li id="nav_amble">
-    Amble
+    <%= link_to 'Amble', {:controller => '/places', :action => 'index'}, :class => 'targetContent' %> 
   </li>
   <li id="nav_my_places">
-    My Places
+    <%= link_to 'My Places', {:controller => '/users', :action => 'places'}, :class => 'targetContent' %> 
   </li>
   <li id="nav_account">
-    Account
+    <%= link_to 'Account', {:controller => '/users', :action => 'show'}, :class => 'targetContent' %> 
   </li>
 </ol>
