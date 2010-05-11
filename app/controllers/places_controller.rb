@@ -1,4 +1,8 @@
 class PlacesController < ApplicationController
+  def base
+    render :text => '', :layout => 'application'
+  end
+  
   # GET /places
   # GET /places.xml
   def index
@@ -8,7 +12,7 @@ class PlacesController < ApplicationController
     return render :layout => 'content' if request.xhr?
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => nil }# index.html.erb
       format.xml  { render :xml => @places }
     end
   end

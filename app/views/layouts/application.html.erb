@@ -9,22 +9,23 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <%= framework_meta_tags 'application' %>
-  
+
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
+
+    <%= stylesheet_link_tag 'site', 'scaffold', 'lib/PastryKit-ug-compact.css', 'temp' %>
     <%= javascript_include_tag :all, :recursive => true %>
-    <%= stylesheet_link_tag 'site', 'scaffold', 'temp' %>
+
+  
   </head>
   <body>
     <p style="color: green"><%= flash[:notice] %></p>
 
-    <div id="content" class="<%= body_classes %>" <%=@body_attribs || '' %>>
-      <%= yield %>
-    </div>
+    <!-- TOM: For the moment with what i have going right now -->
+    <!-- <div id="content" class="<%= body_classes %>" <%=@body_attribs || '' %>>
+      <%#= yield %>
+    </div> -->
     
-    <div id="nav">
-      <p>This is the nav</p>
-      <%= link_to 'test1', {:action => 'show', :controller => 'places', :id => '1'}, :class => 'targetContent' %>
-      <%= link_to 'test2', {:action => 'show', :controller => 'places', :id => '2'}, :class => 'targetContent' %>      
-    </div>
+    <%= render :partial => 'places/nav' %>
   </body>
+</body>
 </html>
