@@ -59,7 +59,7 @@ class PlacesController < ApplicationController
 
     #sorting by rand() will be slow for large datasets, but should
     #be fine for us to begin with
-    @place = Place.invisible.find(:first, :order => 'rand()')
+    @place = Place.invisible.find(:first, :order => 'rand()')    
     
     render :layout => 'website'
   end
