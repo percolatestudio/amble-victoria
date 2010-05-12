@@ -110,14 +110,14 @@ module AuthlogicFacebookConnect
             new_user.before_connect(facebook_session) if new_user.respond_to?(:before_connect)
 
             self.attempted_record = new_user
-
+            
             if facebook_valid_user
               errors.add_to_base(
                 I18n.t('error_messages.facebook_user_creation_failed',
                        :default => 'There was a problem creating a new user ' +
                                    'for your Facebook account')) unless self.attempted_record.valid?
 
-              self.attempted_record = nil
+              self.attempted_record.save
             else
               self.attempted_record.save_with_validation(false)
             end

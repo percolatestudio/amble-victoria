@@ -20,6 +20,12 @@ class UserSessionsController < ApplicationController
   
   def destroy
     current_user_session.destroy
+    
+    # do we need to do all this?
+    clear_facebook_session_information
+    clear_fb_cookies!
+    reset_session # i.e. logout the user
+    
     flash[:notice] = "Logout successful!"
     redirect_back_or_default new_user_session_url
   end
