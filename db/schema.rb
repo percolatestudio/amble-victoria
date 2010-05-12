@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100510021227) do
+ActiveRecord::Schema.define(:version => 20100512051310) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20100510021227) do
     t.string   "url"
     t.string   "name"
     t.string   "icon_filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name",                              :null => false
+    t.string   "persistence_token",                 :null => false
+    t.integer  "facebook_uid",         :limit => 8, :null => false
+    t.string   "facebook_session_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

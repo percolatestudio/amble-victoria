@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :places
   map.root :controller => 'users', :action => 'loading'
 
+  map.resource :user_session
+  map.resource :user
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

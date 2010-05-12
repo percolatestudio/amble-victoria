@@ -1,1 +1,3 @@
-Users's Account page
+Hi, <%=h @current_user.name %>
+
+<%= link_to 'Logout', user_session_path, :method => 'delete' %>

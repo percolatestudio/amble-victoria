@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 58a2b36b9a399f20b3ea159365a8fe9255caaeea
+  branch: master
+lock: false
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/kalasjocke/authlogic_facebook_connect.git
