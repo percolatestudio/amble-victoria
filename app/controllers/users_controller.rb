@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user
   
   def loading
-    render :layout => 'application'
+    render :layout => 'iphone'
   end
   
 end

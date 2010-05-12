@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 18c735f684b5ff45bca6a6d960c792e14ae674c7
+  branch: master
+lock: false
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/jdollard/javascript_include_tag_extended.git

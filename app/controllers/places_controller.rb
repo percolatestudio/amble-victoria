@@ -1,10 +1,10 @@
 class PlacesController < ApplicationController
   layout 'content'
-  
+    
   # GET /places
   # GET /places.xml
   def index
-    @places = Place.all
+    @places = Place.visible.all
 
     # ajax
     return render :layout => 'content' if request.xhr?
@@ -43,6 +43,26 @@ class PlacesController < ApplicationController
   # GET /places/1/edit
   def edit
     @place = Place.find(params[:id])
+  end
+  
+  def quickedit
+    if request.put?
+      @place = Place.find(params[:id])
+      
+      if @place.update_attributes(params[:place])
+        flash[:notice] = 'Place was successfully updated.'
+      else
+        render :layout => 'website'
+        return
+      end
+    end
+
+    #sorting by rand() will be slow for large datasets, but should
+    #be fine for us to begin with
+    #@place = Place.invisible.find(:first, :order => 'rand()')    
+    @place = Place.find(1)
+    
+    render :layout => 'website'
   end
 
   # POST /places

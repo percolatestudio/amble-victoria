@@ -26,7 +26,9 @@
 </div>
 <iframe width="500px" height="300px" src="http://maps.google.com/maps?q=<%=h @place.location %>&amp;output=embed"></iframe>
 
-<%= image_tag @place.primary_image.image.url(:small) %>
+<% unless @place.primary_image.nil? %>
+  <%= image_tag @place.primary_image.image.url(:small) %>
+<% end %>
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>

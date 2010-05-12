@@ -18,7 +18,6 @@ class Image < ActiveRecord::Base
     :url => "/system/:attachment/:id_partition/:id/:style.:extension"
   
   validates_presence_of :image_file_name
-  validates_uniqueness_of :url, :scope => [:place_id], :allow_nil => true, :allow_blank => true
     
   #download and set the image from the specified url if it's not already set
   before_validation { |record|

@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :categories
 
-  map.resources :places
+  map.resources :places, :requirements => {:id => /[0-9]+/}
   map.root :controller => 'users', :action => 'loading'
 
   map.resource :user_session

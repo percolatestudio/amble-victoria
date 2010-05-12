@@ -1,0 +1,21 @@
+JavascriptIncludeTagExtended
+============================
+
+changes to the standard javascript_include_tag:
+  * if you pass the :all option to javascript_include_tag, files in subfolders of the javascripts folder are also included
+  * specify the order of javascript files when using the :all option
+  * exclude files/folders
+  
+* tested with rails 2.3.4
+
+Example
+=======
+
+<%= javascript_include_tag :all, :cache => true, 
+		:order => ["lib/prototype.js", 
+            "lib/scriptaculous_effects.js",
+            "lib/scriptaculous_controls.js",
+            "lib/widget.js"],
+    :exclude => ["exclude/*", "jquery-1.2.6"] %>
+
+Copyright (c) 2010 Joe Dollard, released under the MIT license

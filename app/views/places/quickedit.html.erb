@@ -1,0 +1,85 @@
+<script>
+  $(document).ready(function() {
+    $(document).keypress(function(event) {
+      var chr =  String.fromCharCode( event.which );
+    
+      if ((chr >= 0) && (chr <= 10)) {
+        var img_select = jQuery('#primary_image_select').get(0);
+      
+        if (chr < img_select.length) {
+          img_select.selectedIndex = chr;
+          
+          jQuery('#primary_image ul img').removeClass('active');
+          jQuery('#place_image' + chr).addClass('active')
+        } 
+      }
+      else if (chr == 'h') {
+        var uq_select = jQuery('#user_quality_select').get(0);
+        uq_select.selectedIndex = 1;
+      }
+      else if (chr == 's') {
+        jQuery('form').submit();
+      }
+      else if (chr == 'e') {
+        window.location.pathname = jQuery('#edit').attr('href');
+      }
+      
+    });
+  });
+</script>
+
+
+<h1>Quickedit - <%= @place.id %></h1>
+
+<div id="shortcuts">
+  <h2>Keyboard Shortcuts</h2>
+  <dl>
+    <dt>0 to 9</dt>
+    <dd>set specified image number to primary image</dd>
+        
+    <dt>h</dt>
+    <dd>hides current record (i.e. it's crap data)</dd>
+    
+    <dt>s</dt>
+    <dd>saves current record, and displays next</dd>    
+
+    <dt>e</dt>
+    <dd>edit record; show advanced fields</dd>    
+  </dl>
+</div>
+
+<% form_for(@place, :url => { :action => "quickedit", :id => @place.id }) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :user_quality %><br />
+    <%= f.select :user_quality, 0.upto(10).collect { |i| [i.to_s,i]},
+      {:include_blank => 'Not specified'}, {:id => 'user_quality_select'} %>
+  </p>
+  
+  <div id="primary_image">
+    <%= f.label :primary_image_id %><br />
+    
+    <ul>
+      <% @place.images.each_with_index do |img, idx| %>
+        <li><%= image_tag img.image.url(:small), :id => "place_image#{idx + 1}", 
+              :class => img.id == @place.primary_image_id ? 'active' : '' %>
+        </li>
+      <% end %>    
+    </ul>
+    
+    <%= f.select :primary_image_id, @place.images.collect { |img| [img.url, img.id]},
+      {:include_blank => 'Not specified'}, {:id => 'primary_image_select'} %>
+  </div>
+    
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_place_path(@place), :id => 'edit' %>

@@ -23,6 +23,13 @@
   <%= f.text_area :description %>
 </p>
 
+<p>
+  <%= f.label :user_quality %><br />
+<%= f.select :user_quality, 0.upto(10).collect { |i| [i.to_s,i]},
+  {:label => 'User Quality', :include_blank => 'Not specified'} %>
+</p>
+
+
 <fieldset>
   <legend>Webpages</legend>
   <ul>
@@ -46,7 +53,7 @@
   <ul>
   <% f.fields_for :images do |child_form| %>
     <li>
-      <% unless child_form.object.new_record? %>
+      <% unless child_form.object.new_record? ||  @place.primary_image.nil? %>
         <%= image_tag @place.primary_image.image.url(:small), :height => '100px' %>
       <% end %>
       <%= child_form.label :url %>

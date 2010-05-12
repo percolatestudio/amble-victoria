@@ -1,0 +1,50 @@
+//todo: move these somewhere else
+
+=clear-fix
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+    :zoom 1
+
+.c_places.v_quickedit
+  :margin 0px 20px
+
+  h1
+    :font-size 36px
+
+  h2
+    :font-size 24px
+    
+  li
+    :list-style decimal inside none
+    :float left
+    :margin-left 50px
+    
+  ul
+    :font-size 48px
+    +clear-fix
+    
+    img.active
+      :border 5px solid yellow
+
+  #primary_image
+    :border 2px solid #ccc
+    :padding 20px 0px
+    :margin-bottom 10px
+    
+  #primary_image_select
+    :display none
+
+  #shortcuts
+    :border 2px solid #ccc
+    :width 400px
+    
+    dl
+      :margin 20px 0px
+
+    dt
+      :float left
+      :width 100px

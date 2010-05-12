@@ -3,7 +3,7 @@ class Place < ActiveRecord::Base
   belongs_to :category
   has_many :webpages
   has_many :images
-  has_one :primary_image, :order => 'created_at asc', :class_name => 'Image'
+  belongs_to :primary_image, :class_name => 'Image'
   
   validates_presence_of :name
   validates_presence_of :location  
@@ -12,8 +12,14 @@ class Place < ActiveRecord::Base
   validates_presence_of :images
   validates_associated :images
   
+  validates_numericality_of :system_quality, :allow_nil => true, :less_than_or_equal_to => 10, :greater_than_or_equal_to => 0
+  validates_numericality_of :user_quality, :allow_nil => true, :less_than_or_equal_to => 10, :greater_than_or_equal_to => 0  
+  
   accepts_nested_attributes_for :images, :allow_destroy => true
   accepts_nested_attributes_for :webpages, :allow_destroy => true
+  
+  named_scope :visible, :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)']
+  named_scope :invisible, :conditions => ['primary_image_id IS NULL OR user_quality = 0']
   
   before_validation_on_create { |place|
     #set the image from flickr if no images are set

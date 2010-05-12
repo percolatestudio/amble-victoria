@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  
+  <title>Amble</title>
+  <%= stylesheet_link_tag 'include/reset', 'tmp' %>
+  <%= javascript_include_tag 'lib/jquery-1.4.2.js' %>
+  
+  <!--todo: 
+    - fix the error coming out of jquery.string and sort out these includes 
+    - work out how to best layout the sass
+    
+  -->
+  
+  <%# javascript_include_tag 'util', :all, :recursive => true, 
+    :exclude => ['lib/PastryKit-ug-compact', 'lib/xui-0.9.0'] %>
+  
+</head>
+<body class="<%= body_classes %>" <%=@body_attribs || '' %>>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield %>
+
+</body>
+</html>

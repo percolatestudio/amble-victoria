@@ -29,9 +29,12 @@ ActiveRecord::Schema.define(:version => 20100512051310) do
     t.string   "name"
     t.string   "location"
     t.integer  "category_id"
+    t.integer  "primary_image_id"
+    t.integer  "system_quality"
+    t.integer  "user_quality"
     t.text     "description"
-    t.decimal  "lat",         :precision => 15, :scale => 10
-    t.decimal  "lng",         :precision => 15, :scale => 10
+    t.decimal  "lat",              :precision => 15, :scale => 10
+    t.decimal  "lng",              :precision => 15, :scale => 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
