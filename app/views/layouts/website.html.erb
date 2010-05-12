@@ -4,18 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <%= framework_meta_tags 'application' %>
   
   <title>Amble</title>
   <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag 'lib/jquery-1.4.2.js' %>
   
-  <!--todo: 
-    - fix the error coming out of jquery.string and sort out these includes 
-    - work out how to best layout the sass
-    
-  -->
-  
-  <%# javascript_include_tag 'util', :all, :recursive => true, 
+  <%= javascript_include_tag 'util', :all, :recursive => true, 
     :exclude => ['lib/PastryKit-ug-compact', 'lib/xui-0.9.0'] %>
   
 </head>

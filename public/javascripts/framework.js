@@ -63,14 +63,23 @@
   // fire the view specific hookup code -- this code should set up live events 
   // etc that control the specific thing that this page does...
   function page_level_hookup(methodName) {
+    //capitalize the first character in a string
+    function capitalize_first_chr(str) {
+      if ((typeof(str) == 'undefined') || (str.length == 0)) {
+        return "";
+      }
+      
+      return str.charAt(0).toUpperCase().concat( str.substr(1) )
+    }
+    
     var controller = $('meta[name=fw.controller]').attr('content');
     var view = $('meta[name=fw.view]').attr('content');    
-    hookup(controller + $.string(view).capitalize().str, methodName);    
+    hookup(controller + capitalize_first_chr(view), methodName);    
     
     // now the layout (zero or more)
     $('meta[name=fw.layout]').each(function() {
       var layout = $(this).attr('content');
-      hookup('layouts' + $.string(layout).capitalize().str, methodName);      
+      hookup('layouts' + capitalize_first_chr(layout), methodName);      
     });
   };
   
