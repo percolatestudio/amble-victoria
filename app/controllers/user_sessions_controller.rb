@@ -8,6 +8,15 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
   end
   
+  def facebook
+    if params[:code]
+      redirect_to "https://graph.facebook.com/oauth/access_token?client_id=#{125444094133311}&redirect_uri=http://amble.local/user_sessions/facebook" +
+                  "&client_secret=264d113c2140a5466a6ad3f1023f254b&code=#{params[:code]}"
+    else
+      render :text => 'done'
+    end
+  end
+  
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
