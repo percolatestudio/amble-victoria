@@ -26,7 +26,12 @@
     // set the spinner in motion in the content area
     $(replaceSel).html("<div id='contentSpinner'></div>")
     
-    // go grab the html for the content area
-    $(replaceSel).load(href);
+    // replace the outerHTML of replaceSel with the 
+    // data returned from the specified url
+    $.get(href, function(data) {
+      $(replaceSel).replaceWith(data)
+      $(window).trigger('ajaxLoad')
+    });    
+    
   };  
 }(jQuery));
