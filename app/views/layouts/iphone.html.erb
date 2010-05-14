@@ -12,8 +12,22 @@
 
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag :all, :recursive => true %>
+    <%= stylesheet_link_tag 'application'  %>
+    <%= javascript_include_tag :all, :recursive => true,
+          :order => ['lib/jquery-1.4.2'] %>
+          
+    <style type="text/css">
+    @-webkit-keyframes slideinfromright {
+        from { -webkit-transform: translateX(100%); }
+        to { -webkit-transform: translateX(0); }
+    }
+    
+    @-webkit-keyframes slideinfromleft {
+        from { -webkit-transform: translateX(-100%); }
+        to { -webkit-transform: translateX(0); }
+    }
+    
+    </style>
   
   </head>
   <body>

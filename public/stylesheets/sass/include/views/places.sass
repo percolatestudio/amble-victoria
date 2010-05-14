@@ -37,3 +37,37 @@
     dt
       :float left
       :width 100px
+      
+.c_places.v_index
+  #places
+    :position relative
+    
+    .place
+      :width 320px
+      :display block
+      :cursor pointer
+      
+      &.flipped
+        .front
+          :display none
+          
+        .back
+          :display block
+          :-webkit-animation-name slideinfromright
+          :-webkit-animation-timing-function ease-in-out
+          :-webkit-animation-duration 500ms
+      
+      &.unflipped
+        .front
+          :-webkit-animation-name slideinfromleft
+          :-webkit-animation-timing-function ease-in-out
+          :-webkit-animation-duration 500ms
+        
+        
+        
+    .place .back
+      :display none
+      :min-height 350px
+      :background white
+      :border 1px solid #bbb
+      :background-color #eee
