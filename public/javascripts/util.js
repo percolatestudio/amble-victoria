@@ -21,10 +21,23 @@
       $.loadContent(replaceSel, href);
     });
   };
+  
+  $.fn.formTargetContent = function(replaceSel) {
+    return $(this.selector).live('submit', function(ev) {
+      ev.preventDefault();
+      
+      // set the spinner in motion in the content area
+      $(replaceSel).html("<div id='contentSpinner'></div>");
+      
+      $.post($(this).attr('action'), $(this).serialize(), function(data) {
+        $(replaceSel).html(data);
+      });
+    });
+  }
     
   $.loadContent = function(replaceSel, href) {
     // set the spinner in motion in the content area
-    $(replaceSel).html("<div id='contentSpinner'></div>")
+    $(replaceSel).html("<div id='contentSpinner'></div>");
     
     // replace the outerHTML of replaceSel with the 
     // data returned from the specified url
@@ -32,6 +45,5 @@
       $(replaceSel).replaceWith(data)
       $(window).trigger('ajaxLoad')
     });    
-    
   };  
 }(jQuery));

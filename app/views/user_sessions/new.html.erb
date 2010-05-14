@@ -1,7 +1,2 @@
-<script>
-  function facebook_login() {
-    jQuery('body').append('<iframe src="<%= "https://graph.facebook.com/oauth/authorize?#{facebook_args}" %>">');    
-  }
-</script>
-
-<a href="javascript:facebook_login();" class="noTargetContent">Login with Facebook</a>
+<%= init_fb_connect "XFBML", :js => :jquery %>
+<%= authlogic_facebook_login_button :js => :jquery %>
