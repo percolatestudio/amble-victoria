@@ -27,15 +27,6 @@
     $(replaceSel).html("<div id='contentSpinner'></div>")
     
     // go grab the html for the content area
-    $(replaceSel).load(href, function() {
-      // for the moment, this is a hack. 
-      // TODO: 1. store the pk classes as a pk attribute on the element (perhaps pk already does this)
-      //       2. check if $(replaceSel).pk is a contentView inside a scrollView
-      //       3. if so do this magic
-      // [on the other hand, maybe we do need to do this every time?]
-      
-      window.amble.pk.content.size = 
-        new PKSize(window.innerWidth, window.amble.pk.content.layer.scrollHeight);
-    });
+    $(replaceSel).load(href);
   };  
 }(jQuery));

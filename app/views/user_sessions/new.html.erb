@@ -1,2 +1,7 @@
-<%= link_to 'Login with Facebook', 
-        "https://graph.facebook.com/oauth/authorize?client_id=#{125444094133311}&redirect_uri=http://amble.local/user_sessions/facebook"%>
+<script>
+  function facebook_login() {
+    jQuery('body').append('<iframe src="<%= "https://graph.facebook.com/oauth/authorize?#{facebook_args}" %>">');    
+  }
+</script>
+
+<a href="javascript:facebook_login();" class="noTargetContent">Login with Facebook</a>

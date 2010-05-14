@@ -12,17 +12,18 @@
 
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
-    <%= stylesheet_link_tag 'application', 'lib/PastryKit-ug-compact.css', 'temp' %>
+    <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag :all, :recursive => true %>
   
   </head>
   <body>
+    <%= render :partial => 'places/nav' %>
+
     <%# This will get over-written by the framework %>
-    <div id="static">
+    <div id="content">
       <%= yield %>
     </div>
     
-    <%= render :partial => 'places/nav' %>
   </body>
 </body>
 </html>

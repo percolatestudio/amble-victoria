@@ -1,4 +1,4 @@
 log/
 tmp/
-public/stylesheets/*.css
+*.css
 public/system/
