@@ -1,32 +1,38 @@
 <script>
-  $(document).ready(function() {
-    $(document).keypress(function(event) {
-      var chr =  String.fromCharCode( event.which );
-    
-      if ((chr >= 0) && (chr <= 10)) {
-        var img_select = jQuery('#primary_image_select').get(0);
-      
-        if (chr < img_select.length) {
-          img_select.selectedIndex = chr;
-          
-          jQuery('#primary_image ul img').removeClass('active');
-          jQuery('#place_image' + chr).addClass('active')
-        } 
-      }
-      else if (chr == 'h') {
-        var uq_select = jQuery('#user_quality_select').get(0);
-        uq_select.selectedIndex = 1;
-      }
-      else if (chr == 's') {
-        jQuery('form').submit();
-      }
-      else if (chr == 'e') {
-        window.location.pathname = jQuery('#edit').attr('href');
-      }
-      
+  $(document).ready(function() {    
+    $('#slide').click(function() {
+      $(this).addClass('slide').addClass('out')
     });
+    
+    $('#flip').click(function() {
+      $(this).addClass('flip').addClass('out')
+    });
+    
+    $('#slide, #flip').bind('webkitAnimationEnd', function() {
+      $(this).removeClass();
+    });
+    
   });
+  
+  
+  
 </script>
+
+<style>
+#slide, #flip { 
+  height: 100px;
+  width: 100px;
+  background-color: gray;
+}
+</style>
+
+<div id="slide">
+  Slide
+</div>
+
+<div id="flip">
+  Flip
+</div>
 
 
 <h1>Quickedit - <%= @place.id %></h1>
