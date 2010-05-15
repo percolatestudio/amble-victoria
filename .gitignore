@@ -2,3 +2,4 @@ log/
 tmp/
 *.css
 public/system/
+data/*.yaml
