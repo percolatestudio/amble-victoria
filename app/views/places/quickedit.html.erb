@@ -17,7 +17,7 @@
   </dl>
 </div>
 
-<% form_for(@place, :url => { :action => "quickedit", :id => @place.id }) do |f| %>
+<% form_for(@place, :url => { :action => "quickedit", :id => @place.id }, :html => {:class => 'no-auto-focus'}) do |f| %>
   <%= f.error_messages %>
   
   <p>
