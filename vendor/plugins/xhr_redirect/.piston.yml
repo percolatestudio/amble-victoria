@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 2ee5db6145be2f2f1ef3984e80ff5aa273be01d4
+  branch: master
+lock: false
+repository_class: Piston::Git::Repository
+repository_url: http://github.com/grosser/xhr_redirect.git

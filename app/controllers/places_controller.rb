@@ -54,11 +54,7 @@ class PlacesController < ApplicationController
     #be fine for us to begin with
     @place = Place.invisible.find(:first, :order => 'rand()')    
     
-    if @place.nil?
-      render :text => 'no places found that can be quickedited'
-    else
-      render :layout => 'website'
-    end
+    render :layout => 'website'
   end
 
   # POST /places

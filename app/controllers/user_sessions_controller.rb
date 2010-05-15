@@ -8,7 +8,6 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
     logger.warn cookies.to_yaml
     
-    params[:xhr] = true
     render_standard
   end
   

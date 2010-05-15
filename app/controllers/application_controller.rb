@@ -59,7 +59,7 @@ private
   def render_standard(options = {})
     data = options.delete(:data)
     
-    if request.xhr? or params[:xhr]
+    if request.xhr?
       render options.merge(:layout => 'xhr')
     else
       respond_to do |format|
