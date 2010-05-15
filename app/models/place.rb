@@ -4,6 +4,7 @@ class Place < ActiveRecord::Base
   has_many :webpages
   has_many :images
   belongs_to :primary_image, :class_name => 'Image'
+  belongs_to :source # where the data came from
   
   has_many :visits
   has_many :users, :through => :visits
@@ -15,11 +16,14 @@ class Place < ActiveRecord::Base
   validates_presence_of :images
   validates_associated :images
   
+  validates_uniqueness_of :name
+  
   validates_numericality_of :system_quality, :allow_nil => true, :less_than_or_equal_to => 10, :greater_than_or_equal_to => 0
   validates_numericality_of :user_quality, :allow_nil => true, :less_than_or_equal_to => 10, :greater_than_or_equal_to => 0  
   
   accepts_nested_attributes_for :images, :allow_destroy => true
   accepts_nested_attributes_for :webpages, :allow_destroy => true
+  accepts_nested_attributes_for :source, :allow_destroy => true  
   
   named_scope :visible, :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)']
   named_scope :invisible, :conditions => ['primary_image_id IS NULL OR user_quality = 0']
@@ -51,6 +55,17 @@ class Place < ActiveRecord::Base
     
     unless potential_images.empty?
       img = self.images.build(:url => potential_images.first )
+    end
+  end
+  
+  # take a filename and create a bunch of records
+  def self.import_normalized(filename)
+    records = YAML.load_file(filename)
+    records.each do |r| 
+      r[:source] = Source.find_by_name(r.delete(:source_name))
+      r[:category] = Category.find_by_name(r.delete(:category_name))
+      p = Place.create(r)
+      logger.warn "Can't import place: #{p.name}, errors #{p.errors.full_messages.join('\n')}" unless p.valid?
     end
   end
 end

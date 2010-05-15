@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100515171258) do
   create_table "places", :force => true do |t|
     t.string   "name"
     t.string   "location"
+    t.integer  "source_id"
     t.integer  "category_id"
     t.integer  "primary_image_id"
     t.integer  "system_quality"
