@@ -7,4 +7,5 @@ Hi, <%=h @current_user.name %>
   <input type="hidden" name="_method" value="delete"></input>
 </form>
 
+<%= fb_profile_pic controller.facebook_session.user %>
 <%= link_to 'Logout', 'javascript:void(0);', :onclick => "FB.Connect.logout(); jQuery('#user_session_delete').submit();return false;", :class => 'noTargetContent' %>

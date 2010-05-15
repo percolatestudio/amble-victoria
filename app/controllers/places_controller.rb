@@ -5,12 +5,14 @@ class PlacesController < ApplicationController
   # GET /places.xml
   def index
     source = if params[:user_id]
-      User.find(params[:user_id]).places
+      @user = User.find(params[:user_id])
+      @user.places
     else
       Place
     end
     
-    @places = source.visible.all
+    @location = location
+    @places = source.visible.all :origin => origin
     
     render_standard :data => @places
   end

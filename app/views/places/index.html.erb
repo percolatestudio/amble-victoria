@@ -20,6 +20,12 @@ $(document).ready(function() {
 
 </script>
 
+<%- if @user.nil? -%>
+  Displaying locations near to <%= @location %>.
+<%- else -%>
+  Locations Saved by <%= @user.name %>.
+<%- end -%>
+
 <div id="places">
   <%= render :partial => 'place', :collection => @places %>
 </div>

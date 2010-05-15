@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_session, :current_user
   
+  # TODO: require_location
   def location
     session[:location]
   end
@@ -24,6 +25,11 @@ class ApplicationController < ActionController::Base
   
   def set_location(lat, lng, current = true)
     session[:location] = {:lat => lat, :lng => lng, :current => current}
+  end
+  
+  # this is the origin for the geokit-AR query
+  def origin
+    [location[:lat], location[:lng]]
   end
   
   # Scrub sensitive parameters from your log

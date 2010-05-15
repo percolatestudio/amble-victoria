@@ -1,4 +1,5 @@
 class Place < ActiveRecord::Base
+  acts_as_mappable
   
   belongs_to :category
   has_many :webpages
