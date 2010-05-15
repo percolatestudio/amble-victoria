@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  acts_as_authentic  
+  # need this to avoid a nasty infinite loop bug. due to more shitty code in the facebook plugin
+  # hopefully turning this off won't bite us
+  acts_as_authentic do |c|
+    c.maintain_sessions = false
+  end
   
   has_many :visits
   has_many :places, :through => :visits
