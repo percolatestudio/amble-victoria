@@ -1,0 +1,13 @@
+<div>
+Updated your location to:
+
+  <p>
+    <em>Lng:</em> <%= session[:location][:lng] %>
+    <br />
+    <em>Lat:</em> <%= session[:location][:lat] %>
+  </p>
+</div>
+
+
+
+<iframe width="500px" height="300px" src="http://maps.google.com/maps?q=<%= session[:location][:lng] %>,+<%= session[:location][:lat] %>&hl=en&ie=UTF8&z=14&iwloc=A&amp;output=embed"></iframe>

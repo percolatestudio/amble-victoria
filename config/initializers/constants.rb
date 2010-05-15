@@ -1,0 +1,1 @@
+DEFAULT_LOCATION = {:lng => -37.816565, :lat => 144.965458} #flinders street station

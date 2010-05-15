@@ -18,4 +18,27 @@ class UsersController < ApplicationController
   def loading
     render :layout => 'mobile'
   end
+
+  def update_location
+    if params[:location]
+      location = params[:location]
+    else
+      geo_location = GeoKit::Geocoders::MultiGeocoder.geocode(request.remote_ip)      
+      
+      if geo_location.success
+        location = {:lat => location.lat, :lng => location.lng}
+      else
+        location = DEFAULT_LOCATION
+      end
+    end
+    
+    session[:location] = location.merge({:current => true})
+    logger.info "set location to: #{session[:location].inspect}"
+    
+    if request.xhr?
+      render :text => ''
+    else
+      render :layout => 'website'
+    end
+  end
 end
