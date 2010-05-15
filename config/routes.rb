@@ -1,11 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :categories
 
-  map.resources :places, :requirements => {:id => /[0-9]+/}, :has_many => :users
+  map.resources :places, :collection => [:quickedit], :has_many => :users
+  
   map.root :controller => 'users', :action => 'loading'
 
   map.resource :user_session
-  map.resources :users, :has_many => :places
+  map.resources :users, :has_many => :places, :collection => [:set_location]
   
   # The priority is based upon order of creation: first created -> highest priority.
 
