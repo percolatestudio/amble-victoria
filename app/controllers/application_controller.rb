@@ -3,12 +3,27 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  before_filter { |c| set_location_automatically if c.location.nil? }
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   helper_method :current_user_session, :current_user
   
   def location
     session[:location]
+  end
+  
+  def set_location_automatically
+    geo_location = GeoKit::Geocoders::MultiGeocoder.geocode(request.remote_ip)      
+    
+    if geo_location.success
+      set_location geo_location.lat, geo_location.lng
+    else
+      set_location DEFAULT_LOCATION[:lat], DEFAULT_LOCATION[:lng], false
+    end
+  end
+  
+  def set_location(lat, lng, current = true)
+    session[:location] = {:lat => lat, :lng => lng, :current => current}
   end
   
   # Scrub sensitive parameters from your log
