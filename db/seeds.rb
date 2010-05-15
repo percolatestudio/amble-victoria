@@ -27,6 +27,7 @@ places = [
   ]
   
 db_places = places.collect { |place| Place.find_or_create_by_name(place) }
+db_places.each {|place| place.primary_image = place.images.first; place.save! }
 
 sources = [
   {:name => 'Flickr', :url => 'http://www.flickr.com/', :icon_filename => 'flickr.jpg'},
