@@ -13,5 +13,6 @@
     <p class="distance"><%= rand(5)+1 %> kms away</p>
     <p class="description"><%=h place.description %></p>
     <p class="distance"><%= place.distance %></p>
+    <p class="share"><%= fb_share_button place_url(place) %></p>
   </div>
 </div>

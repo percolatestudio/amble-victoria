@@ -1,6 +1,6 @@
-Hi, <%=h @current_user.name %>
-
 <%= init_fb_connect "XFBML", :js => :jquery %>
+
+Hi, <%=h @current_user.name %>
 
 <%# I'd love to use the rails helper but he sneakily gets around our form catching stuff %>
 <form id="user_session_delete" style="display:none" method="post" action="<%= user_session_path %>">
