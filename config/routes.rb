@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'users', :action => 'loading'
 
   map.resource :user_session
-  map.resources :users, :has_many => :places, :collection => [:set_location]
+  map.resources :users, :has_many => [:places, :visits], :collection => [:set_location]
   
   # The priority is based upon order of creation: first created -> highest priority.
 

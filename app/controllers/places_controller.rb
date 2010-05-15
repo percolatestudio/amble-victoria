@@ -4,7 +4,13 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.xml
   def index
-    @places = Place.visible.all
+    source = if params[:user_id]
+      User.find(params[:user_id]).places
+    else
+      Place
+    end
+    
+    @places = source.visible.all
     
     render_standard :data => @places
   end
