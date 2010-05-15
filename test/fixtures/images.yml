@@ -1,14 +1,38 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  place_id: 1
-  url_id: 1
-  image_file_name: MyString
+ngv:
+  place: ngv
+  url: http://www.flickr.com
 
-two:
-  place_id: 1
-  url_id: 1
-  image_file_name: MyString
+flinders_st:
+  place: flinders_st
+  url: http://www.flickr.com
+  
+fed_square:
+  place: fed_square
+  url: http://www.flickr.com
+  
+southbank:
+  place: southbank
+  url: http://www.flickr.com
+  
+brunswick_st:
+  place: brunswick_st
+  url: http://www.flickr.com
+  
+luna_park:
+  place: luna_park
+  url: http://www.flickr.com
+
+# one:
+#   place_id: 1
+#   url_id: 1
+#   image_file_name: MyString
+# 
+# two:
+#   place_id: 1
+#   url_id: 1
+#   image_file_name: MyString
 
 # == Schema Info
 # Schema version: 20100515171258

@@ -1,14 +1,30 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  url: MyString
-  name: MyString
-  icon_filename: MyString
+manual:
+  url: www.percolatestudio.com
+  name: Percolate Studio
 
-two:
-  url: MyString
-  name: MyString
-  icon_filename: MyString
+flickr:
+  url: http://www.flickr.com/
+  name: Flickr
+  icon_filename: flickr.jpg
+  
+wikipedia:
+  url: http://wikipedia.org/
+  name: Wikipedia
+  icon_filename: wikipedia.jpg
+  
+art_spaces:
+  url: http://data.vic.gov.au/raw_data/arts-spaces-and-places/46
+  name: Art Spaces Gov Data
+  
+licensed_venues:
+  url: http://data.vic.gov.au/raw_data/licenced-venues/51
+  name: Licensed Venues Gov Data
+
+tourism_vic:
+  url: http://data.vic.gov.au/data_tool/tourism-victoria-atdw-data-set/153
+  name: Tourism Vic Gov Data
 
 # == Schema Info
 # Schema version: 20100515171258
