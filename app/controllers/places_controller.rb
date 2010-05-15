@@ -1,48 +1,35 @@
 class PlacesController < ApplicationController
-  layout 'content'
+  layout 'xhr'
     
   # GET /places
   # GET /places.xml
   def index
     @places = Place.visible.all
-
-    # ajax
-    return render :layout => 'content' if request.xhr?
-
-    respond_to do |format|
-      format.html { render :layout => nil }# index.html.erb
-      format.xml  { render :xml => @places }
-    end
+    
+    render_standard :data => @places
   end
 
   # GET /places/1
   # GET /places/1.xml
   def show
     @place = Place.find(params[:id])
-
-    # ajax
-    return render :layout => 'content' if request.xhr?
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @place }
-    end
+    
+    render_standard :data => @place
   end
 
   # GET /places/new
   # GET /places/new.xml
   def new
     @place = Place.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @place }
-    end
+    
+    render_standard :data => @place
   end
-
+  
   # GET /places/1/edit
   def edit
     @place = Place.find(params[:id])
+    
+    render_standard :data => @place
   end
   
   def quickedit

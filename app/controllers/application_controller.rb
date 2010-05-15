@@ -48,4 +48,22 @@ private
     session[:return_to] = nil
   end
   
+  # our standard rendering behaviour for views
+  #   1. we are going to be dynamically loaded into div#content
+  #   2. we render by ourself as webpage
+  #   3. we render for some API call or something
+  def render_standard(options = {})
+    if request.xhr?
+      render :layout => 'xhr'
+    else
+      respond_to do |format|
+        format.html { render :layout => 'website' }
+        
+        unless options[:data].nil?
+          format.xml  { render :xml  => options[:data] }
+          format.json { render :json => options[:data] }
+        end
+      end
+    end
+  end
 end

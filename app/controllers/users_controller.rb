@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  layout 'content'
+  layout 'xhr'
   
   before_filter :require_user, :only => :show
     
   def loading
-    render :layout => 'iphone'
+    render :layout => 'mobile'
   end
 end
