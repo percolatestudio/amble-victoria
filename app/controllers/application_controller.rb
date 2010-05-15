@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  before_filter { |c| set_location_automatically if c.location.nil? }
+  before_filter { |c| c.set_location_automatically if c.location.nil? }
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   helper_method :current_user_session, :current_user
