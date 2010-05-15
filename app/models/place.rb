@@ -5,6 +5,9 @@ class Place < ActiveRecord::Base
   has_many :images
   belongs_to :primary_image, :class_name => 'Image'
   
+  has_many :visits
+  has_many :visitors, :through => :visits, :source => :user
+  
   validates_presence_of :name
   validates_presence_of :location  
   validates_presence_of :category_id

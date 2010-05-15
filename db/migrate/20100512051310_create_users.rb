@@ -8,6 +8,9 @@ class CreateUsers < ActiveRecord::Migration
       
       t.timestamps
     end
+    
+    add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+    add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid"    
   end
 
   def self.down

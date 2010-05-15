@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 
+  place_id: 
+  pending: 
+  visited: 
+  shared: 
+
+two:
+  user_id: 
+  place_id: 
+  pending: 
+  visited: 
+  shared: 

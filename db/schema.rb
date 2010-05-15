@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100512051310) do
+ActiveRecord::Schema.define(:version => 20100515171258) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,22 @@ ActiveRecord::Schema.define(:version => 20100512051310) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+
+  create_table "visits", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.integer  "place_id",                      :null => false
+    t.boolean  "pending",    :default => true
+    t.boolean  "visited",    :default => false
+    t.boolean  "shared",     :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "visits", ["place_id"], :name => "index_visits_on_place_id"
+  add_index "visits", ["user_id"], :name => "index_visits_on_user_id"
 
   create_table "webpages", :force => true do |t|
     t.integer  "source_id"
