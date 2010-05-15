@@ -5,13 +5,13 @@ class Webpage < ActiveRecord::Base
 end
 
 # == Schema Info
-# Schema version: 20100510021227
+# Schema version: 20100515171258
 #
 # Table name: webpages
 #
 #  id         :integer(4)      not null, primary key
 #  place_id   :integer(4)
-#  website_id :integer(4)
+#  source_id  :integer(4)
 #  url        :string(255)
 #  created_at :datetime
 #  updated_at :datetime

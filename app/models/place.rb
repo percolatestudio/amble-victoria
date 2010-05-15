@@ -13,6 +13,9 @@ class Place < ActiveRecord::Base
   validates_presence_of :location  
   validates_presence_of :category_id
   
+  validates_numericality_of :lng
+  validates_numericality_of :lat
+  
   validates_presence_of :images
   validates_associated :images
   
@@ -27,6 +30,8 @@ class Place < ActiveRecord::Base
   
   named_scope :visible, :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)']
   named_scope :invisible, :conditions => ['primary_image_id IS NULL OR user_quality = 0']
+  
+  before_validation :set_coords_from_address
   
   before_validation_on_create { |place|
     #set the image from flickr if no images are set
@@ -68,17 +73,33 @@ class Place < ActiveRecord::Base
       logger.warn "Can't import place: #{p.name}, errors #{p.errors.full_messages.join('\n')}" unless p.valid?
     end
   end
+  
+  def set_coords_from_address
+    location = Geokit::Geocoders::MultiGeocoder.geocode(self.location)
+    logger.info("location is: #{location.inspect}")
+  
+    self.lng = location.lng
+    self.lat = location.lat
+    
+    true
+  end  
 end
 
 # == Schema Info
-# Schema version: 20100510021227
+# Schema version: 20100515171258
 #
 # Table name: places
 #
-#  id          :integer(4)      not null, primary key
-#  category_id :integer(4)
-#  description :text
-#  location    :string(255)
-#  name        :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id               :integer(4)      not null, primary key
+#  category_id      :integer(4)
+#  primary_image_id :integer(4)
+#  source_id        :integer(4)
+#  description      :text
+#  lat              :decimal(15, 10)
+#  lng              :decimal(15, 10)
+#  location         :string(255)
+#  name             :string(255)
+#  system_quality   :integer(4)
+#  user_quality     :integer(4)
+#  created_at       :datetime
+#  updated_at       :datetime

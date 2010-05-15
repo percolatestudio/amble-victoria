@@ -13,3 +13,16 @@ class User < ActiveRecord::Base
     reset_persistence_token
   end
 end
+
+# == Schema Info
+# Schema version: 20100515171258
+#
+# Table name: users
+#
+#  id                   :integer(4)      not null, primary key
+#  facebook_session_key :string(255)
+#  facebook_uid         :integer(8)      not null
+#  name                 :string(255)     not null
+#  persistence_token    :string(255)
+#  created_at           :datetime
+#  updated_at           :datetime

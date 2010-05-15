@@ -6,9 +6,9 @@ class Source < ActiveRecord::Base
 end
 
 # == Schema Info
-# Schema version: 20100510021227
+# Schema version: 20100515171258
 #
-# Table name: websites
+# Table name: sources
 #
 #  id            :integer(4)      not null, primary key
 #  icon_filename :string(255)

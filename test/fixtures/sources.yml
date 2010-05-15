@@ -10,9 +10,8 @@ two:
   name: MyString
   icon_filename: MyString
 
-
 # == Schema Info
-# Schema version: 20100510021227
+# Schema version: 20100515171258
 #
 # Table name: sources
 #
