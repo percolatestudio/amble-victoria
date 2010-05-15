@@ -117,7 +117,7 @@ module AuthlogicFacebookConnect
                        :default => 'There was a problem creating a new user ' +
                                    'for your Facebook account')) unless self.attempted_record.valid?
 
-              self.attempted_record.save
+              self.attempted_record = nil
             else
               self.attempted_record.save_with_validation(false)
             end

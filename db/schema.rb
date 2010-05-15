@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20100515171258) do
 
   create_table "users", :force => true do |t|
     t.string   "name",                              :null => false
-    t.string   "persistence_token",                 :null => false
+    t.string   "persistence_token"
     t.integer  "facebook_uid",         :limit => 8, :null => false
     t.string   "facebook_session_key"
     t.datetime "created_at"

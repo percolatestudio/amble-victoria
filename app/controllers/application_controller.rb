@@ -34,7 +34,7 @@ private
     if current_user
       store_location
       flash[:notice] = "You must be logged out to access this page"
-      redirect_to user_path
+      redirect_to user_path(current_user)
       return false
     end
   end
@@ -53,15 +53,17 @@ private
   #   2. we render by ourself as webpage
   #   3. we render for some API call or something
   def render_standard(options = {})
-    if request.xhr?
-      render :layout => 'xhr'
+    data = options.delete(:data)
+    
+    if request.xhr? or params[:xhr]
+      render options.merge(:layout => 'xhr')
     else
       respond_to do |format|
-        format.html { render :layout => 'website' }
+        format.html { render options.merge(:layout => 'website') }
         
-        unless options[:data].nil?
-          format.xml  { render :xml  => options[:data] }
-          format.json { render :json => options[:data] }
+        unless data.nil?
+          format.xml  { render options.merge(:xml  => data) }
+          format.json { render options.merge(:json => data) }
         end
       end
     end
