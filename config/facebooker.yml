@@ -2,3 +2,8 @@ development:
   api_key: '125444094133311'
   secret_key: 264d113c2140a5466a6ad3f1023f254b
   callback_url: http://amble.local
+
+production:
+  api_key: '118268954873737'
+  secret_key: fb292be1ad34dc1c8e28fd07c55ce53c
+  callback_url: http://ambleapp.com
