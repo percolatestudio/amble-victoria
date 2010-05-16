@@ -83,7 +83,28 @@ class Place < ActiveRecord::Base
     self.lat = location.lat
     
     true
-  end  
+  end
+  
+  # attempt to get some more data off the net about the place
+  def decorate!
+    # lets use citysearch to find a url + phone for this place
+    # but only if its a restaurant
+    if self.category.name == 'Restaurant'
+      logger.info 'Doing citysearch data load...'
+      cs = Citysearch.find(self.location)
+      
+      unless cs.nil? # we got some results
+        self.phone = cs[:phone] if cs[:phone]
+        
+        if cs[:listing_url]
+          wp = Webpage.new(:url => cs[:listing_url])
+          wp.source = Source.find_by_name('Citysearch')
+          self.webpages = [wp]
+          self.save
+        end
+      end
+    end
+  end
 end
 
 # == Schema Info

@@ -17,6 +17,7 @@ categories = [
 categories.each { |category| Category.find_or_create_by_name(category) }
 
 sources = [
+  {:name => 'Citysearch', :url => 'http://melbourne.citysearch.com/', :icon_filename => 'citysearch.png'},
   {:name => 'Flickr', :url => 'http://www.flickr.com/', :icon_filename => 'flickr.jpg'},
   {:name => 'Wikipedia', :url => 'http://wikipedia.org/', :icon_filename => 'wikipedia.jpg'},
   {:name => 'Art Spaces Gov Data', :url => 'http://data.vic.gov.au/raw_data/arts-spaces-and-places/46'},
