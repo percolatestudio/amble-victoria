@@ -31,6 +31,7 @@
       
       $.post($(this).attr('action'), $(this).serialize(), function(data) {
         $(replaceSel).html(data);
+        FB.XFBML.Host.parseDomTree();
       });
     });
   }
@@ -44,7 +45,7 @@
     $.get(href, function(data) {
       $(replaceSel).replaceWith(data);
       $(window).trigger('ajaxLoad');
-      FB.XFBML.parse();
+      FB.XFBML.Host.parseDomTree();
     });    
   };  
 }(jQuery));
