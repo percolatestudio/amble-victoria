@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter { |c| c.set_location_automatically if c.location.nil? }
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :logged_in?, :origin, :location
   
   # TODO: require_location
   def location
@@ -44,6 +44,10 @@ private
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
+  end
+  
+  def logged_in?
+    not current_user.nil?
   end
   
   def require_user

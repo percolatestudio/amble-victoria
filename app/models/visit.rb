@@ -2,6 +2,9 @@ class Visit < ActiveRecord::Base
   belongs_to :user
   belongs_to :place
   
+  validates_presence_of [:user, :place]
+  validates_uniqueness_of :user_id, :scope => :place_id
+  
   named_scope :saved, :conditions => {:saved => true}
 end
 

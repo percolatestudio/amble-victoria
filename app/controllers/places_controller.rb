@@ -11,7 +11,6 @@ class PlacesController < ApplicationController
       Place
     end
     
-    @location = location
     @places = source.visible.all :origin => origin
     
     render_standard :data => @places
@@ -20,7 +19,7 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.xml
   def show
-    @place = Place.find(params[:id])
+    @place = Place.find(params[:id], :origin => origin)
     
     render_standard :data => @place
   end
@@ -38,6 +37,36 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     
     render_standard :data => @place
+  end
+  
+  def save
+    @place = Place.find(params[:id])
+    if (@visit = current_user.visits.find_by_place_id(params[:id]))
+      @visit.saved = true
+    else
+      @visit = current_user.visits.new(:place => @place)
+    end
+    
+    # TODO -- this is totally wrong
+    if @visit.save
+      flash[:notice] = 'Visit was successfully saved.'
+      redirect_to @visit.place
+    else
+      format.html { render :text => 'error' }
+      format.xml  { render :xml => @visit.errors, :status => :unprocessable_entity }
+    end
+  end
+  
+  def unsave
+    @visit = current_user.visits.saved.find_by_place_id(params[:id])
+    
+    if @visit.update_attributes(:saved => false)
+      flash[:notice] = 'Visit was successfully un-saved.'
+      redirect_to @visit.place
+    else
+      format.html { render :text => 'error' }
+      format.xml  { render :xml => @visit.errors, :status => :unprocessable_entity }
+    end
   end
   
   def quickedit

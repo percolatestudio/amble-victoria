@@ -1,12 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :categories
 
-  map.resources :places, :collection => [:quickedit], :has_many => :users
+  map.resources :places, :collection => [:quickedit], :member => [:save, :unsave]
   
   map.root :controller => 'users', :action => 'loading'
 
   map.resource :user_session
-  map.resources :users, :has_many => [:places, :visits], :collection => [:set_location,:my_places, :account, :update_location]
+  map.resources :users, :collection => [:set_location,:my_places, :account, :update_location]
   
   # The priority is based upon order of creation: first created -> highest priority.
 
