@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     render :layout => 'mobile'
   end
   
+  def show
+    render_standard
+  end
+  
   def update_location
     if params[:location]
       session[:location] = set_location(params[:location][:latitude], params[:location][:longitude])

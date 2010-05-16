@@ -42,8 +42,9 @@
     // replace the outerHTML of replaceSel with the 
     // data returned from the specified url
     $.get(href, function(data) {
-      $(replaceSel).replaceWith(data)
-      $(window).trigger('ajaxLoad')
+      $(replaceSel).replaceWith(data);
+      $(window).trigger('ajaxLoad');
+      FB.XFBML.parse();
     });    
   };  
 }(jQuery));

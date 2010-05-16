@@ -13,6 +13,10 @@
     <p class="distance"><%= rand(5)+1 %> kms away</p>
     <p class="description"><%=h place.description %></p>
     <p class="distance"><%= place.distance %></p>
-    <p class="share"><%= fb_share_button place_url(place) %></p>
+    <p class="share">
+      <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>"
+            scrolling="no" frameborder="0"
+            style="border:none; width:450px; height:80px"></iframe>
+    </p>
   </div>
 </div>
