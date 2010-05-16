@@ -37,6 +37,12 @@ luna_park:
   category: sight
   source: manual  
 
+wildflower:
+  name: The Wildflower Restaurant
+  location: "1 Theatre Place, Canterbury, 3126"
+  source: manual
+  category: restaurant
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 # one:
