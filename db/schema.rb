@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20100515171258) do
   create_table "visits", :force => true do |t|
     t.integer  "user_id",                       :null => false
     t.integer  "place_id",                      :null => false
-    t.boolean  "pending",    :default => true
+    t.boolean  "saved",      :default => true
     t.boolean  "visited",    :default => false
     t.boolean  "shared",     :default => false
     t.datetime "created_at"

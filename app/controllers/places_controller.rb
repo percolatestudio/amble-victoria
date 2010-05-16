@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
   def index
     source = if params[:user_id]
       @user = User.find(params[:user_id])
-      @user.places
+      @user.saved_places
     else
       Place
     end
