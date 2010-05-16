@@ -7,10 +7,10 @@
 #   Major.create(:name => 'Daley', :city => cities.first)
 
 categories = [
-              {:name => 'Museum'},
-              {:name => 'Art Space'},
-              {:name => 'Landmark'},
-              {:name => 'Restaurant or Cafe'},
+              {:name => 'Culture'},
+              {:name => 'Sight'},
+              {:name => 'Restaurant'},
+              {:name => 'Bar'},
               {:name => 'Other'}
              ]
 
