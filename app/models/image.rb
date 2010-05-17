@@ -4,8 +4,8 @@ class Image < ActiveRecord::Base
   belongs_to :place
   
   IMAGE_SIZES = { 
-    :small => {:x => 200, :y => 200}, 
-    :medium => {:x => 320, :y => 350},
+    :small => {:x => 80, :y => 77},
+    :medium => {:x => 290, :y => 178},
   }            
   
   has_attached_file :image, 
