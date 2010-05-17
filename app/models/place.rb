@@ -73,7 +73,12 @@ class Place < ActiveRecord::Base
       r[:source] = Source.find_by_name(r.delete(:source_name))
       r[:category] = Category.find_by_name(r.delete(:category_name))
       p = Place.create(r)
-      logger.warn "Can't import place: #{p.name}, errors #{p.errors.full_messages.join('\n')}" unless p.valid?
+      
+      if p.valid?
+        p.decorate!
+      else
+        logger.warn "Can't import place: #{p.name}, errors #{p.errors.full_messages.join('\n')}"
+      end
     end
   end
   
