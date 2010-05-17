@@ -1,20 +1,18 @@
-museum:
-  name: Museum
+culture:
+  name: Culture
   
-art_space:
-  name: Art Space
-  
-landmark:
-  name: Landmark
-  
-attraction:
-  name: Attraction
-  
+sight:
+  name: Sight
+    
 restaurant:
-  name: Restaurant or Cafe
+  name: Restaurant
+
+bar:
+  name: Bar
   
 other:
   name: Other
+  
 
 # == Schema Info
 # Schema version: 20100515171258

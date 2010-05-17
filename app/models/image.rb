@@ -4,8 +4,8 @@ class Image < ActiveRecord::Base
   belongs_to :place
   
   IMAGE_SIZES = { 
-    :small => {:x => 200, :y => 200}, 
-    :medium => {:x => 320, :y => 350},
+    :small => {:x => 80, :y => 77},
+    :medium => {:x => 290, :y => 178},
   }            
   
   has_attached_file :image, 
@@ -29,7 +29,7 @@ class Image < ActiveRecord::Base
   #set/download the image based on the URL if provided
   def set_image_from_url
     begin
-      logger.info "about to do it...."
+      logger.info "downloading image..."
       contents = open(self.url)
       logger.info "setting self.image to: #{contents}"
       logger.info "file is #{contents.path}"

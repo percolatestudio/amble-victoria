@@ -3,7 +3,8 @@ class CreatePlaces < ActiveRecord::Migration
     create_table :places do |t|
       t.string :name
       t.string :location
-      t.integer :source_id      
+      t.string :phone
+      t.integer :source_id
       t.integer :category_id
       t.integer :primary_image_id
       t.integer :system_quality

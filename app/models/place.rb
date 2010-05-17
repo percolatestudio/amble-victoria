@@ -37,13 +37,12 @@ class Place < ActiveRecord::Base
   before_validation_on_create { |place|
     #set the image from flickr if no images are set
     if place.images.empty? or place.images.first.url.empty?
-      place.images = []
-      place.add_image_from_flickr 
+      place.add_images_from_flickr 
     end
   }
   
   #return url's of creative common licensed pictures from flickr for this place
-  def potential_images(opts = {:max => 5})
+  def potential_images(opts = {:max => 1})
     flickr = Flickr.new(File.join(RAILS_ROOT, 'config', 'flickr.yml'))
     photos = flickr.photos.search(:text => self.name, 
                                   :per_page => opts[:max], 
@@ -56,11 +55,14 @@ class Place < ActiveRecord::Base
     photos.collect { |p| p.image_url }
   end
   
-  def add_image_from_flickr
-    potential_images = potential_images({:max => 1})
+  def add_images_from_flickr(number = 3)
+    potential_images = potential_images({:max => number})
     
     unless potential_images.empty?
-      img = self.images.build(:url => potential_images.first )
+      self.images = []
+      potential_images.each do |url|
+        self.images << Image.create(:url => url)
+      end
     end
   end
   
@@ -71,7 +73,12 @@ class Place < ActiveRecord::Base
       r[:source] = Source.find_by_name(r.delete(:source_name))
       r[:category] = Category.find_by_name(r.delete(:category_name))
       p = Place.create(r)
-      logger.warn "Can't import place: #{p.name}, errors #{p.errors.full_messages.join('\n')}" unless p.valid?
+      
+      if p.valid?
+        p.decorate!
+      else
+        logger.warn "Can't import place: #{p.name}, errors #{p.errors.full_messages.join('\n')}"
+      end
     end
   end
   
@@ -83,7 +90,28 @@ class Place < ActiveRecord::Base
     self.lat = location.lat
     
     true
-  end  
+  end
+  
+  # attempt to get some more data off the net about the place
+  def decorate!
+    # lets use citysearch to find a url + phone for this place
+    # but only if its a restaurant
+    if self.category.name == 'Restaurant'
+      logger.info 'Doing citysearch data load...'
+      cs = Citysearch.find(self.location)
+      
+      unless cs.nil? # we got some results
+        self.phone = cs[:phone] if cs[:phone]
+        
+        if cs[:listing_url]
+          wp = Webpage.new(:url => cs[:listing_url])
+          wp.source = Source.find_by_name('Citysearch')
+          self.webpages = [wp]
+          self.save
+        end
+      end
+    end
+  end
 end
 
 # == Schema Info

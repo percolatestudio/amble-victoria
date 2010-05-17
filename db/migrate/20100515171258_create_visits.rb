@@ -3,7 +3,7 @@ class CreateVisits < ActiveRecord::Migration
     create_table :visits do |t|
       t.integer :user_id, :null => false
       t.integer :place_id, :null => false
-      t.boolean :pending, :default => true
+      t.boolean :saved, :default => true
       t.boolean :visited, :default => false
       t.boolean :shared, :default => false
       

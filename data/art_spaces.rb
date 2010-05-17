@@ -12,7 +12,7 @@ class ArtSpaces < Base
     reader.shift # headers
     reader.each do |row| # Organisation,Street,Suburb/Town,Postcode,Website            
       r = {}
-      r[:category_name] = 'Art Spaces'
+      r[:category_name] = 'Culture'
       r[:source_name] = 'Art Spaces Gov Data'
             
       r[:name] = row[0].to_s

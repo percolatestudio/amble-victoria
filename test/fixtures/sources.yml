@@ -26,6 +26,10 @@ tourism_vic:
   url: http://data.vic.gov.au/data_tool/tourism-victoria-atdw-data-set/153
   name: Tourism Vic Gov Data
 
+citysearch:
+  url: http://melbourne.citysearch.com
+  name: Citysearch
+
 # == Schema Info
 # Schema version: 20100515171258
 #

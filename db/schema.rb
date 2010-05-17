@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100515171258) do
   create_table "places", :force => true do |t|
     t.string   "name"
     t.string   "location"
+    t.string   "phone"
     t.integer  "source_id"
     t.integer  "category_id"
     t.integer  "primary_image_id"
@@ -63,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20100515171258) do
   create_table "visits", :force => true do |t|
     t.integer  "user_id",                       :null => false
     t.integer  "place_id",                      :null => false
-    t.boolean  "pending",    :default => true
+    t.boolean  "saved",      :default => true
     t.boolean  "visited",    :default => false
     t.boolean  "shared",     :default => false
     t.datetime "created_at"

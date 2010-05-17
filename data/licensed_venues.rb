@@ -13,7 +13,7 @@ class ArtSpaces < Base
     reader.each do |row| # LicenceNo,LicenceType,PremisesName,Licensee,Address1,Address2,Suburb,Postcode
       if row[1] == "Restaurant & Caf\351"
         r = {}
-        r[:category_name] = 'Restaurants and Cafes'
+        r[:category_name] = 'Restaurant'
         r[:source_name] = 'Licensed Venues Gov Data'
             
         r[:name] = capitalize_words(row[2].to_s)

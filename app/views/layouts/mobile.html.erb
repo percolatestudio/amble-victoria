@@ -15,25 +15,34 @@
     <%= javascript_include_tag :all, :recursive => true,
           :order => ['lib/jquery-1.4.2'] %>
           
-    <style type="text/css">
-    @-webkit-keyframes slideinfromright {
-        from { -webkit-transform: translateX(100%); }
-        to { -webkit-transform: translateX(0); }
-    }
-    
-    @-webkit-keyframes slideinfromleft {
-        from { -webkit-transform: translateX(-100%); }
-        to { -webkit-transform: translateX(0); }
-    }
-    
-    </style>
-  
     <%= fb_connect_javascript_tag %>
     <%= init_fb_connect "XFBML", :js => :jquery %>
   </head>
   <body>
-    <%= render :partial => 'places/nav' %>
-
+    <div id="header">
+      <div id="nav">
+        <%= image_tag 'mobile/icon_logo/logo_nav_67x15.png', :alt => 'Amble Logo' %>
+        
+        <!-- todo: set 'active' class on current page -->
+        <ol>
+          <li id="explore">            
+            <%= link_to 'Explore', places_path %>
+          </li>
+          <li id="my_places">
+            <%= link_to 'My Places', my_places_users_path %>
+          </li>
+        </ol>
+      </div>
+      
+      <div id="location">
+        <div id="right_arrow">
+          <a href="">Location Options</a>
+        </div>
+        
+        <p>Showing <a href="">all places</a> near your <a href="">current location</a></p>
+      </div>      
+    </div>
+    
     <%# This will get over-written by the framework %>
     <div id="content">
       <%= yield %>

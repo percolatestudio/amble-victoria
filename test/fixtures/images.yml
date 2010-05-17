@@ -24,6 +24,10 @@ luna_park:
   place: luna_park
   url: http://www.flickr.com
 
+wildflower:
+  place: wildflower
+  url: http://www.flickr.com
+
 # one:
 #   place_id: 1
 #   url_id: 1
