@@ -41,8 +41,56 @@
 .c_places.v_index
   #places
     .place
-      :width 320px
-      :cursor pointer
+      :font 12px helvetica
+      :color #666666
+      :padding 10px 10px 15px 10px
+      :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 100%
+      
+      .thumb
+        :height 178px
+        :width 290px
+        :border 3px solid #fff
+        :margin 0px 0px 10px 0px
+      
+      .overview
+        img
+          :vertical-align middle
+    
+        h2
+          :font bold 16px helvetica
+          :color #444444
+        
+        .category
+          :text-transform uppercase
+          :margin 4px 0px
+      
+      .actions
+        :float right
+        :width 108px
+      
+        .save, .details
+          :width 44px
+          :height 44px
+          :float left
+          :margin-right 10px
+          
+          a
+            :width 100%
+            :height 100%
+            :display block
+            :text-indent -31337px
+            :background-image url('/images/mobile/btns/btn_star_rarr_44x44.png')
+          
+        .details a
+          :background-position -44px 0px
+          &:hover
+            :background-position -44px -45px
+        
+        .save a
+          :background-position 0px 0px
+          &:hover
+            :background-position 0px -45px
+      
       :position relative
       
       &.flipped
@@ -70,6 +118,7 @@
         :z-index 10
       
       .back
+        :display none
         :position absolute
         :z-index 0
         :top 0
