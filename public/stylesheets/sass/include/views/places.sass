@@ -43,8 +43,24 @@
     .place
       :font 12px helvetica
       :color #666666
-      :padding 10px 10px 15px 10px
       :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 100%
+      :padding 10px 10px 10px 10px
+      :position relative
+      
+      h2
+        :font bold 16px helvetica
+        :color #444444
+        
+      .category
+        :text-transform uppercase
+        :margin 3px 0px
+        
+      
+      .dogear
+        :display block
+        :position absolute
+        :right 0
+        :top 0
       
       .thumb
         :height 178px
@@ -55,16 +71,8 @@
       .overview
         img
           :vertical-align middle
-    
-        h2
-          :font bold 16px helvetica
-          :color #444444
-        
-        .category
-          :text-transform uppercase
-          :margin 4px 0px
-      
-      .actions
+          
+      .front .actions
         :float right
         :width 108px
       
@@ -90,41 +98,135 @@
           :background-position 0px 0px
           &:active
             :background-position 0px -45px
+    
+    .front
+      :padding-bottom 5px
+    
+    .back
+      :display none
+      :overflow hidden
       
-      :position relative
-      
-      &.flipped
-        .front
-          :position absolute
-          :top 0
-          :left 0
-          :z-index 0
+      .actions
+        :overflow hidden
+        :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 0
+        :padding-top 10px
+        :clear both
+        
+        a
+          :font 10px Helvetica
+          :text-decoration none
+          :color #333333
+          :display block
+          :line-height 24px
+          :text-align center
+          :-moz-border-radius 5px
+          :-webkit-border-radius 5px
+          :background #fafafa
+          :background -moz-linear-gradient(top, #fafafa, #efeff3)
+          :background -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#efeff3))
+          :border 1px solid #cccccc
           
-        .back
-          :position relative
-          :z-index 10
-          :-webkit-animation-name slideinfromright
-          :-webkit-animation-timing-function ease-in-out
-          :-webkit-animation-duration 300ms
+        a, iframe
+          :float left
+          :margin-right 5px
+          :width 56px
+          :height 24px
+          
+        .right_btns
+          :float right
+          :width 188px
       
-      &.unflipped
-        .front
-          :-webkit-animation-name slideinfromleft
-          :-webkit-animation-timing-function ease-in-out
-          :-webkit-animation-duration 300ms
-      
-      .front
-        :position relative
-        :z-index 10
-      
-      .back
-        :display none
-        :position absolute
-        :z-index 0
-        :top 0
-        :left 0
-        :min-height 350px
-        :min-width 320px
-        :background white
-        :border 1px solid #bbb
-        :background-color #eee
+      .thumb
+        :height 80px
+        :width 77px
+        :border 4px solid #fff
+        :margin 0px 0px 10px 0px
+        
+      .left_col
+        :float left
+        :width 90px
+        :color #666666
+        :font 10px Helvetica
+        
+        em
+          :font-weight bold
+        
+        &> div
+          :line-height 18px
+          :margin 0px 0px 0px 5px
+          :width 100%
+          
+          a
+            :text-decoration none
+            :color #666666
+          
+          img
+            :margin-right 5px
+            :display inline-block
+            :vertical-align middle
+        
+        
+      .right_col
+        :margin-left 100px
+        
+      .contact
+        :margin-bottom 10px
+        :color #666666
+        :font 11px/14px Helvetica 
+        
+      .description
+        :color #333333
+        :font 11px Helvetica 
+        
+        p
+          :margin 0px 0px 5px 0px
+
+
+//this is all commented out for now
+  &.flipped
+    .front
+      :position absolute
+      :top 0
+      :left 0
+      :z-index 0
+    
+    .back
+      :position relative
+      :z-index 10
+      :-webkit-animation-name slideinfromright
+      :-webkit-animation-timing-function ease-in-out
+      :-webkit-animation-duration 300ms
+
+  &.unflipped
+    .front
+      :-webkit-animation-name slideinfromleft
+      :-webkit-animation-timing-function ease-in-out
+      :-webkit-animation-duration 300ms
+
+  .front
+    :position relative
+    :z-index 10
+
+  .back
+    :display none
+    :position absolute
+    :z-index 0
+    :top 0
+    :left 0
+    :min-height 350px
+    :min-width 320px
+    :background white
+    :border 1px solid #bbb
+    :background-color #eee
+    
+#footer
+  :padding 10px 0px 10px 0px
+  :font 10px Helvetica
+  :color #333333
+  :text-align center
+
+  a
+    :font-size 12px
+    :color #0066cc  
+    :font-weight bold
+    :text-decoration none

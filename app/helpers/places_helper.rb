@@ -11,7 +11,7 @@ module PlacesHelper
       link_to 'Save', save_place_path(place)
     else
       link_to 'UnSave', unsave_place_path(place)
-    end
+    end  
   end
   
   def map_img_url(place, size="100x100")
@@ -28,4 +28,9 @@ module PlacesHelper
       "markers=color:red|label:A|#{place.lat},#{place.lng}&" +
       "markers=color:blue|size:tiny|#{location[:lat]},#{location[:lng]}"
   end
+
+  def format_location(location)
+    location.sub(",", ",<br />")
+  end  
+  
 end

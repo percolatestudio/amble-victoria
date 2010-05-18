@@ -1,17 +1,26 @@
 body
   :width 320px
+  :min-height 396px
+  :background-color #ebebf1
+  
+  
+!nav_bar_height = 40px
+
+.nav_bar
+  height = !nav_bar_height
+  :background transparent url('/images/mobile/layout/bg_subnav_40x40.png') repeat-x scroll 0 0
+  :font bold 12px/40px helvetica
+  :text-align center
+
 
 #location
-  !location_height = 40px
-  :background transparent url('/images/mobile/layout/bg_subnav_40x40.png') repeat-x scroll 0 0
-  :height = !location_height
   :padding 0px 10px 0px 20px
   
   #right_arrow
     :height 16px
     :width 12px
     :float right
-    :margin-top = (!location_height / 2) - (0.5 * 16)
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 16)
     
     a
       :text-indent -31337px
@@ -23,28 +32,21 @@ body
       &:active
         :background-position 0 -17px
   
-  p
-    :font bold 12px/40px helvetica
-    :text-align center
-  
-    a
-      :color #003399
-      :text-decoration none
-      &:hover
-        :text-decoration underline  
+  p a
+    :color #003399
+    :text-decoration none
+    &:hover
+      :text-decoration underline  
 
 #nav
-  !nav_height = 40px
-  :height = !nav_height
-  :background transparent url('/images/mobile/layout/bg_nav_40x40.png') repeat-x scroll 0 0
   :padding 0px 10px 0px 20px
   
   img
-    :margin-top = (!nav_height / 2) - (0.5 * 15)
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 15)
   
   ol
     :float right
-    :margin-top = (!nav_height / 2) - (0.5 * 26)
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 26)
     
     li
       :width 80px
@@ -71,3 +73,5 @@ body
           :background-position -80px 0
           &.active
             :background-position -80px -27px      
+
+

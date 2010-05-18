@@ -25,4 +25,14 @@ module ApplicationHelper
     "c_#{controller_name.gsub('/', '_')} v_#{view_name}"
   end  
   
+  def current_uri?(url)
+    return true if current_page?(url)
+    
+    #handle the different possible url's for our root document
+    root_urls = ['/places', '/users/loading', '/']
+    return true if ( root_urls.include?(url) && root_urls.include?(request.request_uri) )
+    
+    return false
+  end
+  
 end

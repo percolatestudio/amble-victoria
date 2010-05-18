@@ -1,11 +1,22 @@
 <script>
 $(document).ready(function() { 
-  $('.front').click(function() {
-    //$(this).parent('.place').addClass('flipped').removeClass('unflipped');
+  $('.details a').click(function() {
+    $('#places .place').css('display', 'none')
+    
+    $(this).parents('.place').css('display', 'block')
+    $(this).parents('.place').children('.front').css('display', 'none');
+    $(this).parents('.place').children('.back').css('display', 'block');
+    
+    return false;
   })
   
-  $('.back').click(function() {
-    //$(this).parent('.place').removeClass('flipped').addClass('unflipped');
+  $('.back_btn').click(function() {
+    $('#places .place').css('display', 'block')
+    $('#places .place .front').css('display', 'block')
+    
+    $('#places .place .back').css('display', 'none')
+
+    return false;
   })
 })
 
@@ -22,3 +33,11 @@ $(document).ready(function() {
 <div id="places">
   <%= render :partial => 'place', :collection => @places %>
 </div>
+
+<div id="footer">
+  <!-- todo: hook up link -->
+  <div><a href="">What is Amble?</a></div>
+  <div>Crafted by Percolate Studio</div>
+  <div>&copy; 2010 Amble</div>
+</div>
+

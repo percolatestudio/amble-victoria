@@ -20,21 +20,30 @@
   </head>
   <body>
     <div id="header">
-      <div id="nav">
+      <div id="nav" class="nav_bar">
         <%= image_tag 'mobile/icon_logo/logo_nav_67x15.png', :alt => 'Amble Logo' %>
         
-        <!-- todo: set 'active' class on current page -->
+
         <ol>
-          <li id="explore">            
-            <%= link_to 'Explore', places_path %>
+          <li id="explore">
+            <%= link_to 'Explore', places_path, {:class => current_uri?(places_path) ? 'active' : nil} %>
           </li>
           <li id="my_places">
-            <%= link_to 'My Places', my_places_users_path %>
+            <%= link_to 'My Places', my_places_users_path, {:class => current_uri?(my_places_users_path) ? 'active' : nil} %>
           </li>
         </ol>
       </div>
       
-      <div id="location">
+      <!--
+      
+      <div id="places_filter">
+      </div>
+      
+      <div id="set_location">
+      </div>
+      -->
+      
+      <div id="location" class="nav_bar">
         <div id="right_arrow">
           <a href="">Location Options</a>
         </div>
