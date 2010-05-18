@@ -11,7 +11,25 @@ body
   :background transparent url('/images/mobile/layout/bg_subnav_40x40.png') repeat-x scroll 0 0
   :font bold 12px/40px helvetica
   :text-align center
+  :text-shadow 0 1px 0 #bbb
 
+#places_filter
+  :text-align left
+  :padding 0px 10px 0px 30px
+
+  select
+    :float right
+    :-webkit-appearance none
+    :padding-left 8px
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 10px"
+    :width 227px
+    :font normal 12px/24px helvetica
+    :background-color -moz-linear-gradient(top, #ffffff, #e0e0df)
+    :background-color -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+    :background-image url('/images/mobile/btns/btn_select_search_20x22.png')
+    :background-position 100% 0
+    :background-repeat no-repeat
+    :height 24px
 
 #location
   :padding 0px 10px 0px 20px
@@ -39,6 +57,7 @@ body
       :text-decoration underline  
 
 #nav
+  :text-align left
   :padding 0px 10px 0px 20px
   
   img
