@@ -39,8 +39,6 @@
         
         <%= select "places", "category", Category.all.collect { |c| [c.name, c.id]}, {:include_blank => 'All Places'}%>
         <!-- todo: make these actually functional -->
-        
-        <!-- btn_select_search_20x22.png -->
       </div>
       
       <div id="set_location" class="nav_bar" style="display:none; ">
