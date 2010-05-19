@@ -43,6 +43,9 @@ class Place < ActiveRecord::Base
     end
   }
   
+  cattr_reader :per_page
+  @@per_page = 7
+  
   #return url's of creative common licensed pictures from flickr for this place
   def potential_images(opts = {:max => 1})
     flickr = Flickr.new(File.join(RAILS_ROOT, 'config', 'flickr.yml'))

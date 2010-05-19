@@ -28,9 +28,7 @@
   
 <% end %>
 
-<div id="places">
-  <%= render :partial => 'place', :collection => @places %>
-</div>
+<%= render :partial => 'paginated', :locals => {:places => @places} %>
 
 <div id="footer">
   <div>

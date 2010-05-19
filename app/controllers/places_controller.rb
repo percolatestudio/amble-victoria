@@ -13,13 +13,6 @@ class PlacesController < ApplicationController
   def index    
     current_navigation :explore
     
-    source = if params[:user_id]
-      @user = User.find(params[:user_id])
-      @user.saved_places
-    else
-      Place
-    end
-    
     if params[:place_filter]
       @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
     else
@@ -49,9 +42,15 @@ class PlacesController < ApplicationController
       conditions = ['category_id = ?', @place_filter[:category_id]]
     end
     
-    @places = source.visible.all(:origin => origin, :conditions => conditions || "")
+    @places = Place.visible.paginate(:page => params[:page], :origin => origin, 
+      :conditions => conditions || "", :order => 'distance')
     
-    render_standard :data => @places
+    if request.xhr? and not params[:page].nil?
+      # paginated request
+      render :partial => 'paginated', :locals => {:places => @places}
+    else
+      render_standard :data => @places
+    end
   end
 
   def show    

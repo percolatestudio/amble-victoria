@@ -62,6 +62,14 @@
 
         return false;
       });
+      
+      // pagination
+      $('.more_places a').live('click', function(event) {
+        event.preventDefault();
+        $.get($(this).safe_href(), function(data) {
+          $('.more_places').replaceWith(data);
+        })
+      });
     }
   }
 }(jQuery));
