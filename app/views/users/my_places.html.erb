@@ -14,8 +14,8 @@
       </div>
     
       <div class="actions">
-        <a class="small_button" href="">Remove</a>
-        <a class="small_button" href="">Details</a>
+        <%= link_to 'Remove', unsave_place_path(place), :class => 'remove', :class => 'small_button' %>
+        <%= link_to 'Details', place, :class => 'small_button' %>
       </div>
     </div>
   <%- end -%>
