@@ -1,6 +1,7 @@
 <div id="logged_in_description" class="nav_bar">
   <a href="javascript:void(0);"><%= "#{h(current_user.name)}'s" %></a>
   saved places
+  <a href="javascript:void(0);" class="rang">&rang;</a>
 </div>
 
 <%# I'd love to use the rails helper but he sneakily gets around our form catching stuff %>
@@ -10,6 +11,7 @@
 
 <div id="logout" class="nav_bar">
   <%= link_to 'Logout', 'javascript:void(0);', :onclick => "FB.Connect.logout(); jQuery('#user_session_delete').submit();return false;", :class => 'noTargetContent' %>
+  <a href="javascript:void(0);" class="lang">&lang;</a>
 </div>
 
 <div class="places">

@@ -1,9 +1,19 @@
 // general ui sass mixins and classes
-=button(!height)
-  :height !height
-  &:hover
-    :background-position = 0 (-1 * !height)
-    
+=button(!height, !h_offset)
+  :display block
+  :text-indent -1337px
+  :height = !height
+  :background-position = !h_offset 0
+  &:hover, &:active
+    :background-position = !h_offset (-1 * !height -1)
+
+.lang, .rang
+  :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
+  :width 12px
+.lang
+  +button(16px, right)
+.rang
+  +button(16px, left)
 
 .small_button
   :font 10px Helvetica

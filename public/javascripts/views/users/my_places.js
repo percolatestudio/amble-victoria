@@ -17,6 +17,12 @@
         }
       });
       
+      $('.lang').click(function() {
+        // TODO: effects
+        $('#logged_in_description').show();
+        $('#logout').hide();        
+      });
+      
       $('#logged_in_description a').click(function() {
         // TODO: effects
         $('#logged_in_description').hide();
