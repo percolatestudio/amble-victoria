@@ -3,13 +3,14 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  before_filter { |c| c.set_location_automatically if c.location.nil? }
+    
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   helper_method :current_user_session, :current_user, :logged_in?, :origin, :location
   
   # TODO: require_location
   def location
+    logger.warn session.to_yaml
     session[:location]
   end
   
@@ -38,6 +39,7 @@ class ApplicationController < ActionController::Base
   end
   
   def origin_exists?
+    return false if location.nil?
     return false if location[:lat].nil?
     return false if location[:lng].nil?
     
@@ -79,6 +81,14 @@ private
       return false
     end
   end
+  
+  def require_location
+    unless origin_exists?
+      store_location
+      redirect_to get_location_users_path
+      return false
+    end
+  end
     
   def store_location
     session[:return_to] = request.request_uri
@@ -100,7 +110,7 @@ private
       render options.merge(:layout => 'xhr')
     else
       respond_to do |format|
-        format.html { render options.merge(:layout => 'website') }
+        format.html { render options.merge(:layout => 'mobile') }
         
         unless data.nil?
           format.xml  { render options.merge(:xml  => data) }

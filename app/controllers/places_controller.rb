@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
   layout 'xhr'
+
+  before_filter :require_location, :only => [:index, :show]
     
   # GET /places
   # GET /places.xml
@@ -8,7 +10,9 @@ class PlacesController < ApplicationController
   
   PLACE_FILTER = Struct.new(:category_id, :location)
   
-  def index
+  def index    
+    current_navigation :explore
+    
     source = if params[:user_id]
       @user = User.find(params[:user_id])
       @user.saved_places

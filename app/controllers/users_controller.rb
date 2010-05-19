@@ -2,12 +2,15 @@ class UsersController < ApplicationController
   layout 'xhr'
   
   before_filter :require_user, :only => [:show, :places, :my_places, :account]
+  before_filter :require_location, :only => [:my_places]
+  
   
   # Please change this is you can think of a better way to do this. 
   #  we need these actions so we can link to them before we have a current user
   def my_places
-    # UserSession.find
-    redirect_to user_places_path(current_user)
+    @places = current_user.saved_places.all :order => 'visits.updated_at'
+    
+    render_standard :data => @places
   end
   
   def account
@@ -15,7 +18,7 @@ class UsersController < ApplicationController
   end
   
     
-  def loading
+  def get_location
     current_navigation :explore
     render :layout => 'mobile'
   end
@@ -33,10 +36,6 @@ class UsersController < ApplicationController
     
     logger.info "set location to: #{session[:location].inspect}"
     
-    if request.xhr?
-      render :text => ''
-    else
-      render :layout => 'website'
-    end
+    redirect_back_or_default(explore_path)
   end
 end

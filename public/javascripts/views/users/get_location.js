@@ -1,5 +1,5 @@
 (function($){
-  usersLoading = {
+  usersGetLocation = {
     onGetLocationCompleteCalled: false,
     
     onReady: function() {
@@ -10,30 +10,23 @@
     onLoad: function() {      
       //geolocation.find call is async
       $.geolocation.find(function(loc) {
-        usersLoading.onGetLocationComplete({location: {latitude: loc.latitude, longitude: loc.longitude}});
+        usersGetLocation.onGetLocationComplete({location: {latitude: loc.latitude, longitude: loc.longitude}});
       }, function(){
-        usersLoading.onGetLocationComplete({});
+        usersGetLocation.onGetLocationComplete({});
       });      
     },
     
     onGetLocationComplete: function(request_data) {
       //work around a bug in Firefox 3.5 where the geolocaiton callback 
       //sometimes gets called multiple times
-      if (usersLoading.onGetLocationCompleteCalled == true) {
+      if (usersGetLocation.onGetLocationCompleteCalled == true) {
         return;
       }
       
       //update user location, and load places
-      jQuery.ajax({
-        url: '/users/update_location',
-        data: request_data,
-        success: function() {  
-          $.loadContent('#content', '/places/');
-        },
-        error: function() {  alert("error setting your location") }
-      }); 
-      
-      usersLoading.onGetLocationCompleteCalled = true;     
+      window.location.href = '/users/update_location' + $.param(request_data);
+
+      usersGetLocation.onGetLocationCompleteCalled = true;     
     }
   }
 }(jQuery));
