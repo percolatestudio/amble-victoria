@@ -10,11 +10,12 @@
       <p class="category"><%=h place.category.name %></p>
     
       <div class="distance detail">
-        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: <em>0.5 km</em>
+        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: 
+          <em><%= format_distance(place.distance) %></em>
       </div>
     
       <div class="actions">
-        <%= link_to 'Remove', unsave_place_path(place), :class => 'remove', :class => 'small_button' %>
+        <%= link_to 'Remove', unsave_place_path(place), :class => 'remove small_button' %>
         <%= link_to 'Details', place, :class => 'small_button' %>
       </div>
     </div>
