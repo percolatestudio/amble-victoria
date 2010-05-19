@@ -1,39 +1,11 @@
-<script>
-  $(document).ready(function() { 
-    
-    $('.locate_btn').click(function() {
-      geolocation.set();
-    });
-    
-    $('.details a').click(function() {
-      $('#places .place').css('display', 'none')
-    
-      $(this).parents('.place').css('display', 'block')
-      $(this).parents('.place').children('.front').css('display', 'none');
-      $(this).parents('.place').children('.back').css('display', 'block');
-    
-      return false;
-    })
-  
-    $('.back_btn').click(function() {
-      $('#places .place').css('display', 'block')
-      $('#places .place .front').css('display', 'block')
-    
-      $('#places .place .back').css('display', 'none')
-
-      return false;
-    })
-  })
-</script>
-
-
 <% form_for :place_filter, @place_filter, 
-    :html => {'method' => 'get'} do |f| %>
+    :html => {'method' => 'get', 'id' => 'place_filter'} do |f| %>
     
   <div id="places_filter" class="nav_bar">
     <label>Places</label>
   
-    <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id]}, {:include_blank => 'All Places'} %>
+    <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id.to_s]}, 
+      {:include_blank => 'All Places'} %>
   </div>
 
   <div id="set_location" class="nav_bar">
@@ -50,8 +22,6 @@
 
   </div>
 <% end %>
-
-
 
 <div id="places">
   <%= render :partial => 'place', :collection => @places %>

@@ -39,19 +39,17 @@ class PlacesController < ApplicationController
         return
       end
     end
+
+    # opts = {}
+    # unless @place_filter[:category_id].empty?
+    #   opts = {:conditions => ['category_id = ?', @place_filter[:category_id]] }
+    # end
     
-    #into place model, put:
-      #find_by_place_filter  
-      
-    #have to update session[:location]
-      
-    #need to update the user's location first (i.e. origion)    
+    unless @place_filter[:category_id].nil? or @place_filter[:category_id] == ""
+      conditions = ['category_id = ?', @place_filter[:category_id]]
+    end
     
-    @places = source.visible.all :origin => origin
-    #@places = source.visible.all(:origin => origin, :conditions => nil)
-    #@places = source.visible.all(:origin => origin)
-    
-    #@places = source.visible.all :origin => origin, :conditions => {}
+    @places = source.visible.all(:origin => origin, :conditions => conditions || "")
     
     render_standard :data => @places
   end
