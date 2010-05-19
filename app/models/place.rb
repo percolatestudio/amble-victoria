@@ -116,7 +116,21 @@ class Place < ActiveRecord::Base
   end
   
   def set_qualities
-    logger.debug "SETTING QUALITIES"
+    self.user_quality = 0 if self.user_quality.nil?
+    self.system_quality = 1 # restart at 1, assume validations satisfy quality criteria of 1
+    
+    # calc real system quality
+    self.system_quality += 1 unless webpages.empty?
+    self.system_quality += 3 unless phone.nil?
+    self.system_quality += 2 unless description.nil?
+    
+    # tweak these weights!
+    sq_weight = 1
+    uq_weight = 3
+    norm_sq = self.system_quality / 7.0 #MAX
+    norm_uq = self.user_quality / 3.0 #MAX
+    
+    self.quality = (norm_sq**sq_weight) * (norm_uq**uq_weight)
   end
 end
 
