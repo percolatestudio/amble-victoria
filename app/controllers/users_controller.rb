@@ -8,23 +8,15 @@ class UsersController < ApplicationController
   # Please change this is you can think of a better way to do this. 
   #  we need these actions so we can link to them before we have a current user
   def my_places
-    @places = current_user.saved_places.all :order => 'visits.updated_at'
+    @places = current_user.saved_places.all :select => 'places.*', :order => 'visits.updated_at', :origin => origin
     
     render_standard :data => @places
   end
   
-  def account
-    redirect_to user_path(current_user)
-  end
-  
     
   def get_location
-    current_navigation :explore
+    #current_navigation :explore
     render :layout => 'mobile'
-  end
-  
-  def show
-    render_standard
   end
   
   def update_location

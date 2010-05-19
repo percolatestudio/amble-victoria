@@ -174,8 +174,8 @@
     
   .locate_txt
     :float right
-    :width = 169px + 8px + 20px + 4px
-    :height 26px
+    :width = 169px + 8px + 20px
+    :height 24px
     :margin = "#{(40 / 2) - (24 / 2)}px 0px #{(40 / 2) - (24 / 2)}px 0px"
     :overflow hidden
     
@@ -197,8 +197,8 @@
     :float left
     :outline none
     :-webkit-appearance none
-    :padding-left 8px
-    :width 169px
+    :padding 0px 8px 0px 4px
+    :width 162px
     :font normal 12px/24px helvetica
     :background-image -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
     :height 22px
@@ -214,8 +214,13 @@
     :float right
     :width 24px
     :height 24px
-    :background transparent url('/images/mobile/btns/btn_locate.png') no-repeat 0 0
 
+    a
+      :background transparent url('/images/mobile/btns/btn_locate.png') no-repeat 0 0
+      :text-indent -31337px
+      :display block
+      :width 100%
+      :height 100%
 
 #location
   :padding 0px 10px 0px 10px

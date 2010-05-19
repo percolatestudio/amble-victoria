@@ -18,7 +18,8 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       flash[:notice] = "Login successful!"
       
-      redirect_back_or_default user_path(@user_session.user)
+      # needs to be explore path for users who were there...
+      redirect_back_or_default explore_path
     else
       logger.warn @user_session.errors.to_yaml
       
@@ -35,6 +36,6 @@ class UserSessionsController < ApplicationController
     
     logger.warn cookies.to_yaml
     flash[:notice] = "Logout successful!"
-    redirect_back_or_default account_users_path
+    redirect_back_or_default explore_path
   end
 end

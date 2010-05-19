@@ -17,7 +17,7 @@
       <div class="category"><%= place.category.name %></div>
       <div class="distance">
         <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>
-        Distance: 0.5 km
+        Distance: <%= format_distance(place.distance) %>
       </div>
     </div>
   </div>
@@ -29,7 +29,8 @@
       <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
       
       <div class="distance detail">
-        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: <em>0.5 km</em>
+        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: 
+          <em><%= format_distance(place.distance) %></em>
         
         <!--
         todo: get this distance to work properly, i.e. correct units and number of decimal places
