@@ -9,7 +9,9 @@
         <%= link_to 'Save', save_place_path(place), :class => 'save' %>
         <%= link_to 'Remove', unsave_place_path(place), :class => 'unsave' %>
       </div>
-      <div class="details"><a href="">View details</a></div>
+      <div class="details">
+        <%= link_to 'View details', place %>
+      </div>
     </div>
 
     <div class="overview">
@@ -22,68 +24,6 @@
     </div>
   </div>
   <div class="back face">
-    <div class="left_col">
-      
-      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb' %>
-      
-      <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
-      
-      <div class="distance detail">
-        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: 
-          <em><%= format_distance(place.distance) %></em>
-        
-        <!--
-        todo: get this distance to work properly, i.e. correct units and number of decimal places
-        Distance: <%= place.distance %> km
-        -->
-      </div>
-      
-      <div class="detail">
-        <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Listing</a>
-      </div>
-      
-      <div class="detail">
-        <!-- how is this view site stuff suppost to work, no way of differentiating between them, except icon -->
-        
-        <!-- todo: get the right arrow button from Dom that he wanted here -->
-        <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Site </a> 
-      </div>
-    </div>
-    
-    <div class="right_col">
-      <h2 class="name"><%=h place.name %></h2>
-      
-      <p class="category"><%=h place.category.name %></p>
-      
-      <div class="contact">
-        <address>
-          <%= format_location( h(place.location) ) %>
-        </address>
-        
-        <!-- todo: put in real phone number from db field -->
-        <div class="phone">
-          (03) 9555 5555
-        </div>
-      </div>
-      
-      <div class="description">
-        <%= simple_format( h(place.description) ) %>
-      </div>
-    </div>
-
-    
-    <div class="actions">
-      <div class="right_btns">
-        <a class="small_button" href="">Remove</a>
-        <a class="small_button" href="">Map it</a>
-      
-        <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>&amp;layout=button_count"
-              scrolling="no" frameborder="0"
-              style="border:none;"></iframe>
-      </div>
-      
-      <!-- todo: make this back button have a pointy left edge -->
-      <a href="" class="back_btn small_button">Back</a>
-    </div>    
+    <%= render :partial => 'place_detail', :object => place %>
   </div>
 </div>

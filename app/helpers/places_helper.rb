@@ -38,7 +38,11 @@ module PlacesHelper
   end
   
   def format_distance(distance)
-    number_with_precision(distance, :precision => 1) + ' km'
+    if distance.to_f < 500
+      number_with_precision(distance, :precision => 1) + ' km'
+    else
+      'Far'
+    end
   end
   
 end

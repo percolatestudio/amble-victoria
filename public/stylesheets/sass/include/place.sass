@@ -1,0 +1,96 @@
+.place
+  :position relative
+  :clear both
+  :overflow hidden
+  :font 12px helvetica
+  :color #666666
+  :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 100%
+  :padding 10px 10px 10px 10px
+  
+  .name
+    :font bold 16px helvetica
+    :color #444444
+    :text-shadow 0 1px 0 #ddd
+    
+  .category
+    :text-transform uppercase
+    :margin 3px 0px
+    
+  // saving stuff
+  .dogear
+    :display none
+  &.saved
+    .dogear
+      :display block
+      :position absolute
+      :right 0
+      :top 0   
+  
+  .small_thumb
+    :height 80px
+    :width 77px
+    :border 4px solid #fff
+    :margin 0px 0px 10px 0px
+    
+  .detail
+    :line-height 18px
+    :margin 0px 0px 0px 5px
+    :width 100%
+    
+    a
+      :text-decoration none
+      :color #666666
+    
+    img
+      :margin-right 5px
+      :display inline-block
+      :vertical-align middle
+
+.place_detail
+  :overflow hidden
+  .actions
+    :overflow hidden
+    :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 0
+    :padding-top 10px
+    :clear both
+  
+    iframe
+      :float left
+      :margin-right 5px
+      :width 56px
+      :height 24px
+      
+    .right_btns
+      :float right
+      :width 188px
+    
+  .left_col
+    :float left
+    :width 90px
+    :color #666666
+    :font 10px Helvetica
+    
+    
+  .right_col
+    :margin-left 100px
+    
+  .contact
+    :margin-bottom 10px
+    :color #666666
+    :font 11px/14px Helvetica 
+    
+  .description
+    :color #333333
+    :font 11px Helvetica 
+    
+    p
+      :margin 0px 0px 5px 0px
+      
+  .unsave
+    :display none
+.place.saved .place_detail
+  .save
+    :display none
+  .unsave
+    :display block
+  

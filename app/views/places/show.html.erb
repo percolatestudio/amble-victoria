@@ -1,34 +1,3 @@
-<div>
-  <b>Name:</b>
-  <%=h @place.name %>
+<div class="place <%= saved_class(@place) %>">
+  <%= render :partial => 'place_detail', :object => @place %>
 </div>
-<div>
-  <b>Category:</b>
-  <%=h @place.category.name %>
-</div>
-<div>
-  <b>Urls:</b>
-  <ul>
-  <% @place.webpages.each do |webpage| %>
-    <li><%=h webpage.url %></li>
-  <% end %>
-  </ul>
-</div>
-<div>
-  <b>Description:</b>
-  <%= simple_format(h(@place.description)) %>
-</div>
-
-
-<div>
-  <b>Location:</b>
-  <i><%=h @place.location %></i>
-</div>
-<iframe width="500px" height="300px" src="http://maps.google.com/maps?q=<%=h @place.location %>&amp;output=embed"></iframe>
-
-<% unless @place.primary_image.nil? %>
-  <%= image_tag @place.primary_image.image.url(:small) %>
-<% end %>
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
