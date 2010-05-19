@@ -2,70 +2,116 @@
 require 'base'
 require 'csv'
 require 'soap/wsdlDriver'
+require 'rubygems'
+require 'nokogiri'
 
 class Atdw < Base
+  def initialize
+    super()
+    @key = '911212349911' # Amble key
+    # @key = '955556780022' #Fake key
+    @wsdl_url = 'http://national.atdw.com.au/soap/AustralianTourismWebService.asmx?WSDL'
+    @proxy    = SOAP::WSDLDriverFactory.new(@wsdl_url).create_rpc_driver
+    @rpp = 50 # results per page
+  end
+  
   def filename
-    'atdw'
+    'atdw.internet'
   end
   
   def normalize
-    key = '955556780022'
-    wsdl_url = 'http://national.atdw.com.au/soap/AustralianTourismWebService.asmx?WSDL'
-    proxy    = SOAP::WSDLDriverFactory.new(wsdl_url).create_rpc_driver
-
-command_params =<<EOL
+    load
+  end
+  
+  def generate_product_ids(filename = 'atdw_ids.yaml')
+    mainQuery = {
+      'DistributorKey' => @key,
+      'CommandName' => 'QueryProducts',
+      'CommandParameters' =><<EOL
 <parameters>
-  <row><param>PRODUCT_CATEGORY_LIST</param><value>ACCOMM</value></row>
-  <row><param>RESULTS_PER_PAGE</param><value>10</value></row>
+  <row><param>PRODUCT_CATEGORY_LIST</param><value>ATTRACTION</value></row>
+  <row><param>DATA_GROUP_LIST</param><value>ALL</value></row>
+  <row><param>ADDRESS_RETURN</param><value>YES</value></row>
+  <row><param>MULTIMEDIA_RETURN</param><value>YES</value></row>
+  <row><param>MULTIMEDIA_TYPE</param><value>LANDSCAPE</value></row>  
+  <row><param>STATE</param><value>Victoria</value></row>
+  <row><param>RESULTS_PER_PAGE</param><value>#{@rpp}</value></row>
 </parameters>
 EOL
-
-    params = {
-      'DistributorKey' => key,
-      'CommandName' => 'QueryProducts',
-      'CommandParameters' => command_params
     }
-    result = proxy.CommandHandler(params)
-    p result
+    puts "--- Running mainQuery"
+    result = @proxy.CommandHandler(mainQuery)
+    stats = find_stats(result.commandHandlerResult)   
+    total_pages = (stats[:total_records_found] / @rpp).to_i + 1
+        
+    puts "Stats for this query: #{stats.inspect}"
+    puts "Total pages found: #{total_pages}"
+    puts "Records per page: #{@rpp}"
+        
+    @records += find_products(result.commandHandlerResult)
     
-    # $strDistributorKey = 955556780022; // INSERT YOUR DISTRIBUTOR API KEY HERE
-    # $client = new SoapClient($strWSDL);
-    # 
-    # /*************************QUERY PRODUCTS**************************************/
-    # $strCommandName = "QueryProducts";
-    # $strCommandParameter = "<parameters>";
-    # $strCommandParameter .= "<row><param>PRODUCT_CATEGORY_LIST</param><value>ACCOMM</value></row>";
-    # $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>10</value></row>";
-    # $strCommandParameter .= "</parameters>";
-    # 
-    # $param = array('DistributorKey'=> $strDistributorKey, 'CommandName'=>$strCommandName, 'CommandParameters'=>$strCommandParameter);
-    # 
-    #Call API Method and Get Exchange Rate
-    # rate = proxy.getValue(1,'usd','eur')
-    # puts "Rate: #{rate}"
+    # 2.upto(total_pages) do |page|
+    2.upto(2) do |page_number|
+      pageQuery = {
+        'DistributorKey' => @key,
+        'CommandName' => 'QueryProductsNextPage',
+        'CommandParameters' =><<EOL
+<parameters>
+  <row><param>API_QUERY_ID</param><value>#{stats[:api_query_id]}</value></row>
+  <row><param>PAGE_NUMBER</param><value>#{page_number}</value></row>
+  <row><param>RESULTS_PER_PAGE</param><value>#{@rpp}</value></row>  
+</parameters>
+EOL
+      }
+      puts "--- Running pageQuery for page #{page_number}"
+      result = @proxy.CommandHandler(pageQuery)
+      @records += find_products(result.commandHandlerResult)
+    end
+  end
+  
+  def find_products(xml)
+    doc = Nokogiri::XML(xml)
+    products = []
     
-  #   reader = CSV.open(filename, 'r') 
-  #   reader.shift # headers
-  #   reader.each do |row| # Organisation,Street,Suburb/Town,Postcode,Website            
-  #     r = {}
-  #     r[:category_name] = 'Culture'
-  #     r[:source_name] = 'Art Spaces Gov Data'
-  #           
-  #     r[:name] = row[0].to_s
-  #     r[:location] = "#{row[1]}, #{row[2]}, #{row[3]}"
-  #     r[:webpages_attributes] = [{:url => row[4].to_s}]
-  #         
-  #     @records << r
-  #   end
+    doc.xpath("//product_record").each { |product|
+      p = {}
+      
+      p[:id] = product.at_xpath(".//product_id").inner_text
+      # r[:category_name] = 'Culture'
+      # r[:source_name] = 'Art Spaces Gov Data'
+      #       
+      # r[:name] = row[0].to_s
+      # r[:location] = "#{row[1]}, #{row[2]}, #{row[3]}"
+      # r[:webpages_attributes] = [{:url => row[4].to_s}]
+      
+      
+      products << p
+    }
+    
+    if products.empty?
+      puts "Hmmm, no products found, maybe there is a problem. XML was: #{xml}"
+    end
+    
+    out_s = open('out.xml', "wb")
+    out_s.write(xml)
+    out_s.close
+    
+    products
+  end
+  
+  def find_stats(xml)
+    doc  = Nokogiri::XML(xml)
+
+    begin
+      {
+        :api_query_id => doc.at_xpath("//api_query_id").inner_text,
+        :total_records_found => doc.at_xpath("//total_records_found").inner_text.to_i,
+        :record_count_this_buffer => doc.at_xpath("//record_count_this_buffer").inner_text.to_i
+      }
+    rescue Exception => e
+      puts "OOOPS, XML: #{xml}"
+    end
   end
 end
 
 Base.main(Atdw.new)
-# SAMPLE CODE
-# #Connections
-# wsdl_url = 'http://xurrency.com/api.wsdl'
-# proxy    = SOAP::WSDLDriverFactory.new(wsdl_url).create_rpc_driver
-# 
-# #Call API Method and Get Exchange Rate
-# rate = proxy.getValue(1,'usd','eur')
-# puts "Rate: #{rate}"
