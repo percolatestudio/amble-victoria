@@ -28,8 +28,10 @@
 </div>
 
 <div id="footer">
-  <!-- todo: hook up link -->
-  <div><a href="">What is Amble?</a></div>
+  <div>
+    <%= link_to "What is Amble?", :controller => 'places', :action => 'about' %>
+  </div>
+  
   <div>Crafted by Percolate Studio</div>
   <div>&copy; 2010 Amble</div>
 </div>
