@@ -89,6 +89,9 @@ private
   end
   
   def require_location
+    # special case
+    set_location_automatically if request.user_agent =~ 'facebookexternalhit'
+    
     unless origin_exists?
       store_location
       redirect_to get_location_users_path
