@@ -20,10 +20,12 @@ class PlacesController < ApplicationController
       Place
     end
     
-    @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
+    if params[:place_filter]
+      @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
+    else
+      @place_filter = PLACE_FILTER.from_hash({:location => location[:str]})
+    end
     
-    logger.warn "params[:place_filter]: #{params[:place_filter].inspect}"
-
     #update location
     if (!@place_filter[:location].nil?) && (!@place_filter[:location].empty?)
       unless set_location_from_address(@place_filter[:location])
@@ -31,25 +33,19 @@ class PlacesController < ApplicationController
         if request.xhr?
           render :text => '', :status => :unprocessable_entity
         else
-          render :action => 'none_exist', :layout => 'website'
+          render :action => 'none_exist', :layout => 'mobile'
         end
 
         return
       end
     end
     
-    #turn locaiton into long/lat, if that fails (i.e. they're nil)
-      #render location_not_found text
-    
-    #need validation around the 
-    
     #into place model, put:
       #find_by_place_filter  
       
     #have to update session[:location]
       
-    #need to update the user's location first (i.e. origion)
-    
+    #need to update the user's location first (i.e. origion)    
     
     @places = source.visible.all :origin => origin
     #@places = source.visible.all(:origin => origin, :conditions => nil)

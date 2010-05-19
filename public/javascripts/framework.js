@@ -33,7 +33,7 @@
   //   make sure attach_widgets gets called whenever an ajax page loads
   function misc_setup() {
     // focus the first input of the last form on the page
-    $('form:not(.no-auto-focus):last input[type=text]:first').focus();
+    //$('form:not(.no-auto-focus):last input[type=text]:first').focus();
     
     //disable the submit button on all forms to prevent 
     //multiple submits(this will only work on non-ajax forms) 
