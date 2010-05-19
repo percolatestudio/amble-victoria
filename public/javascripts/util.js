@@ -1,6 +1,19 @@
 // utility shared between views
 
 (function($){
+  // deal with the iPhone's shitty ability to center things
+  //   you probably need to set a width and a height on this guy
+  $.fn.vertical_center = function() {
+    var height = $(this).height(), screen_height = $(window).height(),
+        scroll = $(window).scrollTop();
+    return $(this).css({
+      position: 'absolute',
+      top: (scroll + (screen_height / 2) - (height / 2)) + 'px'
+    });
+  };
+  
+  
+  
   // captures the click event for the element and loads the given url into the
   // replaceSel selector
   // NOTE: Uses live events, so must be used with a selector in the same
@@ -38,7 +51,7 @@
     
   $.loadContent = function(replaceSel, href) {
     // set the spinner in motion in the content area
-    $(replaceSel).html("<div id='contentSpinner'></div>");
+    // $(replaceSel).html("<div id='contentSpinner'></div>");
     
     // replace the outerHTML of replaceSel with the 
     // data returned from the specified url

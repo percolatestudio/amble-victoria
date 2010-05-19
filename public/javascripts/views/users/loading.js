@@ -3,9 +3,8 @@
     onGetLocationCompleteCalled: false,
     
     onReady: function() {
-      // make sure all links target the content pane      
-      $('a:not(.fbconnect_login_button):not(.noTargetContent)').targetContent('#content');
-      $('form:not(.noTargetContent)').formTargetContent('#content');
+      // make sure that spinner is going
+      $('#loader').addClass('loading').vertical_center();
     },
     
     onLoad: function() {      

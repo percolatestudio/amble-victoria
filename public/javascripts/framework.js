@@ -47,7 +47,7 @@
         
     // hook the spinner up
     $('#loader').bind('ajaxStart', function() {
-      $(this).addClass('loading');
+      $(this).addClass('loading').vertical_center();
     }).bind('ajaxStop', function() {
       $(this).removeClass('loading');
     });
