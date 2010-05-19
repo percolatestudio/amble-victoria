@@ -15,7 +15,13 @@
             error: function() { $p.removeClass('loading'); }
           });
         }
-      })
-    }    
+      });
+      
+      $('#logged_in_description a').click(function() {
+        // TODO: effects
+        $('#logged_in_description').hide();
+        $('#logout').show();
+      });
+    }
   }
 }(jQuery));
