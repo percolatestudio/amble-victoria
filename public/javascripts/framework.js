@@ -52,17 +52,30 @@
       $(this).removeClass('loading');
     });
     
-    $(window).bind('ajaxComplete', function(event) {
-      $.attach_widgets();
+    $(window).bind('ajaxComplete', function(event, request, options) {
+      var fw_divs = $(request.responseText).filter('.framework');
+      var controller = fw_divs.filter('#fw_controller').text();
+      var view = fw_divs.filter('#fw_view').text();
+      var layouts = fw_divs.filter('.layout').map(function() { $(this).text() });
       
-      // do the form focusing again
-      $('form:not(.no-auto-focus):last input[type=text]:first').focus();
+      // TODO: not sure if this is the right order
+      hookup('onReady', controller, view, layouts);
+      $.attach_widgets();
+      hookup('onLoad', controller, view, layouts);
     });
   };
   
   // fire the view specific hookup code -- this code should set up live events 
   // etc that control the specific thing that this page does...
   function page_level_hookup(methodName) {
+    var controller = $('meta[name=fw.controller]').attr('content');
+    var view = $('meta[name=fw.view]').attr('content');    
+    var layouts =  $('meta[name=fw.layout]').map(function() { return $(this).attr('content'); });
+    
+    hookup(methodName, controller, view, layouts);
+  };
+  
+  function hookup(methodName, controller, view, layouts) {
     //capitalize the first character in a string
     function capitalize_first_chr(str) {
       if ((typeof(str) == 'undefined') || (str.length == 0)) {
@@ -72,18 +85,15 @@
       return str.charAt(0).toUpperCase().concat( str.substr(1) )
     }
     
-    var controller = $('meta[name=fw.controller]').attr('content');
-    var view = $('meta[name=fw.view]').attr('content');    
-    hookup(controller + capitalize_first_chr(view), methodName);    
+    hookup_once(controller + capitalize_first_chr(view), methodName); // hookup the view
     
     // now the layout (zero or more)
-    $('meta[name=fw.layout]').each(function() {
-      var layout = $(this).attr('content');
-      hookup('layouts' + capitalize_first_chr(layout), methodName);      
+    layouts.each(function(i, layout) {
+      hookup_once('layouts' + capitalize_first_chr(layout), methodName);
     });
   };
   
-  function hookup(objectName, methodName) {
+  function hookup_once(objectName, methodName) {
     if (typeof window[objectName] != 'undefined') { // check for undefined in js
       if (methodName in window[objectName]) {
         eval("window['" + objectName + "']." + methodName + "();");

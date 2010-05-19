@@ -11,6 +11,18 @@ module ApplicationHelper
     (layout_name != '' ? "<meta name='fw.layout' content='#{layout_name}'/>" : '')
   end
   
+  def framework_divs(layout_name = '')
+    controller = controller_name.gsub('/', '_').camelcase(:lower)
+    view = view_name.camelcase(:lower)
+    
+    framework_div('fw_controller', controller) + framework_div('fw_view', view) +
+      (layout_name != '' ? "<div class='framework layout'>#{layout_name}</div>" : '')
+  end
+  
+  def framework_div(name, content)
+    "<div id='#{name}' class='framework'>#{content}</div>"
+  end
+  
   # I'd love to see a better way to grab these
   def controller_name
     @_first_render.base_path || 'no_controller'

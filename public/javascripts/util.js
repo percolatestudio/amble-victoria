@@ -12,7 +12,16 @@
     });
   };
   
-  
+  // deal with weird ie stuff when grabbing an href
+  $.fn.href = function() {
+    var href = '';
+    if ($.support.hrefNormalized) {
+      href = this.href;
+    } else {
+      href = this.getAttribute('href', 4);
+    }
+    return href;
+  }
   
   // captures the click event for the element and loads the given url into the
   // replaceSel selector
@@ -22,16 +31,7 @@
     return $(this.selector).live('click', function(ev) {
       ev.preventDefault();  
       
-      // work around browser inconsitencies to ensure we
-      // have the absolute href
-      var href = '';
-      if ($.support.hrefNormalized) {
-        href = this.href;
-      } else {
-        href = this.getAttribute('href', 4);
-      }
-      
-      $.loadContent(replaceSel, href);
+      $.loadContent(replaceSel, $(this).href());
     });
   };
   
