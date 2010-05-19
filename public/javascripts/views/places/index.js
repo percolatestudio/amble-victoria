@@ -16,7 +16,12 @@
                 $p.removeClass('saved');
               }
             },
-            complete: function() { $p.removeClass('loading'); }
+            complete: function() { $p.removeClass('loading'); },
+            error: function(request) {
+              if (request.status == 401) { // redirect to new session
+                document.location = request.responseText;
+              }
+            }
           });
         }
       });

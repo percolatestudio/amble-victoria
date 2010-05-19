@@ -83,7 +83,7 @@ private
     if current_user
       store_location
       #flash[:notice] = "You must be logged out to access this page"
-      redirect_to user_path(current_user)
+      redirect_to my_places_path
       return false
     end
   end

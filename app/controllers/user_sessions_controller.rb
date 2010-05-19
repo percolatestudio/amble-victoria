@@ -18,7 +18,8 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       flash[:notice] = "Login successful!"
       
-      redirect_back_or_default my_places_users_path
+      # needs to be explore path for users who were there...
+      redirect_back_or_default explore_path
     else
       logger.warn @user_session.errors.to_yaml
       

@@ -80,6 +80,8 @@ class PlacesController < ApplicationController
   end
   
   def save
+    return visit_needs_logged_in unless logged_in?
+    
     @place = Place.find(params[:id])
     if (@visit = current_user.visits.find_by_place_id(params[:id]))
       @visit.saved = true
@@ -97,6 +99,8 @@ class PlacesController < ApplicationController
   end
   
   def unsave
+    return visit_needs_logged_in unless logged_in?
+    
     @visit = current_user.visits.saved.find_by_place_id(params[:id])
     
     if @visit.update_attributes(:saved => false)
@@ -120,7 +124,15 @@ private
       end
     end
   end
-
+  
+  def visit_needs_logged_in
+    flash[:error] = 'You must be logged in to save places.'
+    if request.xhr?
+      render :text => new_user_session_path, :status => :unauthorized
+    else
+      require_user
+    end
+  end
 public
   
   def quickedit
