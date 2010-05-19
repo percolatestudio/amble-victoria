@@ -53,8 +53,12 @@
           :right 0
           :top 0   
           
-        .front .actions .save a
-          :background-position 0px -45px
+        .front .actions .save
+          a#save
+            :display none
+          a#unsave
+            :display block
+          
       
       h2
         :font bold 16px helvetica
@@ -94,6 +98,9 @@
             :display block
             :text-indent -31337px
             :background-image url('/images/mobile/btns/btn_star_rarr_44x44.png')
+            &#unsave
+              :display none
+              :background-position 0 -45px
           
         .details a
           :background-position -44px 0px

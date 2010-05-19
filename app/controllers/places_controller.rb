@@ -46,14 +46,13 @@ class PlacesController < ApplicationController
     else
       @visit = current_user.visits.new(:place => @place)
     end
-    
-    # TODO -- this is totally wrong
+
     if @visit.save
       flash[:notice] = 'Visit was successfully saved.'
-      redirect_to @visit.place
+      update_visit_response(:ok)
     else
-      format.html { render :text => 'error' }
-      format.xml  { render :xml => @visit.errors, :status => :unprocessable_entity }
+      flash[:notice] = 'There was a problem saving the visit.'
+      update_visit_response(:unprocessable_entity)
     end
   end
   
@@ -61,13 +60,28 @@ class PlacesController < ApplicationController
     @visit = current_user.visits.saved.find_by_place_id(params[:id])
     
     if @visit.update_attributes(:saved => false)
-      flash[:notice] = 'Visit was successfully un-saved.'
-      redirect_to @visit.place
+      flash[:notice] = 'Visit was successfully removed.'
+      update_visit_response(:ok)
     else
-      format.html { render :text => 'error' }
-      format.xml  { render :xml => @visit.errors, :status => :unprocessable_entity }
+      flash[:notice] = 'There was a problem removing the visit.'
+      update_visit_response(:unprocessable_entity)
     end
   end
+  
+private
+  # deal properly with the above two methods
+  def update_visit_response(status)
+    if request.xhr?
+      head :status => status
+    else
+      respond_to do |format|
+        # send 'em back to where they came from
+        format.html { redirect_to request.headers['HTTP_REFERER'] }
+      end
+    end
+  end
+
+public
   
   def quickedit
     if request.put?
@@ -137,4 +151,5 @@ class PlacesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

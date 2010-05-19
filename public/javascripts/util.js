@@ -13,12 +13,12 @@
   };
   
   // deal with weird ie stuff when grabbing an href
-  $.fn.href = function() {
+  $.fn.safe_href = function() {
     var href = '';
     if ($.support.hrefNormalized) {
-      href = this.href;
+      href = this.get(0).href;
     } else {
-      href = this.getAttribute('href', 4);
+      href = this.get(0).getAttribute('href', 4);
     }
     return href;
   }
@@ -31,7 +31,7 @@
     return $(this.selector).live('click', function(ev) {
       ev.preventDefault();  
       
-      $.loadContent(replaceSel, $(this).href());
+      $.loadContent(replaceSel, $(this).safe_href());
     });
   };
   

@@ -1,11 +1,14 @@
-<div class="place" id="<%= place.id %>">
+<div class="place <%= saved_class(place) %>" id="<%= place.id %>">
   <div class="front face">
     <%= image_tag place.primary_image.image.url(:medium), :alt => place.name, :class => 'thumb' %>
     
     <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
 
     <div class="actions">
-      <div class="save"><%= link_to 'Save', save_place_path(place) %></div>
+      <div class="save">
+        <%= link_to 'Save', save_place_path(place), :id => 'save' %>
+        <%= link_to 'Remove', unsave_place_path(place), :id => 'unsave' %>
+      </div>
       <div class="details"><a href="">View details</a></div>
     </div>
 
