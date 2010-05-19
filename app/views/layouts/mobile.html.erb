@@ -8,7 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <%= framework_meta_tags 'mobile' %>
-
+        
+    <%= yield :extra_meta_tags  %>
+    
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
     <%= stylesheet_link_tag 'application'  %>
