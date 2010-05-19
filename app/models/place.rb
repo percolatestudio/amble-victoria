@@ -61,7 +61,6 @@ class Place < ActiveRecord::Base
     potential_images = potential_images({:max => number})
     
     unless potential_images.empty?
-      self.images = []
       potential_images.each do |url|
         self.images << Image.create(:url => url)
       end

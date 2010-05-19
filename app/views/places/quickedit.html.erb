@@ -18,12 +18,34 @@
   <%= f.error_messages %>
   
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <div class='label'>Name</div>
+    <div><%= h @place.name %></div>
   </p>
   
   <p>
-    <%= f.label :user_quality %><br />
+    <div class='label'>Phone</div>
+    <div><%= h(@place.phone || 'None') %></div>
+  </p>
+  
+  <p>
+    <div class='label'>Location</div>
+    <div><%= h(@place.location || 'None') %></div>
+  </p>
+  
+  <p>
+    <div class='label'>Description</div>
+    <div><%= truncate(h(@place.description || 'None'), 160) %></div>
+  </p>
+  
+  <p>
+    <% unless @place.webpages.empty? %>
+      <div class='label'>Website</div>    
+      <div><%= h(@place.webpages.first.url || 'None') %></div>
+    <% end %>
+  </p>
+    
+  <p>
+    <div class='label'><%= f.label :user_quality %></div>
     <%= f.select :user_quality, 0.upto(10).collect { |i| [i.to_s,i]},
       {:include_blank => 'Not specified'}, {:id => 'user_quality_select'} %>
   </p>
@@ -35,6 +57,7 @@
       <% @place.images.each_with_index do |img, idx| %>
         <li><%= image_tag img.image.url(:small), :id => "place_image#{idx + 1}", 
               :class => img.id == @place.primary_image_id ? 'active' : '' %>
+            <div class="image_source"><%= truncate(h(img.url), 35) %></div>
         </li>
       <% end %>    
     </ul>
