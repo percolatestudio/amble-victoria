@@ -18,8 +18,8 @@ module PlacesHelper
     'saved' if logged_in? and current_user.saved? place
   end
   
-  def map_img_url(place, size="100x100")
-    "http://maps.google.com/maps/api/staticmap?zoom=18&" + 
+  def map_img_url(place, size="200x100")
+    "http://maps.google.com/maps/api/staticmap?zoom=14&" + 
       "size=#{size}&sensor=true&" +
       "markers=color:blue|label:A|#{place.lat},#{place.lng}"
   end
@@ -32,13 +32,37 @@ module PlacesHelper
       "markers=color:red|label:A|#{place.lat},#{place.lng}&" +
       "markers=color:blue|size:tiny|#{location[:lat]},#{location[:lng]}"
   end
+  
+  def external_map_url(place)
+    "http://maps.google.com/maps?q=#{place.location}+(#{place.name})@#{place.lat},#{place.lng}"
+  end
 
   def format_location(location)
     location.sub(",", ",<br />")
   end
   
   def format_distance(distance)
-    number_with_precision(distance, :precision => 1) + ' km'
+    if distance.to_f < 500
+      number_with_precision(distance, :precision => 1) + ' km'
+    else
+      'Far'
+    end
+  end
+  
+  def displayed_categories(filter)
+    categories = Category.all(:conditions => ['id = ?', filter.category_id])
+
+    return "all places" if categories.empty?
+    categories.collect{|c| c.name }.join(", ").downcase
+  end
+  
+  def current_location_str
+    return "unknown location" if location.nil?
+    
+    return "current location" if location[:current] == true
+    return location[:str] if (!location[:str].nil?)  and (!location[:str].empty?)
+    
+    ""  #should never get into this state
   end
   
 end

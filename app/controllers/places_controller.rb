@@ -54,9 +54,8 @@ class PlacesController < ApplicationController
     render_standard :data => @places
   end
 
-  # GET /places/1
-  # GET /places/1.xml
-  def show
+  def show    
+    current_navigation :explore    
     @place = Place.find(params[:id], :origin => origin)
     
     render_standard :data => @place

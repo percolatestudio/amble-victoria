@@ -5,6 +5,7 @@ class UserSessionsController < ApplicationController
   layout 'xhr'
   
   def new
+    current_navigation :my_places
     @user_session = UserSession.new
     logger.warn cookies.to_yaml
     

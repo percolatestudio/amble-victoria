@@ -28,6 +28,7 @@ tourism_vic:
 
 citysearch:
   url: http://melbourne.citysearch.com
+  icon_filename: citysearch.png
   name: Citysearch
 
 # == Schema Info

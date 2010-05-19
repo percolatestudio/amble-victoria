@@ -1,0 +1,73 @@
+<%- place = place_detail -%>
+
+<div class="place_detail">
+  <div class="left_col">
+    
+    <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb' %>
+    
+    <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
+    
+    <div class="distance detail">
+      <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: 
+        <em><%= format_distance(place.distance) %></em>
+    </div>
+    
+    <%- place.webpages.each do |webpage| -%>
+      <div class="detail">
+        <a href="<%= webpage.url %>">
+          <%- if webpage.source.nil? -%>
+            <%= image_tag 'mobile/icon_logo/icon_arrow_18x18.png' %>
+            Official Site
+          <%- else -%>
+            <%= image_tag 'mobile/icon_logo/' + webpage.source.icon_filename %>
+            <%=h webpage.source.name %>
+          <%- end -%>
+
+        </a>
+      </div>
+    <%- end -%>    
+  </div>
+  
+  <div class="right_col">
+    <h2 class="name"><%=h place.name %></h2>
+    
+    <p class="category"><%=h place.category.name %></p>
+    
+    <div class="contact">
+      <address>
+        <%= format_location( h(place.location) ) %>
+      </address>
+      
+      <!-- todo: put in real phone number from db field -->
+      <div class="phone">
+        <%=h place.phone %>
+      </div>
+    </div>
+    
+    <div class="description">
+      <%= simple_format( h(place.description) ) %>
+    </div>
+    
+    <a href="<%= external_map_url(place) %>">
+      <img class="map" src="<%= map_img_url(place, '192x100') %>" alt="map"></img>
+    </a>
+  </div>
+
+  
+  <div class="actions">
+    <div class="right_btns">
+      
+      <%= link_to 'Save', save_place_path(place), :class => 'save small_button' %>
+      <%= link_to 'Remove', unsave_place_path(place), :class => 'unsave small_button' %>
+
+      <a class="small_button" href="<%= external_map_url(place) %>">Map it</a>
+    
+      <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>&amp;layout=button_count"
+            scrolling="no" frameborder="0"
+            style="border:none;"></iframe>
+    </div>
+    
+    <!-- todo: make this back button have a pointy left edge -->
+    <a href="" class="back_btn small_button">Back</a>
+  </div>
+</div>

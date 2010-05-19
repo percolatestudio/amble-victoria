@@ -18,7 +18,7 @@ var geolocation = {
     }
     
     //update user location, and load places
-    window.location.href = '/users/update_location' + $.param(request_data);
+    window.location.href = '/users/update_location?' + $.param(request_data);
 
     geolocation.onGetLocationCompleteCalled = true;     
   }
