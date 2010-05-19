@@ -35,6 +35,6 @@ class UserSessionsController < ApplicationController
     
     logger.warn cookies.to_yaml
     flash[:notice] = "Logout successful!"
-    redirect_back_or_default account_users_path
+    redirect_back_or_default explore_path
   end
 end

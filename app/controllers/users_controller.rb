@@ -13,18 +13,10 @@ class UsersController < ApplicationController
     render_standard :data => @places
   end
   
-  def account
-    redirect_to user_path(current_user)
-  end
-  
     
   def get_location
     current_navigation :explore
     render :layout => 'mobile'
-  end
-  
-  def show
-    render_standard
   end
   
   def update_location
