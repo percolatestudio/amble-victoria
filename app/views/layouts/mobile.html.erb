@@ -24,29 +24,6 @@
         <%= image_tag 'mobile/icon_logo/logo_nav_67x15.png', :alt => 'Amble Logo' %>
         
         <%= render_navigation %>
-      </div>
-      
-      <div id="places_filter" class="nav_bar">
-        Places
-        
-        <%= select "places", "category", Category.all.collect { |c| [c.name, c.id]}, {:include_blank => 'All Places'}%>
-        <!-- todo: make these actually functional -->
-      </div>
-      
-      <div id="set_location" class="nav_bar" style="display:none; ">
-        Location
-        
-        <!-- todo: make these actually functional -->
-        
-        <div class="locate"></div> <!-- btn_locate.png -->
-      </div>
-      
-      <div id="location" class="nav_bar">
-        <div id="right_arrow">
-          <a href="">Location Options</a>
-        </div>
-        
-        <p>Showing <a href="">all places</a> near your <a href="">current location</a></p>
       </div>      
     </div>
     

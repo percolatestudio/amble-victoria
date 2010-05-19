@@ -12,47 +12,8 @@ body
   :font bold 12px/40px helvetica
   :text-align center
   :text-shadow 0 1px 0 #bbb
-
-#places_filter
-  :text-align left
-  :padding 0px 10px 0px 30px
-
-  select
-    :float right
-    :-webkit-appearance none
-    :padding-left 8px
-    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 10px"
-    :width 227px
-    :font normal 12px/24px helvetica
-    :background-image url('/images/mobile/btns/btn_select_search_20x22.png'), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
-    :background-position 100% 0, 0 0
-    :background-repeat no-repeat, repeat-x
-    :height 24px
-
-#location
-  :padding 0px 10px 0px 20px
-  
-  #right_arrow
-    :height 16px
-    :width 12px
-    :float right
-    :margin-top = (!nav_bar_height / 2) - (0.5 * 16)
-    
-    a
-      :text-indent -31337px
-      :display block
-      :width 100%
-      :height 100%
-      :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
-      :background-position 0 0
-      &:active
-        :background-position 0 -17px
-  
-  p a
-    :color #003399
-    :text-decoration none
-    &:hover
-      :text-decoration underline  
+  :overflow hidden
+  :color #333333
 
 #nav
   :text-align left

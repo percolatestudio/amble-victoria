@@ -46,6 +46,15 @@
       :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 100%
       :padding 10px 10px 10px 10px
       :position relative
+      &.saved
+        .dogear
+          :display block
+          :position absolute
+          :right 0
+          :top 0   
+          
+        .front .actions .save a
+          :background-position 0px -45px
       
       h2
         :font bold 16px helvetica
@@ -55,13 +64,9 @@
       .category
         :text-transform uppercase
         :margin 3px 0px
-        
       
       .dogear
-        :display block
-        :position absolute
-        :right 0
-        :top 0
+        :display none
       
       .thumb
         :height 178px
@@ -183,6 +188,101 @@
           :margin 0px 0px 5px 0px
 
 
+#footer
+  :padding 10px 0px 10px 0px
+  :font 10px Helvetica
+  :color #333333
+  :text-align center
+
+  a
+    :font-size 12px
+    :color #0066cc  
+    :font-weight bold
+    :text-decoration none
+    
+    
+    
+#places_filter
+  :text-align left
+  :padding 0px 10px 0px 0px
+
+  label
+    :padding-left 27px
+
+  select
+    :float right
+    :-webkit-appearance none
+    :-webkit-border-radius 5px
+    :padding-left 8px
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 5px"
+    :width 227px
+    :font normal 12px/24px helvetica
+    :background-image url('/images/mobile/btns/btn_select_20x22.png'), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+    :background-position 100% 0, 0 0
+    :background-repeat no-repeat, repeat-x
+    :height 24px
+    :line-height 24px
+
+#set_location
+  :text-align left
+  :padding 0px 10px 0px 0px
+
+  label
+    :padding-left 27px
+
+  input
+    :float right
+    :-webkit-appearance none
+    :padding-left 8px
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 0px"
+    :width 189px
+    :font normal 12px/24px helvetica
+    :background-image url('/images/mobile/btns/btn_search_20x22.png'), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+    :background-position 100% 0, 0 0
+    :background-repeat no-repeat, repeat-x
+    :height 22px
+    :border 1px solid black
+    :-webkit-border-radius 5px
+    :-webkit-border-top-left-radius 5px
+    :-webkit-border-bottom-left-radius 5px
+    :-webkit-border-top-right-radius 2px
+    :-webkit-border-bottom-right-radius 2px    
+
+  .locate
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 5px"
+    :float right
+    :width 24px
+    :height 24px
+    :background transparent url('/images/mobile/btns/btn_locate.png') no-repeat 0 0
+
+
+#location
+  :padding 0px 10px 0px 10px
+
+  #right_arrow
+    :height 16px
+    :width 12px
+    :float right
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 16)
+
+    a
+      :text-indent -31337px
+      :display block
+      :width 100%
+      :height 100%
+      :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
+      :background-position 0 0
+      &:active
+        :background-position 0 -17px
+
+  p a
+    :color #003399
+    :text-decoration none
+    &:hover
+      :text-decoration underline
+      
+      
+      
 //this is all commented out for now
   &.flipped
     .front
@@ -190,7 +290,7 @@
       :top 0
       :left 0
       :z-index 0
-    
+
     .back
       :position relative
       :z-index 10
@@ -219,15 +319,3 @@
     :background white
     :border 1px solid #bbb
     :background-color #eee
-    
-#footer
-  :padding 10px 0px 10px 0px
-  :font 10px Helvetica
-  :color #333333
-  :text-align center
-
-  a
-    :font-size 12px
-    :color #0066cc  
-    :font-weight bold
-    :text-decoration none
