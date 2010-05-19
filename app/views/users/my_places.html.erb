@@ -1,0 +1,22 @@
+<div class="places">
+  <%- @places.each do |place| -%>
+    <div class="place <%= saved_class(place) %>">
+      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb' %>
+    
+      <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
+    
+      <h2 class="name"><%=h place.name %></h2>
+    
+      <p class="category"><%=h place.category.name %></p>
+    
+      <div class="distance detail">
+        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: <em>0.5 km</em>
+      </div>
+    
+      <div class="actions">
+        <a class="small_button" href="">Remove</a>
+        <a class="small_button" href="">Details</a>
+      </div>
+    </div>
+  <%- end -%>
+</div>

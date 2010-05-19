@@ -1,38 +1,55 @@
-
-<!--
-<div id="place_list">
-<%- @places.each do |p| -%>
-  <% link_to p do %>
-    <%= image_tag p.primary_image.image.url(:medium), :alt => p.name %>
-  <%- end -%>
-<%- end -%>
--->
-
 <script>
-$(document).ready(function() { 
-  $('.front').click(function() {
-    $(this).parent('.place').addClass('flipped').removeClass('unflipped');
-  })
+  $(document).ready(function() { 
+    $('.details a').click(function() {
+      $('#places .place').css('display', 'none')
+    
+      $(this).parents('.place').css('display', 'block')
+      $(this).parents('.place').children('.front').css('display', 'none');
+      $(this).parents('.place').children('.back').css('display', 'block');
+    
+      return false;
+    })
   
-  $('.back').click(function() {
-    $(this).parent('.place').removeClass('flipped').addClass('unflipped');
-  })
-})
+    $('.back_btn').click(function() {
+      $('#places .place').css('display', 'block')
+      $('#places .place .front').css('display', 'block')
+    
+      $('#places .place .back').css('display', 'none')
 
+      return false;
+    })
+  })
 </script>
 
-<%- if @user.nil? -%>
-  Displaying locations near to <%= @location %>.
-<%- else -%>
-  Locations Saved by <%= @user.name %>.
-<%- end -%>
+
+<% form_for :place_filter, @place_filter, 
+    :html => {'method' => 'get'} do |f| %>
+    
+  <div id="places_filter" class="nav_bar">
+    <label>Places</label>
+  
+    <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id]}, {:include_blank => 'All Places'} %>
+  </div>
+
+  <div id="set_location" class="nav_bar">
+    <label>Location</lable>
+  
+    <div class="locate"></div>
+    <!-- current location defaults, blah blah -->
+    <%= f.text_field "location" %>
+  </div>
+<% end %>
+
+
 
 <div id="places">
   <%= render :partial => 'place', :collection => @places %>
 </div>
 
-<!--
-<%= link_to 'New place', new_place_path %>
--->
-
+<div id="footer">
+  <!-- todo: hook up link -->
+  <div><a href="">What is Amble?</a></div>
+  <div>Crafted by Percolate Studio</div>
+  <div>&copy; 2010 Amble</div>
+</div>
 

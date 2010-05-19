@@ -11,6 +11,30 @@ module PlacesHelper
       link_to 'Save', save_place_path(place)
     else
       link_to 'UnSave', unsave_place_path(place)
-    end
+    end  
   end
+  
+  def saved_class(place)
+    'saved' if logged_in? and current_user.saved? place
+  end
+  
+  def map_img_url(place, size="100x100")
+    "http://maps.google.com/maps/api/staticmap?zoom=18&" + 
+      "size=#{size}&sensor=true&" +
+      "markers=color:blue|label:A|#{place.lat},#{place.lng}"
+  end
+  
+  def map_img_url_with_origin(place, size="200x200")
+    location = {:lat => -37.817455, :lng => 144.96745}
+    
+    "http://maps.google.com/maps/api/staticmap?center=#{location[:lat]},#{location[:lng]}&" + 
+      "size=#{size}&sensor=true&" +
+      "markers=color:red|label:A|#{place.lat},#{place.lng}&" +
+      "markers=color:blue|size:tiny|#{location[:lat]},#{location[:lng]}"
+  end
+
+  def format_location(location)
+    location.sub(",", ",<br />")
+  end  
+  
 end

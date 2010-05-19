@@ -41,41 +41,220 @@
 .c_places.v_index
   #places
     .place
-      :width 320px
-      :cursor pointer
-      :position relative
       
-      &.flipped
-        .front
-          :position absolute
-          :top 0
-          :left 0
-          :z-index 0
+      .thumb
+        :height 178px
+        :width 290px
+        :border 3px solid #fff
+        :margin 0px 0px 10px 0px
+      
+      .overview
+        img
+          :vertical-align middle
           
-        .back
-          :position relative
-          :z-index 10
-          :-webkit-animation-name slideinfromright
-          :-webkit-animation-timing-function ease-in-out
-          :-webkit-animation-duration 300ms
+      .front .actions
+        :float right
+        :width 108px
       
-      &.unflipped
-        .front
-          :-webkit-animation-name slideinfromleft
-          :-webkit-animation-timing-function ease-in-out
-          :-webkit-animation-duration 300ms
+        .save, .details
+          :width 44px
+          :height 44px
+          :float left
+          :margin-right 10px
+          
+          a
+            :width 100%
+            :height 100%
+            :display block
+            :text-indent -31337px
+            :background-image url('/images/mobile/btns/btn_star_rarr_44x44.png')
+            &#unsave
+              :display none
+              :background-position 0 -45px
+          
+        .details a
+          :background-position -44px 0px
+          &:active
+            :background-position -44px -45px
+        
+        .save a
+          :background-position 0px 0px
+          &:active
+            :background-position 0px -45px
+    
+    .front
+      :padding-bottom 5px
+    
+    .back
+      :display none
+      :overflow hidden
+      .actions
+        :overflow hidden
+        :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 0
+        :padding-top 10px
+        :clear both
       
-      .front
-        :position relative
-        :z-index 10
+        iframe
+          :float left
+          :margin-right 5px
+          :width 56px
+          :height 24px
+          
+        .right_btns
+          :float right
+          :width 188px
+        
+      .left_col
+        :float left
+        :width 90px
+        :color #666666
+        :font 10px Helvetica
+        
+        
+      .right_col
+        :margin-left 100px
+        
+      .contact
+        :margin-bottom 10px
+        :color #666666
+        :font 11px/14px Helvetica 
+        
+      .description
+        :color #333333
+        :font 11px Helvetica 
+        
+        p
+          :margin 0px 0px 5px 0px
+
+
+#footer
+  :padding 10px 0px 10px 0px
+  :font 10px Helvetica
+  :color #333333
+  :text-align center
+
+  a
+    :font-size 12px
+    :color #0066cc  
+    :font-weight bold
+    :text-decoration none
+    
+    
+    
+#places_filter
+  :text-align left
+  :padding 0px 10px 0px 0px
+
+  label
+    :padding-left 27px
+
+  select
+    :float right
+    :-webkit-appearance none
+    :-webkit-border-radius 5px
+    :padding-left 8px
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 5px"
+    :width 227px
+    :font normal 12px/24px helvetica
+    :background-image url('/images/mobile/btns/btn_select_20x22.png'), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+    :background-position 100% 0, 0 0
+    :background-repeat no-repeat, repeat-x
+    :height 24px
+    :line-height 24px
+
+#set_location
+  :text-align left
+  :padding 0px 10px 0px 0px
+
+  label
+    :padding-left 27px
+
+  input
+    :float right
+    :-webkit-appearance none
+    :padding-left 8px
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 0px"
+    :width 189px
+    :font normal 12px/24px helvetica
+    :background-image url('/images/mobile/btns/btn_search_20x22.png'), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+    :background-position 100% 0, 0 0
+    :background-repeat no-repeat, repeat-x
+    :height 22px
+    :border 1px solid black
+    :-webkit-border-radius 5px
+    :-webkit-border-top-left-radius 5px
+    :-webkit-border-bottom-left-radius 5px
+    :-webkit-border-top-right-radius 2px
+    :-webkit-border-bottom-right-radius 2px    
+
+  .locate
+    :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 5px"
+    :float right
+    :width 24px
+    :height 24px
+    :background transparent url('/images/mobile/btns/btn_locate.png') no-repeat 0 0
+
+
+#location
+  :padding 0px 10px 0px 10px
+
+  #right_arrow
+    :height 16px
+    :width 12px
+    :float right
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 16)
+
+    a
+      :text-indent -31337px
+      :display block
+      :width 100%
+      :height 100%
+      :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
+      :background-position 0 0
+      &:active
+        :background-position 0 -17px
+
+  p a
+    :color #003399
+    :text-decoration none
+    &:hover
+      :text-decoration underline
       
-      .back
-        :position absolute
-        :z-index 0
-        :top 0
-        :left 0
-        :min-height 350px
-        :min-width 320px
-        :background white
-        :border 1px solid #bbb
-        :background-color #eee
+      
+      
+//this is all commented out for now
+  &.flipped
+    .front
+      :position absolute
+      :top 0
+      :left 0
+      :z-index 0
+
+    .back
+      :position relative
+      :z-index 10
+      :-webkit-animation-name slideinfromright
+      :-webkit-animation-timing-function ease-in-out
+      :-webkit-animation-duration 300ms
+
+  &.unflipped
+    .front
+      :-webkit-animation-name slideinfromleft
+      :-webkit-animation-timing-function ease-in-out
+      :-webkit-animation-duration 300ms
+
+  .front
+    :position relative
+    :z-index 10
+
+  .back
+    :display none
+    :position absolute
+    :z-index 0
+    :top 0
+    :left 0
+    :min-height 350px
+    :min-width 320px
+    :background white
+    :border 1px solid #bbb
+    :background-color #eee

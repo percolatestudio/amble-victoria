@@ -1,50 +1,43 @@
-#header
-  :height 100px
+body
+  :width 320px
+  :min-height 396px
+  :background-color #ebebf1
+  :position relative
   
-#location
-  !location_height = 40px
-  :background transparent url('/images/mobile/layout/bg_subnav_40x40.png') repeat-x scroll 0 0
-  :height = !location_height
-  :padding 0px 10px 0px 20px
-  
-  #right_arrow
-    :height 16px
-    :width 12px
-    :float right
-    :margin-top = (!location_height / 2) - (0.5 * 16)
+#loader
+  :display none
+  &.loading
+    :padding 16px
+    :background black
+    :z-index 1
+    :position absolute
+    :left 50%
+    :margin-left -32px
+    :display block
+    :-webkit-border-radius 5px
     
-    a
-      :text-indent -31337px
-      :display block
-      :width 100%
-      :height 100%
-      :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
-      :background-position 0 0
-      &:active
-        :background-position 0 -17px
-  
-  p
-    :font bold 12px/40px helvetica
-    :text-align center
-  
-    a
-      :color #003399
-      :text-decoration none
-      &:hover
-        :text-decoration underline  
+
+!nav_bar_height = 40px
+
+.nav_bar
+  height = !nav_bar_height
+  :background transparent url('/images/mobile/layout/bg_subnav_40x40.png') repeat-x scroll 0 0
+  :font bold 12px/40px helvetica
+  :text-align center
+  :text-shadow 0 1px 0 #bbb
+  :overflow hidden
+  :color #333333
 
 #nav
-  !nav_height = 40px
-  :height = !nav_height
-  :background transparent url('/images/mobile/layout/bg_nav_40x40.png') repeat-x scroll 0 0
+  :text-align left
   :padding 0px 10px 0px 20px
   
   img
-    :margin-top = (!nav_height / 2) - (0.5 * 15)
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 15)
   
-  ol
+  ul
     :float right
-    :margin-top = (!nav_height / 2) - (0.5 * 26)
+    :margin-top = (!nav_bar_height / 2) - (0.5 * 26)
     
     li
       :width 80px
@@ -63,11 +56,13 @@
       &#explore
         a
           :background-position 0 0      
-          &.active
+          &.selected
             :background-position 0 -27px      
                 
       &#my_places
         a
           :background-position -80px 0
-          &.active
+          &.selected
             :background-position -80px -27px      
+
+
