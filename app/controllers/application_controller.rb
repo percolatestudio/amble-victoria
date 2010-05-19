@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   
   # TODO: require_location
   def location
-    logger.warn session.to_yaml
     session[:location]
   end
   

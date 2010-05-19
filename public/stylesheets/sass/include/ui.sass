@@ -1,0 +1,79 @@
+// general ui sass mixins and classes
+=button(!height)
+  :height !height
+  &:hover
+    :background-position = 0 (-1 * !height)
+    
+
+.small_button
+  :font 10px Helvetica
+  :text-decoration none
+  :color #333333
+  :display block
+  :line-height 24px
+  :text-align center
+  :-moz-border-radius 5px
+  :-webkit-border-radius 5px
+  :background #fafafa
+  :background -moz-linear-gradient(top, #fafafa, #efeff3)
+  :background -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#efeff3))
+  :border 1px solid #cccccc
+  
+  :float left
+  :margin-right 5px
+  :width 56px
+  :height 24px
+  
+.place
+  :position relative
+  :clear both
+  :overflow hidden
+  :font 12px helvetica
+  :color #666666
+  :background #ebebf1 url('/images/mobile/layout/card_btm_1x2.png') repeat-x 0 100%
+  :padding 10px 10px 10px 10px
+  
+  .name
+    :font bold 16px helvetica
+    :color #444444
+    :text-shadow 0 1px 0 #ddd
+    
+  .category
+    :text-transform uppercase
+    :margin 3px 0px
+    
+  // saving stuff
+  .dogear
+    :display none
+  &.saved
+    .dogear
+      :display block
+      :position absolute
+      :right 0
+      :top 0   
+    
+    .front .actions .save
+      a#save
+        :display none
+      a#unsave
+        :display block
+  
+  .small_thumb
+    :height 80px
+    :width 77px
+    :border 4px solid #fff
+    :margin 0px 0px 10px 0px
+    
+  .detail
+    :line-height 18px
+    :margin 0px 0px 0px 5px
+    :width 100%
+    
+    a
+      :text-decoration none
+      :color #666666
+    
+    img
+      :margin-right 5px
+      :display inline-block
+      :vertical-align middle

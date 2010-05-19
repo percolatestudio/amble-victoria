@@ -24,11 +24,11 @@
   <div class="back face">
     <div class="left_col">
       
-      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'thumb' %>
+      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb' %>
       
       <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
       
-      <div class="distance">
+      <div class="distance detail">
         <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: <em>0.5 km</em>
         
         <!--
@@ -37,11 +37,11 @@
         -->
       </div>
       
-      <div>
+      <div class="detail">
         <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Listing</a>
       </div>
       
-      <div>
+      <div class="detail">
         <!-- how is this view site stuff suppost to work, no way of differentiating between them, except icon -->
         
         <!-- todo: get the right arrow button from Dom that he wanted here -->
@@ -50,7 +50,7 @@
     </div>
     
     <div class="right_col">
-      <h2><%=h place.name %></h2>
+      <h2 class="name"><%=h place.name %></h2>
       
       <p class="category"><%=h place.category.name %></p>
       
@@ -73,8 +73,8 @@
     
     <div class="actions">
       <div class="right_btns">
-        <a href="">Remove</a>
-        <a href="">Map it</a>
+        <a class="small_button" href="">Remove</a>
+        <a class="small_button" href="">Map it</a>
       
         <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>&amp;layout=button_count"
               scrolling="no" frameborder="0"
@@ -82,7 +82,7 @@
       </div>
       
       <!-- todo: make this back button have a pointy left edge -->
-      <a href="" class="back_btn">Back</a>
+      <a href="" class="back_btn small_button">Back</a>
     </div>    
   </div>
 </div>
