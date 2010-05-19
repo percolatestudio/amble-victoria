@@ -26,22 +26,27 @@ class Atdw < Base
     # @records << make_record(xml)
   end
   
+  def verify
+    records = YAML.load_file('atdw.yaml')
+    puts "Loaded #{records.length} records!"
+  end
+  
   def load_products(ids)
     ids.each_with_index do |id, i|
-      productQuery = {
-        'DistributorKey' => @key,
-        'CommandName' => 'GetProduct',
-        'CommandParameters' =><<EOL
+      begin      
+        productQuery = {
+          'DistributorKey' => @key,
+          'CommandName' => 'GetProduct',
+          'CommandParameters' =><<EOL
 <parameters>
   <row><param>DATA_GROUP_LIST</param><value>ALL</value></row>
   <row><param>PRODUCT_ID</param><value>#{id}</value></row>
 </parameters>
 EOL
-      }
-      puts "--- Running productQuery for id: #{id} (#{i} of #{ids.length} products)"
-      result = @proxy.CommandHandler(productQuery)
-      
-      begin
+        }
+        puts "--- Running productQuery for id: #{id} (#{i} of #{ids.length} products)"
+        result = @proxy.CommandHandler(productQuery)
+
         @records << make_record(result.commandHandlerResult)
       rescue Exception => e
         puts "HOLY SHIT! product: #{id} exploded with e: #{e.to_s}"
@@ -218,5 +223,5 @@ end
 
 Base.main(Atdw.new)
 
-# a = Atdw.new
-# a.write_product_ids
+#a = Atdw.new
+#a.verify
