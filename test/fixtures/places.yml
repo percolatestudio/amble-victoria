@@ -9,7 +9,7 @@ ngv:
 flinders_st:
   name: Flinders Street Station
   location: "Corner of Flinders and Swanston St, Melbourne, Victoria, 3000"
-  category: sight
+  category: attraction
   source: manual  
   description: "Flinders Street Station is the central railway station of the suburban rail network of Melbourne, Australia.\n\nEach weekday, over 110,000 commuters[1] and 1,500 trains pass through the station. Flinders Street is serviced by Metro's suburban services, and V/Line regional services to Gippsland.\n\nThe Melburnian idiom \"I'll meet you under the clocks\" refers to the row of clocks above the main entrance, which indicate the departure time of the next train on each line; another being \"I'll meet you on the steps\", referring to the wide staircase leading into the main entrance of Flinders Street Station. Both are a popular meeting places as it is at the intersection of two of the city's busiest thoroughfares. The station is listed on the Victorian Heritage Register."
   
@@ -22,19 +22,19 @@ fed_square:
 southbank:
   name: Southbank
   location: "Southbank, Melbourne, Victoria"
-  category: sight
+  category: attraction
   source: manual  
   
 brunswick_st:
   name: Brunswick Street
   location: "Brunswick St, Melbourne, Victoria"
-  category: sight
+  category: attraction
   source: manual  
   
 luna_park:
   name: Luna Park
   location: "Luna Park, St Kilda, Melbourne, Victoria"
-  category: sight
+  category: attraction
   source: manual  
 
 wildflower:
