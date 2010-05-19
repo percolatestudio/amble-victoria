@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   
     
   def loading
+    current_navigation :explore
     render :layout => 'mobile'
   end
   
