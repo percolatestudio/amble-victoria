@@ -53,15 +53,17 @@
     });
     
     $(window).bind('ajaxComplete', function(event, request, options) {
-      var fw_divs = $(request.responseText).filter('.framework');
-      var controller = fw_divs.filter('#fw_controller').text();
-      var view = fw_divs.filter('#fw_view').text();
-      var layouts = fw_divs.filter('.layout').map(function() { $(this).text() });
-      
-      // TODO: not sure if this is the right order
-      hookup('onReady', controller, view, layouts);
-      $.attach_widgets();
-      hookup('onLoad', controller, view, layouts);
+      if ($.trim(request.responseText) != '') {
+        var fw_divs = $(request.responseText).filter('.framework');
+        var controller = fw_divs.filter('#fw_controller').text();
+        var view = fw_divs.filter('#fw_view').text();
+        var layouts = fw_divs.filter('.layout').map(function() { $(this).text() });
+
+        // TODO: not sure if this is the right order
+        hookup('onReady', controller, view, layouts);
+        $.attach_widgets();
+        hookup('onLoad', controller, view, layouts);        
+      }
     });
   };
   
