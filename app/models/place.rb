@@ -34,6 +34,8 @@ class Place < ActiveRecord::Base
   
   before_validation :set_coords_from_address
   
+  before_save :set_qualities
+  
   before_validation_on_create { |place|
     #set the image from flickr if no images are set
     if place.images.empty? or place.images.first.url.empty?
@@ -111,6 +113,10 @@ class Place < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  def set_qualities
+    logger.debug "SETTING QUALITIES"
   end
 end
 
