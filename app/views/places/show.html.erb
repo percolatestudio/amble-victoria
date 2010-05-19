@@ -1,3 +1,9 @@
+<%- content_for :extra_meta_tags do # for facebook -%>
+    <meta property='og:title' content='<%= @place.name %>'/>
+    <meta property='og:site_name' content='Amble'/>
+    <meta property='og:image' content='<%= @place.primary_image.image.url(:small) %>'/>    
+<%- end -%>
+
 <div class="place <%= saved_class(@place) %>">
   <%= render :partial => 'place_detail', :object => @place %>
 </div>
