@@ -1,5 +1,6 @@
 <script>
   $(document).ready(function() { 
+    
     $('.details a').click(function() {
       $('#places .place').css('display', 'none')
     
@@ -34,9 +35,13 @@
   <div id="set_location" class="nav_bar">
     <label>Location</lable>
   
-    <div class="locate"></div>
-    <!-- current location defaults, blah blah -->
-    <%= f.text_field "location" %>
+    <div class="locate_btn"></div>
+    
+    <div class="locate_txt">
+      <%= f.text_field "location", {:placeholder => 'Current Location'} %>
+      <%= f.submit %>
+    </div>
+
   </div>
 <% end %>
 

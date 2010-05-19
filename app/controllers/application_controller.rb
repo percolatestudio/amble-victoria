@@ -30,7 +30,8 @@ class ApplicationController < ActionController::Base
     location = Geokit::Geocoders::MultiGeocoder.geocode(address)
     return false unless location.success?
     
-    session[:location] = {:lat => location.lat, :lng => location.lng, :current => false}
+    session[:location] = {:lat => location.lat, :lng => location.lng, :current => false, :str => location.full_address}
+    
     true
   end
   

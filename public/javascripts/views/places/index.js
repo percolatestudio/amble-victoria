@@ -1,7 +1,7 @@
 (function($){
   placesIndex = {
     onReady: function() {
-      $('.place .save a').live('click', function(event) {
+      $('.place .savers a').live('click', function(event) {
         event.preventDefault();
         var $p = $(this).parents('.place'), $this = $(this);
         
@@ -10,7 +10,7 @@
           $.ajax({
             url: $this.safe_href(),
             success: function() { 
-              if ($this.attr('id') == 'save') {
+              if ($this.hasClass('save')) {
                 $p.addClass('saved');
               } else {
                 $p.removeClass('saved');

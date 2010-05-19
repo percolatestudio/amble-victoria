@@ -5,9 +5,9 @@
     <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
 
     <div class="actions">
-      <div class="save">
-        <%= link_to 'Save', save_place_path(place), :id => 'save' %>
-        <%= link_to 'Remove', unsave_place_path(place), :id => 'unsave' %>
+      <div class="savers">
+        <%= link_to 'Save', save_place_path(place), :class => 'save' %>
+        <%= link_to 'Remove', unsave_place_path(place), :class => 'unsave' %>
       </div>
       <div class="details"><a href="">View details</a></div>
     </div>
