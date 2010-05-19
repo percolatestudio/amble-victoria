@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
     
   def get_location
-    current_navigation :explore
+    #current_navigation :explore
     render :layout => 'mobile'
   end
   

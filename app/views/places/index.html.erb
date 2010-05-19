@@ -1,6 +1,10 @@
 <script>
   $(document).ready(function() { 
     
+    $('.locate_btn').click(function() {
+      geolocation.set();
+    });
+    
     $('.details a').click(function() {
       $('#places .place').css('display', 'none')
     
@@ -35,7 +39,9 @@
   <div id="set_location" class="nav_bar">
     <label>Location</lable>
   
-    <div class="locate_btn"></div>
+    <div class="locate_btn">
+      <%= link_to "Update Location", {:controller => 'users', :action => 'update_location'} %>
+    </div>
     
     <div class="locate_txt">
       <%= f.text_field "location", {:placeholder => 'Current Location'} %>
