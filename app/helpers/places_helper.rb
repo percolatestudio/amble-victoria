@@ -45,4 +45,20 @@ module PlacesHelper
     end
   end
   
+  def displayed_categories(filter)
+    categories = Category.all(:conditions => ['id = ?', filter.category_id])
+
+    return "all places" if categories.empty?
+    categories.collect{|c| c.name }.join(", ").downcase
+  end
+  
+  def current_location_str
+    return "unknown location" if location.nil?
+    
+    return "current location" if location[:current] == true
+    return location[:str] if (!location[:str].nil?)  and (!location[:str].empty?)
+    
+    ""  #should never get into this state
+  end
+  
 end
