@@ -18,8 +18,8 @@ module PlacesHelper
     'saved' if logged_in? and current_user.saved? place
   end
   
-  def map_img_url(place, size="100x100")
-    "http://maps.google.com/maps/api/staticmap?zoom=18&" + 
+  def map_img_url(place, size="200x100")
+    "http://maps.google.com/maps/api/staticmap?zoom=14&" + 
       "size=#{size}&sensor=true&" +
       "markers=color:blue|label:A|#{place.lat},#{place.lng}"
   end
