@@ -12,16 +12,20 @@
         <em><%= format_distance(place.distance) %></em>
     </div>
     
-    <div class="detail">
-      <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Listing</a>
-    </div>
-    
-    <div class="detail">
-      <!-- how is this view site stuff suppost to work, no way of differentiating between them, except icon -->
-      
-      <!-- todo: get the right arrow button from Dom that he wanted here -->
-      <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Site </a> 
-    </div>
+    <%- place.webpages.each do |webpage| -%>
+      <div class="detail">
+        <a href="<%= webpage.url %>">
+          <%- if webpage.source.nil? -%>
+            <%= image_tag 'mobile/icon_logo/icon_arrow_18x18.png' %>
+            Official Site
+          <%- else -%>
+            <%= image_tag 'mobile/icon_logo/' + webpage.source.icon_filename %>
+            <%=h webpage.source.name %>
+          <%- end -%>
+
+        </a>
+      </div>
+    <%- end -%>    
   </div>
   
   <div class="right_col">

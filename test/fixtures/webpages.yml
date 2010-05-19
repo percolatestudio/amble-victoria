@@ -1,0 +1,13 @@
+ngv:
+  url: http://ngv.vic.gov.au
+  place: ngv
+
+wildflower:
+  url: http://wildflower.com.au
+  place: wildflower
+  
+wildflower_review:
+  url: http://citysearch.com.au/wildflower
+  source: citysearch
+  place: wildflower
+  
