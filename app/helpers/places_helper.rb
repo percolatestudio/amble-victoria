@@ -32,6 +32,10 @@ module PlacesHelper
       "markers=color:red|label:A|#{place.lat},#{place.lng}&" +
       "markers=color:blue|size:tiny|#{location[:lat]},#{location[:lng]}"
   end
+  
+  def external_map_url(place)
+    "http://maps.google.com/maps?q=#{place.location}+(#{place.name})@#{place.lat},#{place.lng}"
+  end
 
   def format_location(location)
     location.sub(",", ",<br />")

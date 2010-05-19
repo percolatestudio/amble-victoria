@@ -48,7 +48,9 @@
       <%= simple_format( h(place.description) ) %>
     </div>
     
-    <img class="map" src="<%= map_img_url(place, '192x100') %>"></img>
+    <a href="<%= external_map_url(place) %>">
+      <img class="map" src="<%= map_img_url(place, '192x100') %>" alt="map"></img>
+    </a>
   </div>
 
   
@@ -57,7 +59,8 @@
       
       <%= link_to 'Save', save_place_path(place), :class => 'save small_button' %>
       <%= link_to 'Remove', unsave_place_path(place), :class => 'unsave small_button' %>
-      <a class="small_button" href="">Map it</a>
+
+      <a class="small_button" href="<%= external_map_url(place) %>">Map it</a>
     
       <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>&amp;layout=button_count"
             scrolling="no" frameborder="0"
