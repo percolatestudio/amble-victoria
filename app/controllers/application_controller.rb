@@ -24,9 +24,15 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def address_valid?(address)
+  end
+  
   def set_location_from_address(address)
     location = Geokit::Geocoders::MultiGeocoder.geocode(address)
+    return false unless location.success?
+    
     session[:location] = {:lat => location.lat, :lng => location.lng, :current => false}
+    true
   end
   
   def set_location(lat, lng, current = true)

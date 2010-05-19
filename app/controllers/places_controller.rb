@@ -24,15 +24,19 @@ class PlacesController < ApplicationController
     
     logger.warn "params[:place_filter]: #{params[:place_filter].inspect}"
 
+    #update location
     if (!@place_filter[:location].nil?) && (!@place_filter[:location].empty?)
-      set_location_from_address(@place_filter[:location])
+      unless set_location_from_address(@place_filter[:location])
+
+        if request.xhr?
+          render :text => '', :status => :unprocessable_entity
+        else
+          render :action => 'none_exist', :layout => 'website'
+        end
+
+        return
+      end
     end
-    
-    unless origin_exists?
-      render_standard :action => 'none_exist'
-      return
-    end
-    
     
     #turn locaiton into long/lat, if that fails (i.e. they're nil)
       #render location_not_found text
