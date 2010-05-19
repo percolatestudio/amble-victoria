@@ -3,6 +3,11 @@ class PlacesController < ApplicationController
     
   # GET /places
   # GET /places.xml
+  
+  #location
+  
+  PLACE_FILTER = Struct.new(:category_id, :location)
+  
   def index
     source = if params[:user_id]
       @user = User.find(params[:user_id])
@@ -11,7 +16,38 @@ class PlacesController < ApplicationController
       Place
     end
     
+    @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
+    
+    logger.warn "params[:place_filter]: #{params[:place_filter].inspect}"
+
+    if (!@place_filter[:location].nil?) && (!@place_filter[:location].empty?)
+      set_location_from_address(@place_filter[:location])
+    end
+    
+    unless origin_exists?
+      render_standard :action => 'none_exist'
+      return
+    end
+    
+    
+    #turn locaiton into long/lat, if that fails (i.e. they're nil)
+      #render location_not_found text
+    
+    #need validation around the 
+    
+    #into place model, put:
+      #find_by_place_filter  
+      
+    #have to update session[:location]
+      
+    #need to update the user's location first (i.e. origion)
+    
+    
     @places = source.visible.all :origin => origin
+    #@places = source.visible.all(:origin => origin, :conditions => nil)
+    #@places = source.visible.all(:origin => origin)
+    
+    #@places = source.visible.all :origin => origin, :conditions => {}
     
     render_standard :data => @places
   end

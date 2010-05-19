@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def set_location_from_address(address)
+    location = Geokit::Geocoders::MultiGeocoder.geocode(address)
+    session[:location] = {:lat => location.lat, :lng => location.lng, :current => false}
+  end
+  
   def set_location(lat, lng, current = true)
     session[:location] = {:lat => lat, :lng => lng, :current => current}
   end
@@ -30,6 +35,13 @@ class ApplicationController < ActionController::Base
   # this is the origin for the geokit-AR query
   def origin
     [location[:lat], location[:lng]]
+  end
+  
+  def origin_exists?
+    return false if location[:lat].nil?
+    return false if location[:lng].nil?
+    
+    true
   end
   
   # Scrub sensitive parameters from your log

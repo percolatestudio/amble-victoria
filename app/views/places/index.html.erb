@@ -22,34 +22,24 @@
 </script>
 
 
-<div id="places_filter" class="nav_bar">
-  <label>Places</label>
+<% form_for :place_filter, @place_filter, 
+    :html => {'method' => 'get'} do |f| %>
+    
+  <div id="places_filter" class="nav_bar">
+    <label>Places</label>
   
-  <%= select "p", "category", Category.all.collect { |c| [c.name, c.id]}, {:include_blank => 'All Places'}%>
-</div>
-
-<div id="set_location" class="nav_bar">
-  <label>Location</lable>
-  
-  <div class="locate"></div>
-  <input type="text" value="Current Location"></input>
-</div>
-
-<div id="location" class="nav_bar">
-  <div id="right_arrow">
-    <a href="">Location Options</a>
+    <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id]}, {:include_blank => 'All Places'} %>
   </div>
+
+  <div id="set_location" class="nav_bar">
+    <label>Location</lable>
   
-  <p>Showing <a href="">all places</a> near your <a href="">current location</a></p>
-  
-  <!--
-  <%- if @user.nil? -%>
-    Displaying locations near to <%= @location %>.
-  <%- else -%>
-    Locations Saved by <%= @user.name %>.
-  <%- end -%>
-  -->
-</div>      
+    <div class="locate"></div>
+    <!-- current location defaults, blah blah -->
+    <%= f.text_field "location" %>
+  </div>
+<% end %>
+
 
 
 <div id="places">
