@@ -8,7 +8,7 @@
 
 categories = [
               {:name => 'Culture'},
-              {:name => 'Sight'},
+              {:name => 'Attraction'},
               {:name => 'Restaurant'},
               {:name => 'Bar'},
               {:name => 'Other'}

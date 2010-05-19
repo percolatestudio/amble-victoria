@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <%= framework_meta_tags 'application' %>
+    <%= framework_meta_tags 'mobile' %>
 
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
@@ -18,28 +18,13 @@
     <%= fb_connect_javascript_tag %>
     <%= init_fb_connect "XFBML", :js => :jquery %>
   </head>
-  <body>
+  <body class="<%= body_classes %>">
+    <%= image_tag 'loader.gif', :id => 'loader' %>
     <div id="header">
-      <div id="nav">
+      <div id="nav" class="nav_bar">
         <%= image_tag 'mobile/icon_logo/logo_nav_67x15.png', :alt => 'Amble Logo' %>
         
-        <!-- todo: set 'active' class on current page -->
-        <ol>
-          <li id="explore">            
-            <%= link_to 'Explore', places_path %>
-          </li>
-          <li id="my_places">
-            <%= link_to 'My Places', my_places_users_path %>
-          </li>
-        </ol>
-      </div>
-      
-      <div id="location">
-        <div id="right_arrow">
-          <a href="">Location Options</a>
-        </div>
-        
-        <p>Showing <a href="">all places</a> near your <a href="">current location</a></p>
+        <%= render_navigation %>
       </div>      
     </div>
     

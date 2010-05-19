@@ -1,9 +1,18 @@
 class PlacesController < ApplicationController
   layout 'xhr'
+
+  before_filter :require_location, :only => [:index, :show]
     
   # GET /places
   # GET /places.xml
-  def index
+  
+  #location
+  
+  PLACE_FILTER = Struct.new(:category_id, :location)
+  
+  def index    
+    current_navigation :explore
+    
     source = if params[:user_id]
       @user = User.find(params[:user_id])
       @user.saved_places
@@ -11,7 +20,38 @@ class PlacesController < ApplicationController
       Place
     end
     
+    if params[:place_filter]
+      @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
+    else
+      @place_filter = PLACE_FILTER.from_hash({:location => location[:str]})
+    end
+    
+    #update location
+    if (!@place_filter[:location].nil?) && (!@place_filter[:location].empty?)
+      unless set_location_from_address(@place_filter[:location])
+
+        if request.xhr?
+          render :text => '', :status => :unprocessable_entity
+        else
+          render :action => 'none_exist', :layout => 'mobile'
+        end
+
+        return
+      end
+    end
+    
+    #into place model, put:
+      #find_by_place_filter  
+      
+    #have to update session[:location]
+      
+    #need to update the user's location first (i.e. origion)    
+    
     @places = source.visible.all :origin => origin
+    #@places = source.visible.all(:origin => origin, :conditions => nil)
+    #@places = source.visible.all(:origin => origin)
+    
+    #@places = source.visible.all :origin => origin, :conditions => {}
     
     render_standard :data => @places
   end
@@ -46,14 +86,13 @@ class PlacesController < ApplicationController
     else
       @visit = current_user.visits.new(:place => @place)
     end
-    
-    # TODO -- this is totally wrong
+
     if @visit.save
       flash[:notice] = 'Visit was successfully saved.'
-      redirect_to @visit.place
+      update_visit_response(:ok)
     else
-      format.html { render :text => 'error' }
-      format.xml  { render :xml => @visit.errors, :status => :unprocessable_entity }
+      flash[:notice] = 'There was a problem saving the visit.'
+      update_visit_response(:unprocessable_entity)
     end
   end
   
@@ -61,13 +100,28 @@ class PlacesController < ApplicationController
     @visit = current_user.visits.saved.find_by_place_id(params[:id])
     
     if @visit.update_attributes(:saved => false)
-      flash[:notice] = 'Visit was successfully un-saved.'
-      redirect_to @visit.place
+      flash[:notice] = 'Visit was successfully removed.'
+      update_visit_response(:ok)
     else
-      format.html { render :text => 'error' }
-      format.xml  { render :xml => @visit.errors, :status => :unprocessable_entity }
+      flash[:notice] = 'There was a problem removing the visit.'
+      update_visit_response(:unprocessable_entity)
     end
   end
+  
+private
+  # deal properly with the above two methods
+  def update_visit_response(status)
+    if request.xhr?
+      head :status => status
+    else
+      respond_to do |format|
+        # send 'em back to where they came from
+        format.html { redirect_to request.headers['HTTP_REFERER'] }
+      end
+    end
+  end
+
+public
   
   def quickedit
     if request.put?
@@ -137,4 +191,5 @@ class PlacesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

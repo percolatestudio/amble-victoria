@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<atdw_data_results>
+	<product_distribution product_id="9132055">
+		<product_record>
+			<international_ready_flag>0</international_ready_flag>
+			<national_head_office_flag>0</national_head_office_flag>
+			<product_category_id>ATTRACTION</product_category_id>
+			<owning_organisation_id>TVIC</owning_organisation_id>
+			<contributing_organisation_id>TVIC</contributing_organisation_id>
+			<market_variant_id>English / Global</market_variant_id>
+			<product_name>Adventure Downunder</product_name>
+			<children_catered_for_flag>0</children_catered_for_flag>
+			<pets_allowed_flag>0</pets_allowed_flag>
+			<disabled_access_flag>0</disabled_access_flag>
+			<brochure_available_flag>0</brochure_available_flag>
+			<validity_date_from>2009-10-14</validity_date_from>
+			<validity_date_to>2010-10-12</validity_date_to>
+			<attribute_id_atdw_status>FULL</attribute_id_atdw_status>
+			<attribute_id_atdw_status_description>FULL</attribute_id_atdw_status_description>
+			<atdw_expiry_date>2010-10-13</atdw_expiry_date>
+			<free_entry_flag>1</free_entry_flag>
+			<attribute_id_currency>AUD</attribute_id_currency>
+			<attribute_id_currency_description>Australian currency</attribute_id_currency_description>
+			<rate_from>.00</rate_from>
+			<rate_to>.00</rate_to>
+			<city_name>Bayswater</city_name>
+			<state_name>Victoria</state_name>
+			<country_name>Australia</country_name>
+			<product_category_description>Attraction</product_category_description>
+			<product_description>Adventure Downunder was established 35 years ago by former commercial and navy clearance divers, making it a dive centre with solid foundations. Shaun, who bought this Bayswater business from its founders three years ago, was among their many prot&#xE9;g&#xE9;s. A diver since 1999, and an instructor for the past five years, he continues the tradition of passing on everything a diver needs to know. 
+
+ 
+
+An enthusiast of technical diving, an advanced level of diving that goes well below the 30-metre limit enabled by open-water qualifications, Shaun enjoys exploring wrecks and underwater caves. It's no surprise then that they specialise in sales, hire and service of technical diving equipment, such as closed-circuit rebreathers. 
+
+ 
+
+Shaun says he's "happy just to get my head under water", so he dives anywhere, from piers to quarries. He's just as happy training someone at a depth of 100 metres as teaching a school group or children's party in a pool. Adventure Downunder's comprehensive program of courses are carried out with a low student-trainer ratio, focusing on personalised service that emphasises safety, confidence and enjoyment. 
+
+ 
+
+A wide range of equipment is in stock throughout the year, not just in the peak summer season, as well as a variety of informative books. Adventure Down Under is a fully equipped service centre: work is done in-house by Shaun, who is an accredited service technician for most brands. 
+
+ 
+
+There are discounts and rewards for members of the very friendly and egalitarian dive club, which is at the heart of a business Shaun and his loyal customers describe as a "family". Divers based in the eastern suburbs are quick to sign up to Adventure Downunder's regular local, interstate and international dive trips, which live up to the store's motto of "Taking you to new depths".</product_description>
+		</product_record>
+		<event_frequency/>
+		<product_entry_cost/>
+		<product_address>
+			<row>
+				<attribute_id_address>PHYSICAL</attribute_id_address>
+				<attribute_id_address_description>Physical</attribute_id_address_description>
+				<address_line_1>604  Mountain Hwy</address_line_1>
+				<city_name>Bayswater</city_name>
+				<area_name>Melbourne area</area_name>
+				<state_name>Victoria</state_name>
+				<country_name>Australia</country_name>
+				<address_postal_code>3153</address_postal_code>
+				<same_postal_address_flag>0</same_postal_address_flag>
+				<override_domestic_region_flag>0</override_domestic_region_flag>
+				<geocode_gda_latitude>-37.842818000</geocode_gda_latitude>
+				<geocode_gda_longitude>145.256507000</geocode_gda_longitude>
+				<product_address_street_directory_relationship/>
+				<product_address_domestic_region_relationship>
+					<row>
+						<domestic_region_name>Melbourne</domestic_region_name>
+						<domestic_region_type>MARKETING</domestic_region_type>
+					</row>
+				</product_address_domestic_region_relationship>
+				<product_address_area_relationship>
+					<row>
+						<area_name>Melbourne area</area_name>
+						<area_type>LOCAL</area_type>
+					</row>
+				</product_address_area_relationship>
+			</row>
+		</product_address>
+		<product_article/>
+		<product_attribute>
+			<row>
+				<attribute_type_id>ENTITY FAC</attribute_type_id>
+				<attribute_type_id_description>Entity Facility</attribute_type_id_description>
+				<attribute_id>MARINAFAC</attribute_id>
+				<attribute_id_description>Marina Facilities</attribute_id_description>
+			</row>
+			<row>
+				<attribute_type_id>EXPERIENCE</attribute_type_id>
+				<attribute_type_id_description>Experience</attribute_type_id_description>
+				<attribute_id>ADVENTURE</attribute_id>
+				<attribute_id_description>Adventure</attribute_id_description>
+			</row>
+			<row>
+				<attribute_type_id>EXPERIENCE</attribute_type_id>
+				<attribute_type_id_description>Experience</attribute_type_id_description>
+				<attribute_id>MARINE</attribute_id>
+				<attribute_id_description>Marine</attribute_id_description>
+			</row>
+		</product_attribute>
+		<product_award/>
+		<product_brochure/>
+		<product_comment/>
+		<product_communication>
+			<row>
+				<attribute_id_communication>CAEMENQUIR</attribute_id_communication>
+				<attribute_id_communication_description>Email Enquiries</attribute_id_communication_description>
+				<communication_isd_code>61</communication_isd_code>
+				<country_name>Australia</country_name>
+				<communication_detail>shaun@adventuredownunder.com.au</communication_detail>
+			</row>
+			<row>
+				<attribute_id_communication>CAFXENQUIR</attribute_id_communication>
+				<attribute_id_communication_description>Facsimile Enquiries</attribute_id_communication_description>
+				<communication_isd_code>61</communication_isd_code>
+				<country_name>Australia</country_name>
+				<communication_area_code>03</communication_area_code>
+				<communication_detail>9729 5811</communication_detail>
+			</row>
+			<row>
+				<attribute_id_communication>CAPHENQUIR</attribute_id_communication>
+				<attribute_id_communication_description>Telephone Enquiries</attribute_id_communication_description>
+				<communication_isd_code>61</communication_isd_code>
+				<country_name>Australia</country_name>
+				<communication_area_code>03</communication_area_code>
+				<communication_detail>0361 6171</communication_detail>
+			</row>
+			<row>
+				<attribute_id_communication>CAPHENQUIR</attribute_id_communication>
+				<attribute_id_communication_description>Telephone Enquiries</attribute_id_communication_description>
+				<communication_isd_code>61</communication_isd_code>
+				<country_name>Australia</country_name>
+				<communication_area_code>03</communication_area_code>
+				<communication_detail>9729 5811</communication_detail>
+			</row>
+			<row>
+				<attribute_id_communication>CAURENQUIR</attribute_id_communication>
+				<attribute_id_communication_description>URL Enquiries</attribute_id_communication_description>
+				<communication_detail>www.adventuredownunder.com.au</communication_detail>
+			</row>
+		</product_communication>
+		<product_contact/>
+		<product_external_system>
+			<row>
+				<external_system_code>NATIVE_SRC_PRODUCT_ID</external_system_code>
+				<external_system_text>44EA0C00-E88C-4587-BC5F18F22B9D2907</external_system_text>
+			</row>
+		</product_external_system>
+		<product_licence/>
+		<product_multimedia>
+			<row>
+				<market_variant_id>English / Global</market_variant_id>
+				<multimedia_id>9170275</multimedia_id>
+				<authored_date>2009-10-14</authored_date>
+				<server_path>http://national.atdw.com.au/multimedia/tvic/2009_2FOct_2FAdventuresDownunder1.jpg</server_path>
+				<attribute_id_multimedia_file>.JPG</attribute_id_multimedia_file>
+				<attribute_id_multimedia_file_description>Image - JPG</attribute_id_multimedia_file_description>
+				<attribute_id_multimedia_content>IMAGE</attribute_id_multimedia_content>
+				<attribute_id_multimedia_content_description>Image</attribute_id_multimedia_content_description>
+				<attribute_id_size_orientation>LANDSCAPE</attribute_id_size_orientation>
+				<attribute_id_size_orientation_description>Landscape</attribute_id_size_orientation_description>
+				<width>280</width>
+				<height>220</height>
+				<alt_text>ADU</alt_text>
+				<caption>ADU</caption>
+				<sequence_number>1</sequence_number>
+			</row>
+			<row>
+				<market_variant_id>English / Global</market_variant_id>
+				<multimedia_id>9170295</multimedia_id>
+				<authored_date>2009-10-14</authored_date>
+				<server_path>http://national.atdw.com.au/multimedia/tvic/2009_2FOct_2FAdventuresDownunder2.jpg</server_path>
+				<attribute_id_multimedia_file>.JPG</attribute_id_multimedia_file>
+				<attribute_id_multimedia_file_description>Image - JPG</attribute_id_multimedia_file_description>
+				<attribute_id_multimedia_content>IMAGE</attribute_id_multimedia_content>
+				<attribute_id_multimedia_content_description>Image</attribute_id_multimedia_content_description>
+				<attribute_id_size_orientation>LANDSCAPE</attribute_id_size_orientation>
+				<attribute_id_size_orientation_description>Landscape</attribute_id_size_orientation_description>
+				<width>280</width>
+				<height>220</height>
+				<alt_text>ADU</alt_text>
+				<caption>ADU</caption>
+				<sequence_number>2</sequence_number>
+			</row>
+		</product_multimedia>
+		<product_name/>
+		<product_open_time/>
+		<product_proximity/>
+		<product_rate_basis_comment/>
+		<product_related_product>
+			<row>
+				<product_id>9035437</product_id>
+				<related_product_category_id>DESTINFO</related_product_category_id>
+				<attribute_id_relationship>SIBLING</attribute_id_relationship>
+				<attribute_id_relationship_description>Sibling</attribute_id_relationship_description>
+			</row>
+			<row>
+				<product_id>9062195</product_id>
+				<related_product_category_id>DESTINFO</related_product_category_id>
+				<attribute_id_relationship>SIBLING</attribute_id_relationship>
+				<attribute_id_relationship_description>Sibling</attribute_id_relationship_description>
+			</row>
+		</product_related_product>
+		<product_related_service/>
+		<product_season/>
+		<product_session_time/>
+		<product_site/>
+		<product_sponsor/>
+		<product_vertical_classification>
+			<row>
+				<product_type_id>SPORTREC</product_type_id>
+				<product_type_description>Sports and Recreation Facilities</product_type_description>
+			</row>
+		</product_vertical_classification>
+		<product_service/>
+	</product_distribution>
+</atdw_data_results>

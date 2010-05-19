@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  before_filter { |c| c.set_location_automatically if c.location.nil? }
+    
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   helper_method :current_user_session, :current_user, :logged_in?, :origin, :location
@@ -23,6 +23,18 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def address_valid?(address)
+  end
+  
+  def set_location_from_address(address)
+    location = Geokit::Geocoders::MultiGeocoder.geocode(address)
+    return false unless location.success?
+    
+    session[:location] = {:lat => location.lat, :lng => location.lng, :current => false, :str => location.full_address}
+    
+    true
+  end
+  
   def set_location(lat, lng, current = true)
     session[:location] = {:lat => lat, :lng => lng, :current => current}
   end
@@ -30,6 +42,14 @@ class ApplicationController < ActionController::Base
   # this is the origin for the geokit-AR query
   def origin
     [location[:lat], location[:lng]]
+  end
+  
+  def origin_exists?
+    return false if location.nil?
+    return false if location[:lat].nil?
+    return false if location[:lng].nil?
+    
+    true
   end
   
   # Scrub sensitive parameters from your log
@@ -53,7 +73,7 @@ private
   def require_user
     unless current_user
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      #flash[:notice] = "You must be logged in to access this page"
       redirect_to new_user_session_url
       return false
     end
@@ -62,8 +82,16 @@ private
   def require_no_user
     if current_user
       store_location
-      flash[:notice] = "You must be logged out to access this page"
+      #flash[:notice] = "You must be logged out to access this page"
       redirect_to user_path(current_user)
+      return false
+    end
+  end
+  
+  def require_location
+    unless origin_exists?
+      store_location
+      redirect_to get_location_users_path
       return false
     end
   end
@@ -88,7 +116,7 @@ private
       render options.merge(:layout => 'xhr')
     else
       respond_to do |format|
-        format.html { render options.merge(:layout => 'website') }
+        format.html { render options.merge(:layout => 'mobile') }
         
         unless data.nil?
           format.xml  { render options.merge(:xml  => data) }

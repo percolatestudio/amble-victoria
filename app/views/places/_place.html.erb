@@ -1,25 +1,88 @@
-<div class="place" id="<%= place.id %>">
+<div class="place <%= saved_class(place) %>" id="<%= place.id %>">
   <div class="front face">
-    <%= image_tag place.primary_image.image.url(:medium), :alt => place.name %>
-    <!--
-    <h2><%=h place.name %></h2>
-    <p class="distance"><%= rand(5)+1 %> kms away</p>
-    -->
+    <%= image_tag place.primary_image.image.url(:medium), :alt => place.name, :class => 'thumb' %>
+    
+    <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
+
+    <div class="actions">
+      <div class="savers">
+        <%= link_to 'Save', save_place_path(place), :class => 'save' %>
+        <%= link_to 'Remove', unsave_place_path(place), :class => 'unsave' %>
+      </div>
+      <div class="details"><a href="">View details</a></div>
+    </div>
+
+    <div class="overview">
+      <h2><%=h place.name %></h2>
+      <div class="category"><%= place.category.name %></div>
+      <div class="distance">
+        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>
+        Distance: 0.5 km
+      </div>
+    </div>
   </div>
   <div class="back face">
-    <h2><%=h place.name %></h2>
-    <p class="category"><%=h place.category.name %></p>
-    <p class="location"><%=h place.location %></p>
-    <p class="distance"><%= rand(5)+1 %> kms away</p>
-    <p class="description"><%=h place.description %></p>
-    <p class="distance"><%= place.distance %></p>
-    <p class="share">
-      <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>"
-            scrolling="no" frameborder="0"
-            style="border:none; width:450px; height:80px"></iframe>
-    </p>
-    <p class="save">
-      <%= save_button place %>
-    </p>
+    <div class="left_col">
+      
+      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb' %>
+      
+      <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
+      
+      <div class="distance detail">
+        <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: <em>0.5 km</em>
+        
+        <!--
+        todo: get this distance to work properly, i.e. correct units and number of decimal places
+        Distance: <%= place.distance %> km
+        -->
+      </div>
+      
+      <div class="detail">
+        <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Listing</a>
+      </div>
+      
+      <div class="detail">
+        <!-- how is this view site stuff suppost to work, no way of differentiating between them, except icon -->
+        
+        <!-- todo: get the right arrow button from Dom that he wanted here -->
+        <a href=""><%= image_tag 'mobile/icon_logo/icon_citysearch_18x18.png' %>View Site </a> 
+      </div>
+    </div>
+    
+    <div class="right_col">
+      <h2 class="name"><%=h place.name %></h2>
+      
+      <p class="category"><%=h place.category.name %></p>
+      
+      <div class="contact">
+        <address>
+          <%= format_location( h(place.location) ) %>
+        </address>
+        
+        <!-- todo: put in real phone number from db field -->
+        <div class="phone">
+          (03) 9555 5555
+        </div>
+      </div>
+      
+      <div class="description">
+        <%= simple_format( h(place.description) ) %>
+      </div>
+    </div>
+
+    
+    <div class="actions">
+      <div class="right_btns">
+        <a class="small_button" href="">Remove</a>
+        <a class="small_button" href="">Map it</a>
+      
+        <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>&amp;layout=button_count"
+              scrolling="no" frameborder="0"
+              style="border:none;"></iframe>
+      </div>
+      
+      <!-- todo: make this back button have a pointy left edge -->
+      <a href="" class="back_btn small_button">Back</a>
+    </div>    
   </div>
 </div>
