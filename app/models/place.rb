@@ -84,11 +84,13 @@ class Place < ActiveRecord::Base
   end
   
   def set_coords_from_address
-    location = Geokit::Geocoders::MultiGeocoder.geocode(self.location)
-    logger.info("location is: #{location.inspect}")
+    if self.location_changed?
+      location = Geokit::Geocoders::MultiGeocoder.geocode(self.location)
+      logger.info("location is: #{location.inspect}")
   
-    self.lng = location.lng
-    self.lat = location.lat
+      self.lng = location.lng
+      self.lat = location.lat
+    end
     
     true
   end
