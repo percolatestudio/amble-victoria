@@ -17,7 +17,7 @@
 <div class="places">
   <%- @places.each do |place| -%>
     <div class="place <%= saved_class(place) %>">
-      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb' %>
+      <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb polaroid' %>
     
       <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
     
