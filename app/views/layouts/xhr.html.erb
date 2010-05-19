@@ -1,4 +1,6 @@
 <%= framework_divs 'xhr' %>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<%= yield %>
+<div id="content" class="<%= body_classes %>" <%=@body_attribs || '' %>>
+  <p style="color: green"><%= flash[:notice] %></p>
+  <%= yield %>
+</div>
