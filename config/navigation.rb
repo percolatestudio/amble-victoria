@@ -30,7 +30,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     primary.item :explore, 'Explore', explore_url
     primary.item :my_places, 'My Places', my_places_url
-    primary.item :about, 'About', about_url
+    # primary.item :about, 'About', about_url
   end
   
 end
