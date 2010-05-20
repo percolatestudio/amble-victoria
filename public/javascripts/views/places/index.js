@@ -29,8 +29,14 @@
             $('#content').replaceWith( data )
           },
 
-          error: function() {
-            alert("An error occured")
+          error: function(xmlHttpReq) {
+            var errMsg = xmlHttpReq.responseText
+            
+            if ((typeof(errMsg) != "undefined") && (errMsg.length != 0)) {
+              alert(errMsg)
+            } else {
+              alert("An error occured")
+            }
           }
         });
 
@@ -39,9 +45,14 @@
 
 
       $('.locate_btn').click(function() {
-        geolocation.set();
+        geolocation.set(true, function() { 
+          $('#place_filter_location').val('')          
+          $('#place_filter').submit();
+        });
+        
+        return false;
       });
-
+          
 
       //temporary 'effects' for css
       $('.details a').click(function() {
@@ -61,6 +72,24 @@
         $('#places .place .back').css('display', 'none')
 
         return false;
+      });
+      
+      // pagination
+      $('.more_places a').live('click', function(event) {
+        event.preventDefault();
+        $.get($(this).safe_href(), function(data) {
+          $('.more_places').replaceWith(data);
+        })
+      });
+      
+      // nav_bar animation
+      $('#current_location').live('click', function(event) {
+        event.preventDefault();
+        $('body').addClass('expanded');
+      });
+      
+      $('.uang').live('click', function() {
+        $('body').removeClass('expanded');
       });
     }
   }

@@ -53,7 +53,7 @@ module PlacesHelper
     categories = Category.all(:conditions => ['id = ?', filter.category_id])
 
     return "all places" if categories.empty?
-    categories.collect{|c| c.name }.join(", ").downcase
+    categories.collect{|c| c.name.pluralize }.join(", ").downcase
   end
   
   def current_location_str

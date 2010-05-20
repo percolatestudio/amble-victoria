@@ -19,8 +19,14 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"    
   end
   
+  desc "obfuscate javascript and css file"
+  task :obfuscate, :roles => :web do
+    run "cd #{release_path}; rake obfuscate:js; rake obfuscate:css"
+  end
   
 end
+
+after "deploy:update_code", "deploy:obfuscate"
 
 #checkout the code locally, then copy the checked out version to the server
 EXCLUDE_FROM_DEPLOY = [

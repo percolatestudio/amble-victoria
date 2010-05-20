@@ -5,12 +5,14 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <%= framework_meta_tags 'application' %>
+  <%= yield :extra_meta_tags  %>
   
   <title>Amble</title>
   <%= stylesheet_link_tag 'application' %>
   
   <%= javascript_include_tag 'util', :all, :recursive => true, 
     :exclude => ['lib/PastryKit-ug-compact', 'lib/xui-0.9.0'] %>
+
 
   <%= fb_connect_javascript_tag %> 
   <%= init_fb_connect "XFBML", :js => :jquery %>
