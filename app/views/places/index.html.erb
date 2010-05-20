@@ -2,6 +2,7 @@
     :html => {'method' => 'get', 'id' => 'place_filter'} do |f| %>
     
   <div id="places_filter" class="nav_bar">
+    <a href="javascript:void(0);" class="uang">^</a>
     <label>Places</label>
   
     <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id.to_s]}, 
@@ -22,6 +23,7 @@
   </div>
   
   <div id="current_location" class="nav_bar">
+    <a href="javascript:void(0);" class="dang">V</a>
     Showing <a href=""><%= displayed_categories(@place_filter) %></a> near 
     <a href=""><%= current_location_str %></a>
   </div>

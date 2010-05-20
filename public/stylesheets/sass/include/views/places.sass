@@ -46,6 +46,10 @@
     :font-size 10px
       
 .c_places.v_index
+  .uang, .dang
+    :float left
+    :margin 12px
+
   #places
     .place
       
@@ -114,7 +118,10 @@
   :padding 0px 10px 0px 0px
 
   label
-    :padding-left 27px
+    :padding-left 3px
+    
+  .uang
+    :margin-right 0
 
   select
     :float right
@@ -212,7 +219,23 @@
     &:hover
       :text-decoration underline
       
-      
+// transition styles for nav_bars
+.c_places.v_index
+  .nav_bar, #places
+    :-webkit-transition -webkit-transform 0.5s ease
+  #set_location, #places_filter
+    :-webkit-transform translate(0, -80px)
+    :z-index 1
+    :position relative
+  #current_location
+    :-webkit-transform translate(0, -80px)
+  #places
+    :-webkit-transform translate(0, -80px)
+  &.expanded
+    #set_location, #places_filter
+      :-webkit-transform none
+    #places
+      :-webkit-transform translate(0, -40px)
       
 //this is all commented out for now
   &.flipped

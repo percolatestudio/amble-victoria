@@ -7,14 +7,21 @@
   &:hover, &:active
     :background-position = !h_offset (-1 * !height -1)
 
-.lang, .rang
+.lang, .rang 
   :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
   :width 12px
+.uang, .dang
+  :background-image url('/images/mobile/btns/btn_subnav_arrows_updown_12x16.png')
+  :width 16px
 .lang
   +button(16px, right)
+.uang
+  +button(12px, right)
 .rang
   +button(16px, left)
-
+.dang
+  +button(12px, left)
+  
 .small_button
   :font 10px Helvetica
   :text-decoration none

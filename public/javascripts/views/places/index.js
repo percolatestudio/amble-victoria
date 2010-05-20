@@ -75,6 +75,16 @@
           $('.more_places').replaceWith(data);
         })
       });
+      
+      // nav_bar animation
+      $('#current_location').live('click', function(event) {
+        event.preventDefault();
+        $('body').addClass('expanded');
+      });
+      
+      $('.uang').live('click', function() {
+        $('body').removeClass('expanded');
+      });
     }
   }
 }(jQuery));
