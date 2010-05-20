@@ -1,7 +1,7 @@
 (function($){
   placesShow = {
     onReady: function() {
-      $('.place').place({
+      $.has_place_cards({
         success: function(place, link) { 
           if (link.hasClass('save')) {
             place.addClass('saved');

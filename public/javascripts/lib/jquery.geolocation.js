@@ -18,11 +18,17 @@
 		find:function(success, error, options){
 			if($.geolocation.support()){
 				options = $.extend({highAccuracy: false, track: false}, options);
-				($.geolocation.object())[(options.track ? 'watchPosition' : 'getCurrentPosition')](function(location){
-					success(location.coords);
-				}, function(){
-					error();
-				}, {enableHighAccuracy: options.highAccuracy});		
+				
+				try {
+  				($.geolocation.object())[(options.track ? 'watchPosition' : 'getCurrentPosition')](function(location){
+  					success(location.coords);
+  				}, function(){
+  					error();
+  				}, {enableHighAccuracy: options.highAccuracy});		
+  			} catch(err) {
+  			  //error will be thrown if geolocation is disabled
+  			  error();
+  			}
 			}else{
 				error();				
 			}

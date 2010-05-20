@@ -1,11 +1,17 @@
 (function($){
   placesIndex = {
     onReady: function() {
-      $('.place').place({
+      $.has_place_cards({
         success: function(place, link) { 
           if (link.hasClass('save')) {
+            if (place.parents('#slide_container').length) {
+              place.data('original').addClass('saved');
+            }
             place.addClass('saved');
-          } else {
+          } else {  
+            if (place.parents('#slide_container').length) {
+              place.data('original').removeClass('saved');
+            }
             place.removeClass('saved');
           }
         }
@@ -50,27 +56,6 @@
           $('#place_filter').submit();
         });
         
-        return false;
-      });
-          
-
-      //temporary 'effects' for css
-      $('.details a').click(function() {
-        $('#places .place').css('display', 'none')
-
-        $(this).parents('.place').css('display', 'block')
-        $(this).parents('.place').children('.front').css('display', 'none');
-        $(this).parents('.place').children('.back').css('display', 'block');
-
-        return false;
-      });
-
-      $('.back_btn').click(function() {
-        $('#places .place').css('display', 'block')
-        $('#places .place .front').css('display', 'block')
-
-        $('#places .place .back').css('display', 'none')
-
         return false;
       });
       

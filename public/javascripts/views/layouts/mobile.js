@@ -1,6 +1,6 @@
 (function($){
   layoutsMobile = {
-    onLoad: function() {
+    onReady: function() {
       // scroll the location bar out view
       setTimeout(function() {
         window.scrollTo(0,1);

@@ -29,8 +29,8 @@ SimpleNavigation::Configuration.run do |navigation|
     # options - can be used to specify attributes that will be included in the rendered navigation item (e.g. id, class etc.)
     #
     primary.item :explore, 'Explore', explore_url
-    
     primary.item :my_places, 'My Places', my_places_url
+    primary.item :about, 'About', about_url
   end
   
 end

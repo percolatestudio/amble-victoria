@@ -65,4 +65,7 @@ module PlacesHelper
     ""  #should never get into this state
   end
   
+  def like_iframe_url(place)
+    "http://www.facebook.com/widgets/like.php?href=#{place_url(place)} %>&amp;layout=button_count"
+  end
 end

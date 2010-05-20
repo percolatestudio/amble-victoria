@@ -61,13 +61,16 @@
       <%= link_to 'Remove', unsave_place_path(place), :class => 'unsave small_button' %>
 
       <a class="small_button" href="<%= external_map_url(place) %>">Map it</a>
-    
-      <iframe src="http://www.facebook.com/widgets/like.php?href=<%= place_url(place) %>&amp;layout=button_count"
-            scrolling="no" frameborder="0"
-            style="border:none;"></iframe>
+      
+      <%= link_to 'Like', like_iframe_url(place), :class => 'like' %>
+      <div class="like_overlay">
+        <iframe width=450 height=80
+              scrolling="no" frameborder="0"
+              style="border:none;"></iframe>
+      </div>
     </div>
     
     <!-- todo: make this back button have a pointy left edge -->
-    <a href="" class="back_btn small_button">Back</a>
+    <%= link_to 'Back', explore_path, :class => 'back_btn small_button' %>
   </div>
 </div>

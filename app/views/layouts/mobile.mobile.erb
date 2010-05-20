@@ -13,7 +13,7 @@
     
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
-    <%= stylesheet_link_tag 'application'  %>
+    <%= stylesheet_link_tag 'mobile'  %>
     <%= javascript_include_tag :all, :cache => true, :recursive => true,
           :order => ['lib/jquery-1.4.2', 'lib/jquery.geolocation', 'geolocation'] %>
           
@@ -35,5 +35,6 @@
       <%= yield %>
     </div>
     
+    <div id="slide_container"></div>
   </body>
 </html>

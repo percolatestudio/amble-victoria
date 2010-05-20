@@ -1,8 +1,6 @@
 class PlacesController < ApplicationController
-  layout 'xhr'
-
   before_filter :require_location, :only => [:index, :show]
-    
+  
   # GET /places
   # GET /places.xml
   
@@ -48,7 +46,8 @@ class PlacesController < ApplicationController
       # paginated request
       render :partial => 'paginated', :locals => {:places => @places}
     else
-      render_standard :data => @places
+      logger.warn '!!!!!!!rendering standard!!!!!'
+      render_standard #:data => @places
     end
   end
 

@@ -8,21 +8,23 @@
   <%= yield :extra_meta_tags  %>
   
   <title>Amble</title>
+  
   <%= stylesheet_link_tag 'application' %>
   
-  <%= javascript_include_tag 'util', :all, :recursive => true, 
-    :exclude => ['lib/PastryKit-ug-compact', 'lib/xui-0.9.0'] %>
-
-
-  <%= fb_connect_javascript_tag %> 
-  <%= init_fb_connect "XFBML", :js => :jquery %>
+  <%#= fb_connect_javascript_tag %> 
+  <%#= init_fb_connect "XFBML", :js => :jquery %>
 </head>
+
 <body class="<%= body_classes %>">
+  <div id="header">
+    <div id="nav" class="nav_bar">
+      <%= link_to image_tag('icon_logo/text_img_logo_86x21.png', :alt => 'Amble Title Text'), '/' %>      
+      <%= render_navigation %>
+    </div>      
+  </div>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<p>[IN WEBSITE LAYOUT]</p>
-
-<%= yield %>
-
+  <div id="content">
+    <%= yield %>
+  </div>
 </body>
 </html>
