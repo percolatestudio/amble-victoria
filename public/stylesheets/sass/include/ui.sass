@@ -50,6 +50,7 @@
   :background-color #f4f4f4
   :padding 0px 1px 0px 1px
   :-webkit-box-shadow 0px 1px 3px #a4a4a4
+  :-moz-box-shadow 0px 1px 3px #a4a4a4
 
 // a image replaced tag
 .replaced
@@ -72,3 +73,15 @@
     :color #0066cc  
     :font-weight bold
     :text-decoration none
+
+#loader
+  :display none
+  &.loading
+    :padding 16px
+    :background black
+    :z-index 1
+    :position absolute
+    :left 50%
+    :margin-left -32px
+    :display block
+    :-webkit-border-radius 5px

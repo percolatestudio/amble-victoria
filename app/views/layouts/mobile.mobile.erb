@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="/images/logo_amble_57x57.png"/>
+    
     <%= framework_meta_tags 'mobile' %>
         
     <%= yield :extra_meta_tags  %>
     
-    <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
+    <title>Amble - Victoria in your pocket</title>
 
     <%= stylesheet_link_tag 'mobile'  %>
     <%= javascript_include_tag :all, :cache => true, :recursive => true,
@@ -20,7 +22,7 @@
     <%= fb_connect_javascript_tag %>
     <%= init_fb_connect "XFBML", :js => :jquery %>
   </head>
-  <body class="<%= body_classes %>">
+  <body class="<%= body_classes 'mobile' %>">
     <%= image_tag 'loader.gif', :id => 'loader' %>
     <div id="header">
       <div id="nav" class="nav_bar">
@@ -38,10 +40,9 @@
     <% if defined?(@show_footer) && (@show_footer == true)%>
     <div id="footer">
       <div>
-        <%= link_to "What is Amble?", :controller => 'places', :action => 'about' %>
+        <a href="http://percolatestudio.com/">Crafted by Percolate Studio</a>
       </div>
 
-      <div>Crafted by Percolate Studio</div>
       <div>&copy; 2010 Amble</div>
     </div>
     <% end %>

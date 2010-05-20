@@ -20,6 +20,8 @@ class PlacesController < ApplicationController
     #update location
     if (!@place_filter[:location].nil?) && (!@place_filter[:location].empty?)
       unless set_location_from_address(@place_filter[:location])
+        @place_filter[:location] = location[:str]
+        
         if request.xhr?
           render :text => 'Unable to find specified location', :status => :unprocessable_entity
         else
@@ -54,7 +56,7 @@ class PlacesController < ApplicationController
     current_navigation :explore    
     @place = Place.find(params[:id], :origin => origin)
     
-    render_standard :data => @place
+    render_standard :data => @place, :action => 'show.html'
   end
 
   # GET /places/new

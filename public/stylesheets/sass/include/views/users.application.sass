@@ -1,14 +1,30 @@
 .c_users.v_my_places
   h1
+    :width 220px
+    :height 53px
+    
+  #heading_wrap
     :margin-top 54px
     :padding-bottom 15px
     :border-bottom 1px solid #aaa
   
-  #logged_in_description
+  .my_places_content
     :border-top 1px solid #f4f4f4
-    
+    :padding-top 24px
+  
+  .category_selector
+    +grid(4)
+    :margin 24px 0 0 0
+    li
+      :margin-right -10px
+      :height 40px
+      &.selected
+        :background-color #cfe8f6
+      a
+        :padding 9px 0 0 16px
+        :display block
+  
   .places
-    +grid-prefix(4)
     +grid(12)
     :overflow hidden
     :background transparent url('/images/layout/partial_indent_mid_700x1.png') repeat-y right 0
@@ -37,3 +53,9 @@
         :display block
       #logged_in_description
         :display none
+
+
+.c_users.v_get_location #content
+  #splash
+    :margin 150px auto 30px auto
+    

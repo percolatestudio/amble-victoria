@@ -1,19 +1,21 @@
 <% @show_footer = true %>
 
+<% unless is_mobile_device? %>
+  <%= replaced_tag :h1, 'Explore', 'text/text_img_title_explore_164x53.png' %>
+<% end %>
+
 <% form_for :place_filter, @place_filter, 
     :html => {'method' => 'get', 'id' => 'place_filter'} do |f| %>
     
   <div id="places_filter" class="nav_bar">
-    <a href="javascript:void(0);" class="uang">^</a>
-    <label>Places</label>
-  
     <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id.to_s]}, 
       {:include_blank => 'All Places'} %>
+    
+    <a href="javascript:void(0);" class="uang">^</a>    
+    <%= f.label "category_id", "Places" %>
   </div>
 
   <div id="set_location" class="nav_bar">
-    <label>Location</lable>
-  
     <div class="locate_btn">
       <%= link_to "Update Location", {:controller => 'users', :action => 'update_location'} %>
     </div>
@@ -22,6 +24,8 @@
       <%= f.text_field "location", {:placeholder => 'Current Location'} %>
       <%= f.submit %>
     </div>    
+    
+    <%= f.label "location", "Location" %>
   </div>
   
   <div id="current_location" class="nav_bar">

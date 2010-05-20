@@ -66,6 +66,6 @@
     </div>
     
     <!-- todo: make this back button have a pointy left edge -->
-    <%= link_to 'Back', explore_path, :class => 'back_btn small_button' %>
+    <%= link_to is_mobile_device? ? 'Back' : 'Close', explore_path, :class => 'back_btn small_button' %>
   </div>
 </div>

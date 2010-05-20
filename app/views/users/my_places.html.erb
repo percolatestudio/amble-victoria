@@ -1,4 +1,6 @@
-<%= replaced_tag :h1, 'My Places', 'text/text_img_title_myplaces_220x53.png'%>
+<div id="heading_wrap">
+  <%= replaced_tag :h1, 'My Places', 'text/text_img_title_myplaces_220x53.png' unless is_mobile_device?%>
+</div>
 
 <div id="logged_in_description" class="nav_bar">
   <%= "#{h(current_user.name)}'s" %>
@@ -16,8 +18,26 @@
   <a href="javascript:void(0);" class="lang">&lang;</a>
 </div>
 
-<div class="places">
-  <div class="top_slice"></div>
-  <%= render :partial => 'places/list_place.html', :collection => @places %>
-  <div class="btm_slice"></div>
+<div class="my_places_content">
+  <ul class="category_selector">
+    <%- ([['All Places', nil]] + Category.all.map {|c| [c.name, c.id] } ).each do |c_details| -%>
+      <li <%= 'class="selected"' if c_details.last.to_s == @place_filter.category_id.to_s %>>
+        <% link_to 'place_filter[category_id]' => c_details.last do %>
+          <%= replaced_tag :h2, c_details.first, "text/#{c_details.first.gsub(' ','_')}.png" %>
+        <% end %>
+      </li>
+    <%- end -%>
+  </ul>
+  
+  <div class="places">
+    <div class="top_slice"></div>
+    <%- if @places.length > 0-%>
+      <%= render :partial => 'places/list_place.html', :collection => @places %>
+    <%- else -%>
+      <div class="no_saved">
+        There are no saved places.
+      </div>
+    <%- end -%>
+    <div class="btm_slice"></div>
+  </div>
 </div>
