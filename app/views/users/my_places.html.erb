@@ -16,8 +16,20 @@
   <a href="javascript:void(0);" class="lang">&lang;</a>
 </div>
 
-<div class="places">
-  <div class="top_slice"></div>
-  <%= render :partial => 'places/list_place.html', :collection => @places %>
-  <div class="btm_slice"></div>
+<div class="my_places_content">
+  <ul class="category_selector">
+    <%- ['All'] -%>
+  </ul>
+  
+  <div class="places">
+    <div class="top_slice"></div>
+    <%- if @places.length > 0-%>
+      <%= render :partial => 'places/list_place.html', :collection => @places %>
+    <%- else -%>
+      <div class="no_saved">
+        There are no saved places.
+      </div>
+    <%- end -%>
+    <div class="btm_slice"></div>
+  </div>
 </div>
