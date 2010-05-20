@@ -9,8 +9,8 @@ class PlacesController < ApplicationController
   
   PLACE_FILTER = Struct.new(:category_id, :location)
   
-  def index    
-    current_navigation :explore
+  def index
+    current_navigation :places
     
     if params[:place_filter]
       @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
@@ -48,8 +48,13 @@ class PlacesController < ApplicationController
     end
   end
 
-  def show    
-    current_navigation :explore    
+  def show
+    if request.referer =~ /my_places/
+      current_navigation :my_places
+    else
+      current_navigation :explore
+    end
+    
     @place = Place.find(params[:id], :origin => origin)
     
     render_standard :data => @place, :action => 'show.html'
