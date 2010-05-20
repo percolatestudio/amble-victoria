@@ -92,3 +92,110 @@
     .front
       :padding-bottom 5px
 
+
+  #current_location
+    :padding 0px 10px 0px 10px
+
+    #right_arrow
+      :height 16px
+      :width 12px
+      :float right
+      :margin-top = (40px / 2) - (0.5 * 16)
+
+      a
+        :text-indent -31337px
+        :display block
+        :width 100%
+        :height 100%
+        :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
+        :background-position 0 0
+        &:active
+          :background-position 0 -17px
+
+    p a
+      :color #003399
+      :text-decoration none
+      &:hover
+        :text-decoration underline
+
+
+  #set_location
+    :text-align left
+    :padding 0px 10px 0px 0px
+
+    label
+      :padding-left 27px
+
+    .locate_txt
+      :float right
+      :width = 169px + 8px + 20px
+      :height 24px
+      :margin = "#{(40 / 2) - (24 / 2)}px 0px #{(40 / 2) - (24 / 2)}px 0px"
+      :overflow hidden
+
+    input[type=submit]
+      :float left
+      :-webkit-appearance none
+      :background-image url('/images/mobile/btns/btn_search_20x22.png')
+      :border 1px solid black
+      :font-size 0px
+      :background-repeat no-repeat
+      :height 24px
+      :width 20px
+      :border-left none
+      :text-indent -31337px
+      :-webkit-border-top-right-radius 2px
+      :-webkit-border-bottom-right-radius 2px
+
+    input[type=text]
+      :float left
+      :outline none
+      :-webkit-appearance none
+      :padding 0px 8px 0px 4px
+      :width 162px
+      :font normal 12px/24px helvetica
+      :background-image -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+      :height 22px
+      :border 1px solid black
+      :border-right none
+      :-webkit-border-top-left-radius 5px
+      :-webkit-border-bottom-left-radius 5px
+      &::-webkit-input-placeholder
+        :color blue
+
+    .locate_btn
+      :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 5px"
+      :float right
+      :width 24px
+      :height 24px
+
+      a
+        :background transparent url('/images/mobile/btns/btn_locate.png') no-repeat 0 0
+        :text-indent -31337px
+        :display block
+        :width 100%
+        :height 100%
+
+  #places_filter
+    :text-align left
+    :padding 0px 10px 0px 0px
+
+    label
+      :padding-left 3px
+
+    .uang
+      :margin-right 0
+
+    select
+      :float right
+      :-webkit-appearance none
+      :-webkit-border-radius 5px
+      :padding-left 8px
+      :margin = "#{(40 / 2) - (24 / 2)}px 0px 0px 5px"
+      :width 227px
+      :font normal 12px/24px helvetica
+      :background-image url('/images/mobile/btns/btn_select_20x22.png'), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0df))
+      :background-position 100% 0, 0 0
+      :background-repeat no-repeat, repeat-x
+      :height 24px
+      :line-height 24px

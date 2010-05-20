@@ -7,6 +7,16 @@
   
   #content
     :border-bottom 1px solid #AAA
+    
+    #current_location
+      :padding-left 0px
+    
+    #places_filter, #set_location
+      :width = 960px/2 - 20 
+      :display none
+      
+    #places_filter
+      :float left
   
     .more_places
       :text-align right
@@ -28,6 +38,7 @@
 
   #places
     :overflow hidden
+    :margin-top 24px
 
     .place
       +grid(4, 12)
@@ -42,3 +53,11 @@
         :white-space nowrap
         :overflow hidden
       
+  &.expanded
+    #content
+      #places_filter, #set_location
+        :display block
+        
+      #current_location
+        :display none
+    
