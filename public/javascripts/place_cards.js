@@ -59,8 +59,7 @@
       
       // 5. position
       $('#slide_container')
-        .data('top', $('#slide_container').css('top'))
-        .css('top', 0).get(0).scrollIntoView(true);
+        .css('position', 'static').get(0).scrollIntoView(true);
         
       $('body').unbind('webkitTransitionEnd');
     }).addClass('slide');
@@ -69,7 +68,7 @@
   $.hide_details = function() {
     // 1. position
     $('#slide_container')
-      .css('top', $('#slide_container').data('top'))
+      .css('position', 'absolute')
       .get(0).scrollIntoView(true);
     
     // 2. show everything
