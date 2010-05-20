@@ -73,8 +73,6 @@
     } else {
       // 3. slide
       $('body').bind('webkitTransitionEnd', function() {
-        document.body.scrollTop = 0;
-        
         // 4. hide
         $('body > *:not(.no_slide_left)').addClass('height_hidden');
 
