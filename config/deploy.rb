@@ -23,9 +23,16 @@ namespace :deploy do
   task :obfuscate, :roles => :web do
     run "cd #{release_path}; rake obfuscate:js; rake obfuscate:css"
   end
-  
+
+  desc "generate css from applicaiton sass file"
+  task :generate_css, :roles => :web do
+    run "cd #{release_path}; sass public/stylesheets/sass/application.sass > public/stylesheets/application.css"
+    run "cd #{release_path}; sass public/stylesheets/sass/mobile.sass > public/stylesheets/mobile.css"
+    run "cd #{release_path}; rm -Rf public/stylesheets/sass"
+  end
 end
 
+after "deploy:update_code", "deploy:generate_css"
 after "deploy:update_code", "deploy:obfuscate"
 
 #checkout the code locally, then copy the checked out version to the server

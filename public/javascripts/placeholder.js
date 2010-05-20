@@ -12,7 +12,7 @@
 (function($) {
   $.fn.placeholder = function() {
     // first check if its supported by the browser
-    if ((this.length == 0) || (!!("placeholder" in $('<'+this.get(0).nodeName+'>')[0]))) return;
+    if ((this.length == 0) || (!!("placeholder" in $('<'+this.get(0).nodeName+'>').get(0)))) return;
         
     // this code assumes that the parent of the field is a div
     // and the correct styles exist

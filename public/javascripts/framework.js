@@ -50,6 +50,7 @@
       $(this).addClass('loading').vertical_center();
     }).bind('ajaxStop', function() {
       $(this).removeClass('loading');
+      $('input[placeholder]').placeholder(); 
     });
     
     $(window).bind('ajaxComplete', function(event, request, options) {
