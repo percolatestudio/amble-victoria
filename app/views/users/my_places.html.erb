@@ -24,9 +24,8 @@
   <ul class="category_selector">
     <%- ([['All Places', nil]] + Category.all.map {|c| [c.name, c.id] } ).each do |c_details| -%>
       <li <%= 'class="selected"' if c_details.last.to_s == @place_filter.category_id.to_s %>>
-        <% link_to 'place_filter[category_id]' => c_details.last do %>
-          <%= replaced_tag :h2, c_details.first, "text/#{c_details.first.gsub(' ','_')}.png" %>
-        <% end %>
+        <%= replaced_tag :a, c_details.first, "text/#{c_details.first.gsub(' ','_')}.png",
+              :href => url_for('place_filter[category_id]' => c_details.last) %>
       </li>
     <%- end -%>
   </ul>
