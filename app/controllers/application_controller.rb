@@ -110,6 +110,7 @@ protected
   end
   
   def select_layout
+    logger.warn '!!!!!!!!!!!!!!selecting layout'
     if request.xhr?
       'xhr'
     elsif is_mobile_device?
@@ -130,7 +131,8 @@ protected
       render options.merge(:layout => 'xhr')
     else
       respond_to do |format|
-        format.html { render options }
+        format.html { render options.merge(:layout => select_layout) }
+        format.mobile { render options.merge(:layout => select_layout) }
         
         unless data.nil?
           format.xml  { render options.merge(:xml  => data) }
