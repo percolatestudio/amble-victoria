@@ -47,6 +47,14 @@
         }).removeClass('slide');
       });
       
+      $('.place_detail .actions .like').live('click', function(event) {
+        event.preventDefault();
+        
+        $(this).sibling('like_overlay')
+          .find('iframe').attr('src', $(this).href_safe())
+        .stop().vertical_center().show();
+      });
+      
       // scroll the location bar out view
       setTimeout(function() {
         window.scrollTo(0,1);
