@@ -39,9 +39,20 @@
 
 
       $('.locate_btn').click(function() {
-        geolocation.set();
+        alert('clicked')
+        geolocation.set(true, function() { 
+          alert('updated location!')
+          
+          $('#place_filter_location').val('')
+          
+          alert("emptied!")
+          
+          //$('#place_filter').submit();
+        });
+        
+        return false;
       });
-
+          
 
       //temporary 'effects' for css
       $('.details a').click(function() {
