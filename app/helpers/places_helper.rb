@@ -19,22 +19,22 @@ module PlacesHelper
   end
   
   def map_img_url(place, size="200x100")
-    "http://maps.google.com/maps/api/staticmap?zoom=14&amp;" + 
+    escape_once("http://maps.google.com/maps/api/staticmap?zoom=14&amp;" + 
       "size=#{size}&amp;sensor=true&amp;" +
-      "markers=color:blue|label:A|#{place.lat},#{place.lng}"
+      "markers=color:blue|label:A|#{place.lat},#{place.lng}")
   end
   
   def map_img_url_with_origin(place, size="200x200")
     location = {:lat => -37.817455, :lng => 144.96745}
     
-    "http://maps.google.com/maps/api/staticmap?center=#{location[:lat]},#{location[:lng]}&amp;" + 
+    escape_once("http://maps.google.com/maps/api/staticmap?center=#{location[:lat]},#{location[:lng]}&amp;" + 
       "size=#{size}&amp;sensor=true&amp;" +
       "markers=color:red|label:A|#{place.lat},#{place.lng}&amp;" +
-      "markers=color:blue|size:tiny|#{location[:lat]},#{location[:lng]}"
+      "markers=color:blue|size:tiny|#{location[:lat]},#{location[:lng]}")
   end
   
   def external_map_url(place)
-    "http://maps.google.com/maps?q=#{place.location}+(#{place.name})@#{place.lat},#{place.lng}"
+    escape_once("http://maps.google.com/maps?q=#{place.location}+(#{place.name})@#{place.lat},#{place.lng}")
   end
 
   def format_location(location)
