@@ -1,6 +1,12 @@
 @import include/lib/reset.sass
 @import include/lib/_960_grid.sass
 @import include/base.sass
+@import include/ui.sass
+
+@import include/place.sass
+@import include/views/places.sass
+@import include/views/places.application.sass
+
 
 @import include/ui.sass
 @import include/place.sass
@@ -63,4 +69,7 @@ html
               :background-position -200px -64px
 
 #content
+  +grid-container
+  
+#footer
   +grid-container
