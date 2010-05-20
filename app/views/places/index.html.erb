@@ -1,3 +1,5 @@
+<% @show_footer = true %>
+
 <% form_for :place_filter, @place_filter, 
     :html => {'method' => 'get', 'id' => 'place_filter'} do |f| %>
     
@@ -30,14 +32,4 @@
   
 <% end %>
 
-<%= render :partial => 'paginated', :locals => {:places => @places} %>
-
-<div id="footer">
-  <div>
-    <%= link_to "What is Amble?", :controller => 'places', :action => 'about' %>
-  </div>
-  
-  <div>Crafted by Percolate Studio</div>
-  <div>&copy; 2010 Amble</div>
-</div>
-
+<%= render :partial => 'paginated.html', :locals => {:places => @places} %>

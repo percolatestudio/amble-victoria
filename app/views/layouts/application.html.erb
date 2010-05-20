@@ -29,5 +29,17 @@
   <div id="content">
     <%= yield %>
   </div>
+  
+  <% if defined?(@show_footer) && (@show_footer == true)%>
+  <div id="footer">
+    <div>
+      <%= link_to "What is Amble?", :controller => 'places', :action => 'about' %>
+    </div>
+
+    <div>Crafted by Percolate Studio</div>
+    <div>&copy; 2010 Amble</div>
+  </div>
+  <% end %>
+  
 </body>
 </html>
