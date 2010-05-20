@@ -32,9 +32,16 @@
     #places_filter, #set_location
       :width = 960px/2 - 20
       :display none
+      label
+        :margin-right 10px
       
     #places_filter
       :float left
+      label
+        :float right
+    #set_location
+      :width 335px
+      :padding-right 135px
   
     .more_places
       +grid(16)
@@ -71,6 +78,28 @@
         :color #444444
         :white-space nowrap
         :overflow hidden
+      
+      .front .actions
+        :width 52px
+        .savers, .details
+          :width 22px
+          :height 22px
+          :margin-right 4px
+          a
+            :background-image url('/images/mobile/btns/btn_star_rarr_22x22.png') 
+            :width 22px
+            :height 22px
+            &:hover, &:active
+              :background-position 0 -23px
+            &.unsave
+              :background-position 0 -23px
+              &:hover, &:active
+                :background-position 0 0
+        .details
+          a
+            :background-position right 0px
+            &:active, &:hover
+              :background-position right -23px
       
   &.expanded
     #content
