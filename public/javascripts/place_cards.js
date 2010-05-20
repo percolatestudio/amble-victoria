@@ -39,10 +39,12 @@
     $('.place_detail .actions .like').live('click', function(event) {
       event.preventDefault();
       
-      $(this).sibling('like_overlay')
-        .find('iframe').attr('src', $(this).href_safe())
-      .stop().vertical_center().show();
+      $('#like_overlay')
+        .find('iframe').attr('src', $(this).safe_href())
+      .end().vertical_center().show();
     });
+    
+    $('body').click(function() { $('#like_overlay').hide(); });
   };
   
   $.show_details = function($p) {
@@ -55,7 +57,7 @@
     // 3. slide
     $('body').bind('webkitTransitionEnd', function() {
       // 4. hide
-      $('body > *:not(#slide_container)').addClass('height_hidden');
+      $('body > *:not(.no_slide_left)').addClass('height_hidden');
       
       // 5. position
       $('#slide_container')
@@ -72,7 +74,7 @@
       .get(0).scrollIntoView(true);
     
     // 2. show everything
-    $('body > *:not(#slide_container)').removeClass('height_hidden');
+    $('body > *:not(.no_slide_left)').removeClass('height_hidden');
     
     // 3. slide
     $('body').bind('webkitTransitionEnd', function() {
