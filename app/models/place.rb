@@ -44,7 +44,7 @@ class Place < ActiveRecord::Base
   }
   
   cattr_reader :per_page
-  @@per_page = 7
+  @@per_page = 6
   
   #return url's of creative common licensed pictures from flickr for this place
   def potential_images(opts = {:max => 1})

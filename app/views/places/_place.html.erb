@@ -1,4 +1,4 @@
-<div class="place <%= saved_class(place) %>" id="<%= place.id %>">
+<div class="place <%= saved_class(place) %>">
   <div class="front face">
     <%= image_tag place.primary_image.image.url(:medium), :alt => place.name, :class => 'thumb polaroid' %>
     
@@ -24,6 +24,6 @@
     </div>
   </div>
   <div class="back face">
-    <%= render :partial => 'place_detail', :object => place %>
+    <%= render :partial => 'place_detail.html', :object => place %>
   </div>
 </div>

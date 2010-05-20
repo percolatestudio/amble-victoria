@@ -1,0 +1,63 @@
+.c_places.v_index
+  h1
+    :margin 54px 0 15px 0
+  
+  form
+    :overflow hidden
+  
+  #content
+    :border-bottom 1px solid #AAA
+    
+    #current_location
+      :padding-left 0px
+    
+    #places_filter, #set_location
+      :width = 960px/2 - 20
+      :display none
+      
+    #places_filter
+      :float left
+  
+    .more_places
+      :text-align right
+      :font 14px Helvetica
+      :height auto
+      :margin 0px 0px 24px 0px
+      :border none
+      :text-shadow none
+  
+      a
+        :color #666666
+        :text-decoration none  
+      &:hover
+        :text-decoration underline
+  
+  #footer
+    :padding 24px 0px 10px 0px
+    :border-top 1px solid #f4f4f4
+
+  #places
+    :overflow hidden
+    :margin-top 24px
+
+    .place
+      +grid(4, 12)
+      :padding 0
+      :margin-bottom 24px
+      :background transparent none
+    
+      h2
+        :font 16px Helvetica
+        :font-weight bold
+        :color #444444
+        :white-space nowrap
+        :overflow hidden
+      
+  &.expanded
+    #content
+      #places_filter, #set_location
+        :display block
+        
+      #current_location
+        :display none
+    

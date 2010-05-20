@@ -62,15 +62,10 @@
 
       <a class="small_button" href="<%= external_map_url(place) %>">Map it</a>
       
-      <%= link_to 'Like', like_iframe_url(place), :class => 'like' %>
-      <div class="like_overlay">
-        <iframe width=450 height=80
-              scrolling="no" frameborder="0"
-              style="border:none;"></iframe>
-      </div>
+      <%= link_to 'Like', like_iframe_url(place), :class => 'like small_button' %>
     </div>
     
     <!-- todo: make this back button have a pointy left edge -->
-    <%= link_to 'Back', explore_path, :class => 'back_btn small_button' %>
+    <%= link_to is_mobile_device? ? 'Back' : 'Close', explore_path, :class => 'back_btn small_button' %>
   </div>
 </div>

@@ -21,7 +21,7 @@ protected
     if geo_location.success
       set_location geo_location.lat, geo_location.lng
     else
-      set_location DEFAULT_LOCATION[:lat], DEFAULT_LOCATION[:lng], false
+      set_location DEFAULT_LOCATION[:lat], DEFAULT_LOCATION[:lng], true
     end
   end
   

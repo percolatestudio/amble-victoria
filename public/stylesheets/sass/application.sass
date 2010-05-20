@@ -1,9 +1,25 @@
 @import include/lib/reset.sass
 @import include/lib/_960_grid.sass
 @import include/base.sass
+@import include/ui.sass
+
+@import include/place.sass
+@import include/views/places.sass
+@import include/views/places.application.sass
+
+
+@import include/ui.sass
+@import include/place.sass
+
+@import include/views/user_sessions.application.sass
+@import include/views/users.sass
+@import include/views/users.application.sass
 
 html
   :background-color #ebebf1
+  
+a
+  :outline none
   
 #header
   :background transparent url(/images/layout/bg_header_40x50.png) repeat-x 0 0
@@ -57,3 +73,50 @@ html
 
 #content
   +grid-container
+#footer
+  +grid-container
+
+#logged_in_description
+
+#content .nav_bar
+  :height = 40px
+  :border-bottom 1px solid #aaa
+  :border-top 1px solid #f4f4f4
+  :font bold 16px/40px helvetica
+  :text-align center
+  :text-shadow 0 1px 0 #bbb
+  :overflow hidden
+  :color #666
+  a
+    :text-decoration none
+    :color #0066cc
+    &:hover
+      :text-decoration underline
+.lang, .rang
+  :background-image url('/images/btns/subnav_arrows_web_12x16.png')
+
+#slide_container
+  +polaroid
+  :border 10px solid #222
+  :padding 0
+  :position absolute  
+  :margin-top 80px
+  :left 50%
+  :margin-left = -0.5 * (320px + 20px)
+  :background #EBEBF1
+  
+  :display none
+  #nav
+    :display none
+  
+body.slide
+  #slide_container
+    :display block
+    
+#like_overlay
+  :display none
+  :background #EBEBF1 url(/images/mobile/layout/card_btm_1x2.png) repeat-x scroll 0 0
+  :padding 10px 0 
+  :margin 0 10px
+  iframe
+    :height 40px

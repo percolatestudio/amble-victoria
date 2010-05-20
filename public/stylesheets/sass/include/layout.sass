@@ -3,18 +3,6 @@ body
   :min-height 416px
   :background-color #ebebf1
   :position relative
-  
-#loader
-  :display none
-  &.loading
-    :padding 16px
-    :background black
-    :z-index 1
-    :position absolute
-    :left 50%
-    :margin-left -32px
-    :display block
-    :-webkit-border-radius 5px
 
 #content
   :overflow hidden
@@ -89,8 +77,20 @@ body > *, #slide_container > *
 body.slide
   > *
     :-webkit-transform translate(-320px)
-  #slide_container, #slide_container > *
+  .no_slide_left, #slide_container > *
     :-webkit-transform none
 
 .height_hidden
   :height 0
+  
+#like_overlay
+  :display none
+  :background white
+  :border 5px solid rgba(0,0,0,0.5)
+  :position absolute
+  :left 10px
+  :height 50px
+  :-webkit-border-radius 5px
+  iframe
+    :width 290px
+    :height 40px

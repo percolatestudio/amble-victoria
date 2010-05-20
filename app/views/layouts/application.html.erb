@@ -10,21 +10,41 @@
   <title>Amble</title>
   
   <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag :all, :cache => true, :recursive => true,
+        :order => ['lib/jquery-1.4.2', 'lib/jquery.geolocation', 'geolocation'] %>
   
-  <%#= fb_connect_javascript_tag %> 
-  <%#= init_fb_connect "XFBML", :js => :jquery %>
+  
+  <%= fb_connect_javascript_tag %> 
+  <%= init_fb_connect "XFBML", :js => :jquery %>
 </head>
 
-<body class="<%= body_classes %>">
+<body class="<%= body_classes 'application' %>">
+  <%= image_tag 'loader.gif', :id => 'loader' %>
   <div id="header">
     <div id="nav" class="nav_bar">
-      <%= link_to image_tag('icon_logo/text_img_logo_86x21.png', :alt => 'Amble Title Text'), '/' %>      
+      <%= link_to image_tag('icon_logo/text_img_logo_116x21.png', :alt => 'Amble Title Text'), '/' %>      
       <%= render_navigation %>
     </div>      
   </div>
 
   <div id="content">
     <%= yield %>
+  </div>
+  
+  <% if defined?(@show_footer) && (@show_footer == true)%>
+  <div id="footer">
+    <div>
+      <a href="http://percolatestudio.com/">Crafted by Percolate Studio</a>
+    </div>
+
+    <div>&copy; 2010 Amble</div>
+  </div>
+  <% end %>
+  
+  <div id="slide_container" class="no_slide_left">
+    <div id="like_overlay">
+      <iframe scrolling="no" frameborder="0" style="border:none;"></iframe>
+    </div>
   </div>
 </body>
 </html>
