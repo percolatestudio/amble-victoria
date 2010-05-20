@@ -1,13 +1,13 @@
 (function($) {
   // hookup savers
   // we need options.success(place, link) to be set
-  $.fn.place = function(options) {
-    return $(this).each(function() {
-      var $p = $(this);
-
-      $p.find('.save, .unsave').live('click', function(event) {
+  $.fn.place_cards = function(options) {
+    return this.each(function() {
+      var $places = $(this);
+      
+      $places.find('.save, .unsave').live('click', function(event) {
         event.preventDefault();
-        var $this = $(this);
+        var $this = $(this), $p = $this.parents('.place');
 
         if (!$p.hasClass('loading')) {
           $p.addClass('loading');
@@ -22,7 +22,7 @@
             }
           });
         }
-      });      
+      });
     });
   };
 }(jQuery));
