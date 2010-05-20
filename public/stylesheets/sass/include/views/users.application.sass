@@ -8,8 +8,19 @@
     :border-top 1px solid #f4f4f4
     :padding-top 24px
   
+  .category_selector
+    +grid(4)
+    :margin 24px 0 0 0
+    li
+      :margin-right -10px
+      :height 40px
+      &.selected
+        :background-color #cfe8f6
+      a
+        :padding 9px 0 0 16px
+        :display block
+  
   .places
-    +grid-prefix(4)
     +grid(12)
     :overflow hidden
     :background transparent url('/images/layout/partial_indent_mid_700x1.png') repeat-y right 0
