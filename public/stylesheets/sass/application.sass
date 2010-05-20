@@ -90,16 +90,24 @@ a
   :border-top 1px solid #f4f4f4
   :font bold 16px/40px helvetica
   :text-align center
-  :text-shadow 0 1px 0 #bbb
+  +standard_text_shadow
   :overflow hidden
-  :color #666
+  :color #333
   a
     :text-decoration none
     :color #0066cc
     &:hover
       :text-decoration underline
-.lang, .rang
+.lang, .rang, .uang, .dang
   :background-image url('/images/btns/subnav_arrows_web_12x16.png')
+  :width 12px
+  :margin-right 0 !important
+  :margin-left 0 !important
+.uang
+  +button(16px, right)
+.dang
+  +button(16px, left)
+
 
 #slide_container
   :border 10px solid #222

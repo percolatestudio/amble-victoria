@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   
   PLACE_FILTER = Struct.new(:category_id)
   def my_places
+    current_navigation :my_places
+    
     @place_filter = PLACE_FILTER.from_hash(params[:place_filter])
     
     options = {:select => 'places.*', 

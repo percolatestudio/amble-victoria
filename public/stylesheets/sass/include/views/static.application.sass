@@ -10,7 +10,7 @@
       img
         :margin 138px 0 20px 110px
       a
-        +button(13px, 0)
+        +button_application(13px, 0)
         :background transparent url(/images/layout/text_img_explore_126x13.png) no-repeat 0 0
         :width 126px
         :margin-left 110px
@@ -28,13 +28,14 @@
     :height 270px
     :background #eee url(/images/layout/bg_quarterbox_240x240.png) no-repeat 0 0
     :text-align center
-    :text-shadow 0 1px 0 #fff
+    +standard_text_shadow
     :font 14px Helvetica
     :color #333
     :border-bottom solid #ccc 1px
     img
       :margin 30px 0 20px 0
     .sub
+      :margin-top 4px
       :font-size 11px
       :color #999
     &:hover

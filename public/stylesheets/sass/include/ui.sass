@@ -6,7 +6,17 @@
   :height = !height
   :background-position = !h_offset 0
   &:hover, &:active
-    :background-position = !h_offset (-1 * !height -1)
+    :background-position = !h_offset (-1 * !height - 1)
+
+=button_application(!height, !h_offset)
+  +button(!height, !h_offset)
+  &:hover 
+    :background-position = !h_offset (-1 * !height - 1)
+  &:active
+    :background-position = !h_offset (-2 * !height - 2)
+
+=standard_text_shadow
+  :text-shadow 0 1px 0 #fff
 
 .lang, .rang 
   :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')

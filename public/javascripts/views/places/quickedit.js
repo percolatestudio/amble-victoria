@@ -15,8 +15,11 @@
             jQuery('#place_image' + chr).addClass('active')
           } 
 
-          
-          uq_select.selectedIndex = 2;
+          //set user quality to '1' if user hasn't set one
+          if ( uq_select.selectedIndex <= 1) {
+            uq_select.selectedIndex = 2;
+          }
+
           jQuery('form').submit();
         }
         else if (chr == 'h') {

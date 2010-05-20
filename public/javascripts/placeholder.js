@@ -20,12 +20,14 @@
     
     // first insert a sibling to hold the placeholder
     this.each(function() {
-      $(this).after(
-        $('<div class="placeholder">'+$(this).attr('placeholder')+'</div>')
-          .bind('click', this, function(e) {
-             e.data.focus(); // <- focus the input
-          })
-      );
+      if ($(this).siblings('.placeholder').length == 0) {
+        $(this).after(
+          $('<div class="placeholder">'+$(this).attr('placeholder')+'</div>')
+            .bind('click', this, function(e) {
+               e.data.focus(); // <- focus the input
+            })
+        );        
+      }
     });
     
     this.bind('focus drop change', hidePlaceholder)
