@@ -52,8 +52,5 @@ var geolocation = {
         alert("An error occured while updating your location")
       }
     });
-    
-    
-    
   }
 };

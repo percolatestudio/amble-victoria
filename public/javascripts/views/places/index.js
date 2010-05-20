@@ -39,15 +39,9 @@
 
 
       $('.locate_btn').click(function() {
-        alert('clicked')
         geolocation.set(true, function() { 
-          alert('updated location!')
-          
-          $('#place_filter_location').val('')
-          
-          alert("emptied!")
-          
-          //$('#place_filter').submit();
+          $('#place_filter_location').val('')          
+          $('#place_filter').submit();
         });
         
         return false;
