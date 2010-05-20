@@ -29,8 +29,14 @@
             $('#content').replaceWith( data )
           },
 
-          error: function() {
-            alert("An error occured")
+          error: function(xmlHttpReq) {
+            var errMsg = xmlHttpReq.responseText
+            
+            if ((typeof(errMsg) != "undefined") && (errMsg.length != 0)) {
+              alert(errMsg)
+            } else {
+              alert("An error occured")
+            }
           }
         });
 

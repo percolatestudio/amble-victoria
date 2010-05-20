@@ -22,9 +22,8 @@ class PlacesController < ApplicationController
     #update location
     if (!@place_filter[:location].nil?) && (!@place_filter[:location].empty?)
       unless set_location_from_address(@place_filter[:location])
-
         if request.xhr?
-          render :text => '', :status => :unprocessable_entity
+          render :text => 'Unable to find specified location', :status => :unprocessable_entity
         else
           render :action => 'none_exist', :layout => 'mobile'
         end
