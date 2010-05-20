@@ -1,10 +1,11 @@
 class PlacesController < ApplicationController
+
   before_filter :require_location, :only => [:index, :show]
+  before_filter :require_admin, :only => [:new, :edit, :quickedit,
+    :create, :update, :destroy]
   
   # GET /places
   # GET /places.xml
-  
-  #location
   
   PLACE_FILTER = Struct.new(:category_id, :location)
   
@@ -32,11 +33,6 @@ class PlacesController < ApplicationController
       end
     end
 
-    # opts = {}
-    # unless @place_filter[:category_id].empty?
-    #   opts = {:conditions => ['category_id = ?', @place_filter[:category_id]] }
-    # end
-    
     unless @place_filter[:category_id].nil? or @place_filter[:category_id] == ""
       conditions = ['category_id = ?', @place_filter[:category_id]]
     end
@@ -196,6 +192,5 @@ public
       format.html { redirect_to(places_url) }
       format.xml  { head :ok }
     end
-  end
-  
+  end  
 end

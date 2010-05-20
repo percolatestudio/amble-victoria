@@ -11,6 +11,18 @@ class ApplicationController < ActionController::Base
   
 protected
 
+  #a temporary hack authentication system
+  def require_admin
+    realm = "Administratrion"
+    user = {:name => 'admin', :password => 'scope77:fend'}
+
+		success = authenticate_or_request_with_http_digest(realm) do |username|
+		  user[:password] if username == user[:name]
+		end
+
+		request_http_digest_authentication(realm, "Authentication failed") if !success
+  end
+
   def location
     session[:location]
   end
