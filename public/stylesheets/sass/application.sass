@@ -98,8 +98,16 @@ a
     :color #0066cc
     &:hover
       :text-decoration underline
-.lang, .rang
+.lang, .rang, .uang, .dang
   :background-image url('/images/btns/subnav_arrows_web_12x16.png')
+  :width 12px
+  :margin-right 0 !important
+  :margin-left 0 !important
+.uang
+  +button(16px, right)
+.dang
+  +button(16px, left)
+
 
 #slide_container
   :border 10px solid #222
