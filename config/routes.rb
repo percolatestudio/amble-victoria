@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => [:get_location, :set_location, :my_places, :account, :update_location]
   map.my_places 'my_places', :controller => :users, :action => :my_places
   
+  map.about 'about', :controller => :static, :action => :about
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

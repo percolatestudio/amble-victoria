@@ -8,11 +8,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <%= framework_meta_tags 'mobile' %>
-
+        
+    <%= yield :extra_meta_tags  %>
+    
     <title>Amble - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
-    <%= stylesheet_link_tag 'application'  %>
-    <%= javascript_include_tag :all, :recursive => true,
+    <%= stylesheet_link_tag 'mobile'  %>
+    <%= javascript_include_tag :all, :cache => true, :recursive => true,
           :order => ['lib/jquery-1.4.2', 'lib/jquery.geolocation', 'geolocation'] %>
           
     <%= fb_connect_javascript_tag %>

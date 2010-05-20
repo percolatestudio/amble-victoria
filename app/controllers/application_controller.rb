@@ -3,11 +3,13 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-    
-  # protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
   helper_method :current_user_session, :current_user, :logged_in?, :origin, :location
   
+  has_mobile_fu
+  
+  layout :select_layout
+  
+protected
 
   def location
     session[:location]
@@ -55,7 +57,6 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -105,6 +106,16 @@ private
     session[:return_to] = nil
   end
   
+  def select_layout
+    if request.xhr?
+      'xhr'
+    elsif is_mobile_device?
+      'mobile'
+    else
+      'application'
+    end
+  end  
+  
   # our standard rendering behaviour for views
   #   1. we are going to be dynamically loaded into div#content
   #   2. we render by ourself as webpage
@@ -116,7 +127,7 @@ private
       render options.merge(:layout => 'xhr')
     else
       respond_to do |format|
-        format.html { render options.merge(:layout => 'mobile') }
+        format.html { render options }
         
         unless data.nil?
           format.xml  { render options.merge(:xml  => data) }

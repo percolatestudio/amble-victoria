@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  layout 'xhr'
-  
   before_filter :require_user, :only => [:show, :places, :my_places, :account]
   before_filter :require_location, :only => [:my_places]
   
@@ -16,7 +14,6 @@ class UsersController < ApplicationController
     
   def get_location
     current_navigation :explore
-    render :layout => 'mobile'
   end
   
   def update_location
