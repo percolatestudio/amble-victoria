@@ -135,8 +135,7 @@ public
       if @place.update_attributes(params[:place])
         flash[:notice] = 'Place was successfully updated.'
       else
-        render :layout => 'website'
-        return
+        return render :layout => 'application'
       end
     end
 
@@ -145,9 +144,9 @@ public
     @place = Place.invisible.find(:first, :order => 'rand()')    
     
     if @place.nil?
-      render :text => 'no places found that can be quickedited'
+      return render :text => 'no places found that can be quickedited'
     else
-      render :layout => 'website'
+      return render :layout => 'application'
     end
   end
 
