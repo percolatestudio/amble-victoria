@@ -1,0 +1,30 @@
+.c_users.v_my_places
+  h1
+    :margin-top 54px
+    :padding-bottom 15px
+    :border-bottom 1px solid #aaa
+  
+  #logged_in_description
+    :border-top 1px solid #f4f4f4
+    
+  .places
+    +grid-prefix(4)
+    +grid(12)
+    :overflow hidden
+    :background transparent url('/images/layout/partial_indent_mid_700x1.png') repeat-y right 0
+    .top_slice
+      :height 6px
+      :background #ebebf1 url('/images/layout/partial_indent_top_700x6.png') no-repeat 0 0
+    .btm_slice
+      :height 6px
+      :background #ebebf1 url('/images/layout/partial_indent_btm_700x6.png') no-repeat 0 0
+      :clear both
+    
+    .place
+      :background transparent
+      :float left
+      :margin 24px 0 24px 30px
+      :width 295px
+      :clear none
+      &.saved .dogear
+        :display none

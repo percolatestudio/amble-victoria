@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
     logger.warn cookies.to_yaml
     
-    render_standard
+    render_standard :action => 'new.html'
   end
   
   def create
