@@ -10,7 +10,9 @@
   
   .my_places_content
     :border-top 1px solid #f4f4f4
-    :padding-top 24px
+    :padding 24px 0
+    :overflow hidden
+    :border-bottom 1px solid #aaa
   
   .category_selector
     +grid(4)
@@ -39,6 +41,9 @@
       :min-height 300px
     
     .place
+      h2
+        :overflow hidden
+        :white-space nowrap
       :background transparent
       :float left
       :margin 24px 0 24px 30px
