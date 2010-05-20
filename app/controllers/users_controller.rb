@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     
   def get_location
     current_navigation :explore
+    render_standard :action => 'get_location.html'
   end
   
   def update_location

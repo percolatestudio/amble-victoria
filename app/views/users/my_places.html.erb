@@ -1,3 +1,5 @@
+<%= replaced_tag :h1, 'My Places', 'text/text_img_title_myplaces_220x53.png'%>
+
 <div id="logged_in_description" class="nav_bar">
   <%= "#{h(current_user.name)}'s" %>
   saved places
@@ -15,5 +17,7 @@
 </div>
 
 <div class="places">
+  <div class="top_slice"></div>
   <%= render :partial => 'places/list_place.html', :collection => @places %>
+  <div class="btm_slice"></div>
 </div>
