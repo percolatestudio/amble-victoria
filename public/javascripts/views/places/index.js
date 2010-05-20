@@ -1,11 +1,17 @@
 (function($){
   placesIndex = {
     onReady: function() {
-      $('#places').place_cards({
+      $.has_place_cards({
         success: function(place, link) { 
           if (link.hasClass('save')) {
+            if (place.parents('#slide_container').length) {
+              place.data('original').addClass('saved');
+            }
             place.addClass('saved');
-          } else {
+          } else {  
+            if (place.parents('#slide_container').length) {
+              place.data('original').removeClass('saved');
+            }
             place.removeClass('saved');
           }
         }
