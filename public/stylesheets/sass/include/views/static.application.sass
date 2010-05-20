@@ -1,0 +1,102 @@
+.c_static.v_home
+  :font 14px Helvetica
+  :color #666
+  #trapezoid
+    :height 460px
+    :background transparent url(/images/layout/bg_trapezoid_960x110.png) no-repeat 0 350px
+    .title
+      +grid(7)
+      img
+        :margin 138px 0 20px 110px
+      a
+        +button(13px, 0)
+        :background transparent url(/images/layout/text_img_explore_126x13.png) no-repeat 0 0
+        :width 126px
+        :margin-left 110px
+    .phones
+      +grid(9)
+      :margin-top 80px
+  .border_hack  
+    :float left
+    :width 1px
+    :height 240px
+    :background transparent url(/images/layout/bg_divider_1x240.png) no-repeat 0 0
+  #discover_head,#mobile_head,#sociable_head,#victorian_head
+    :float left
+    :width 239px
+    :height 270px
+    :background #eee url(/images/layout/bg_quarterbox_240x240.png) no-repeat 0 0
+    :text-align center
+    :text-shadow 0 1px 0 #fff
+    :font 14px Helvetica
+    :color #333
+    :border-bottom solid #aaa 1px
+    img
+      :margin 30px 0 20px 0
+    .sub
+      :font-size 11px
+      :color #999
+    &:hover
+      :background #eee
+      :cursor pointer
+  #discover
+    +grid(16)
+    :overflow hidden
+    :background-color #eee
+    :margin 0
+    :padding 0 10px
+    :border-top solid #f4f4f4 1px
+    :padding-bottom 50px
+    .title
+      +grid(7)
+      +grid-prefix(1)
+      +grid-suffix(1)
+      +alpha
+      img
+        :margin 40px 0 18px 0
+    .flinders
+      +grid(7)
+      +omega
+      img
+        :margin 40px 0 50px 0
+  #mobile_sociable
+    :overflow hidden
+    +grid(16)
+    :margin 0
+    :padding 0 10px
+    :background #eee url(/images/layout/img_mobile_960x425.png) no-repeat 0 0
+    .left
+      :overflow hidden
+      +grid(8)
+      +grid-prefix(1)
+      +alpha
+      .mobile
+        :margin-bottom 460px
+      p
+        :margin 18px 0 100px 0
+    .right
+      :overflow hidden
+      +grid(6)
+      +grid-suffix(1)
+      +omega
+      .distance
+        :margin 50px 0 18px 0
+      .playnice
+        :margin-top 40px
+        
+  #victorian
+    +grid(16)
+    :margin 0
+    :padding 0 10px
+    :background transparent url(/images/layout/bg_map_960x540.png) no-repeat 0 0
+    :min-height 540px
+    h2
+      +grid(5)
+      +grid-prefix(1)
+      +alpha
+    #app_my_state
+      +grid(7)
+      +grid-suffix(3)
+      +omega
+      h3
+        :margin-bottom 18px
