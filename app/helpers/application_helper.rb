@@ -33,7 +33,8 @@ module ApplicationHelper
   end
   
   # the default classes that get added to the body element when a view renders
-  def body_classes
-    "c_#{controller_name.gsub('/', '_')} v_#{view_name}"
+  def body_classes(layout_name = '')
+    "c_#{controller_name.gsub('/', '_')} v_#{view_name} " + 
+       (layout_name != '' ? "l_#{layout_name}" : '')
   end
 end

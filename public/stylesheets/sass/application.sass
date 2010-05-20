@@ -18,6 +18,9 @@
 html
   :background-color #ebebf1
   
+a
+  :outline none
+  
 #header
   :background transparent url(/images/layout/bg_header_40x50.png) repeat-x 0 0
   :border-bottom 1px solid #fdfdfe
@@ -91,3 +94,18 @@ html
       :text-decoration underline
 .lang, .rang
   :background-image url('/images/btns/subnav_arrows_web_12x16.png')
+
+#slide_container
+  :position absolute
+  :margin-top 50px
+  :padding 10px
+  :background black
+  :left 50%
+  :margin-left = -0.5 * (320px + 20px)
+  :display none
+  #nav
+    :display none
+  
+body.slide
+  #slide_container
+    :display block

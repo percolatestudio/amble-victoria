@@ -23,14 +23,14 @@
       }
     });
     
-    $('.place .show_details').live('click', function() {
+    $('.place .show_details').live('click', function(event) {
       event.preventDefault();
       var $p = $(this).parents('.place');
       
       $.show_details($p);
     });
 
-    $('.place .back_btn').live('click', function() {
+    $('.place .back_btn').live('click', function(event) {
       event.preventDefault();
       
       $.hide_details();
@@ -53,36 +53,45 @@
       .append($('#nav').clone())
       .append($p.clone().data('original', $p))
       .css('top', $(window).scrollTop());
-    
-    // 3. slide
-    $('body').bind('webkitTransitionEnd', function() {
-      // 4. hide
-      $('body > *:not(.no_slide_left)').addClass('height_hidden');
-      
-      // 5. position
-      $('#slide_container')
-        .css('position', 'static').get(0).scrollIntoView(true);
-        
-      $('body').unbind('webkitTransitionEnd');
-    }).addClass('slide');
+
+    if ($('body').hasClass('l_application')) {
+      $('body').addClass('slide');
+    } else {
+      // 3. slide
+      $('body').bind('webkitTransitionEnd', function() {
+        // 4. hide
+        $('body > *:not(.no_slide_left)').addClass('height_hidden');
+
+        // 5. position
+        $('#slide_container')
+          .css('position', 'static').get(0).scrollIntoView(true);
+
+        $('body').unbind('webkitTransitionEnd');
+      }).addClass('slide');      
+    }
   };
   
   $.hide_details = function() {
-    // 1. position
-    $('#slide_container')
-      .css('position', 'absolute')
-      .get(0).scrollIntoView(true);
-    
-    // 2. show everything
-    $('body > *:not(.no_slide_left)').removeClass('height_hidden');
-    
-    // 3. slide
-    $('body').bind('webkitTransitionEnd', function() {
-      
-      // 4. delete
+    if ($('body').hasClass('l_application')) {
+      $('body').removeClass('slide');
       $('#slide_container > *').detach();
-      
-      $('body').unbind('webkitTransitionEnd');
-    }).removeClass('slide');
+    } else {
+      // 1. position
+      $('#slide_container')
+        .css('position', 'absolute')
+        .get(0).scrollIntoView(true);
+
+      // 2. show everything
+      $('body > *:not(.no_slide_left)').removeClass('height_hidden');
+
+      // 3. slide
+      $('body').bind('webkitTransitionEnd', function() {
+
+        // 4. delete
+        $('#slide_container > *').detach();
+
+        $('body').unbind('webkitTransitionEnd');
+      }).removeClass('slide');      
+    }
   };
 }(jQuery));

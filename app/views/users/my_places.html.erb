@@ -1,4 +1,4 @@
-<%= replaced_tag :h1, 'My Places', 'text/text_img_title_myplaces_220x53.png'%>
+<%= replaced_tag :h1, 'My Places', 'text/text_img_title_myplaces_220x53.png' unless is_mobile_device?%>
 
 <div id="logged_in_description" class="nav_bar">
   <%= "#{h(current_user.name)}'s" %>

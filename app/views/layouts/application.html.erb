@@ -18,7 +18,7 @@
   <%= init_fb_connect "XFBML", :js => :jquery %>
 </head>
 
-<body class="<%= body_classes %>">
+<body class="<%= body_classes 'application' %>">
   <div id="header">
     <div id="nav" class="nav_bar">
       <%= link_to image_tag('icon_logo/text_img_logo_86x21.png', :alt => 'Amble Title Text'), '/' %>      
@@ -41,5 +41,9 @@
   </div>
   <% end %>
   
+  <div id="slide_container" class="no_slide_left"></div>
+  <div id="like_overlay" class="no_slide_left">
+    <iframe scrolling="no" frameborder="0" style="border:none;"></iframe>
+  </div>
 </body>
 </html>

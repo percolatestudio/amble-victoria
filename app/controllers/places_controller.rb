@@ -54,7 +54,7 @@ class PlacesController < ApplicationController
     current_navigation :explore    
     @place = Place.find(params[:id], :origin => origin)
     
-    render_standard :data => @place
+    render_standard :data => @place, :action => 'show.html'
   end
 
   # GET /places/new
