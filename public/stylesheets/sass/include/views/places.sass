@@ -92,6 +92,26 @@
     .front
       :padding-bottom 5px
 
+  
+  .place
+    .front, .back
+      :-webkit-transition -webkit-transform 0.5s ease
+    .front
+      :height 246px
+    .back  
+      :margin-top -246px
+      :-webkit-transform translate(320px)
+      :height 246px
+      :display block
+      .dogear
+        :display none
+    &.details
+      .back
+        :height auto
+        :-webkit-transform none
+      .front
+        :-webkit-transform translate(-320px)
+
 
   #current_location
     :padding 0px 10px 0px 10px
