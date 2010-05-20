@@ -1,32 +1,39 @@
-//placeholder
-
-#header
-  :display none
+.c_places.v_index
+  form
+    :overflow hidden
   
-form
-  :overflow hidden
+  #content
+    :border-bottom 1px solid #AAA
   
-#content
-  :border-bottom 1px solid #AAA
+    .more_places
+      :text-align right
+      :font 14px Helvetica
+      :margin 24px 0px 24px 0px
+      :border none
   
-#footer
-  :padding 24px 0px 10px 0px
-  :border-top 1px solid #f4f4f4
+      a
+        :color #666666
+        :text-decoration none  
+      &:hover
+        :text-decoration underline
+  
+  #footer
+    :padding 24px 0px 10px 0px
+    :border-top 1px solid #f4f4f4
 
-#places
-  :overflow hidden
+  #places
+    :overflow hidden
 
-  .place
-    +grid(4, 12)
-    :padding 0
-    :margin-bottom 5px
-    :background transparent none
-    :height 280px
+    .place
+      +grid(4, 12)
+      :padding 0
+      :margin-bottom 24px
+      :background transparent none
     
-    h2
-      :font 16px Helvetica
-      :font-weight bold
-      :color #444444
-      
-      
+      h2
+        :font 16px Helvetica
+        :font-weight bold
+        :color #444444
+        :white-space nowrap
+        :overflow hidden
       

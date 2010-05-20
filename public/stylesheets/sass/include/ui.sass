@@ -1,6 +1,7 @@
 // general ui sass mixins and classes
 =button(!height, !h_offset)
   :display block
+  :overflow hidden
   :text-indent -1337px
   :height = !height
   :background-position = !h_offset 0
@@ -10,9 +11,11 @@
 .lang, .rang 
   :background-image url('/images/mobile/btns/btn_subnav_arrows_12x16.png')
   :width 12px
+  :background-repeat no-repeat
 .uang, .dang
   :background-image url('/images/mobile/btns/btn_subnav_arrows_updown_12x16.png')
   :width 16px
+  :background-repeat no-repeat
 .lang
   +button(16px, right)
 .uang
