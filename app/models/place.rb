@@ -29,7 +29,9 @@ class Place < ActiveRecord::Base
   accepts_nested_attributes_for :webpages, :allow_destroy => true
   accepts_nested_attributes_for :source, :allow_destroy => true  
   
-  named_scope :visible, :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)']
+  named_scope :visible, 
+    :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)'],
+    :order => '(quality/distance) desc'
   named_scope :invisible, :conditions => ['primary_image_id IS NULL OR user_quality = 0']
   
   before_validation :set_coords_from_address

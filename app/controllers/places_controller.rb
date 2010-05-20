@@ -38,7 +38,7 @@ class PlacesController < ApplicationController
     end
     
     @places = Place.visible.paginate(:page => params[:page], :origin => origin, 
-      :conditions => conditions || "", :order => 'distance')
+      :conditions => conditions || "")
     
     if request.xhr? and not params[:page].nil?
       # paginated request
