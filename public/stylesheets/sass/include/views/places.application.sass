@@ -1,14 +1,27 @@
 .c_places.v_index
   h1
-    :margin 54px 0 15px 0
+    :margin 54px 0 0 0
     :width 164px
     :height 53px
+    +grid(16)
+    :border-bottom 1px solid #aaa
+    :padding-bottom 15px
   
   form
     :overflow hidden
+    +grid(16)
+    
+  .hr
+    +grid(16)
+    :border-top 1px solid #f4f4f4
+    
+  .places
+    :float left
+    :padding-top 24px
   
   #content
     :border-bottom 1px solid #AAA
+    :overflow hidden
     
     #current_location
       :padding-left 0px
@@ -21,10 +34,12 @@
       :float left
   
     .more_places
+      +grid(16)
+      :margin-bottom 24px
       :text-align right
       :font 14px Helvetica
+      :font-weight bold
       :height auto
-      :margin 0px 0px 24px 0px
       :border none
       :text-shadow none
   
@@ -40,7 +55,6 @@
 
   #places
     :overflow hidden
-    :margin-top 24px
 
     .place
       +grid(4, 12)
