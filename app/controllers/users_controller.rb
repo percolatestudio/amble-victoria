@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :places, :my_places, :account]
   before_filter :require_location, :only => [:my_places]
   
-  
   # Please change this is you can think of a better way to do this. 
   #  we need these actions so we can link to them before we have a current user
   def my_places

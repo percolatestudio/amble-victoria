@@ -1,7 +1,7 @@
 (function($){
   usersMyPlaces = {
     onReady: function() {
-      $('.place').place({
+      $('.places').place_cards({
         success: function(place) { 
           place.detach();
         }

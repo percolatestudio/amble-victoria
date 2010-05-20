@@ -4,12 +4,6 @@ class StaticController < ApplicationController
   end
     
   def test
-    current_navigation :explore
-    
-    respond_to do |format|
-      format.html 
-      format.mobile { return render :action => 'test.html.erb' }
-    end
+    render_standard :action => 'test.html.erb'
   end
-  
 end
