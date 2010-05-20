@@ -4,6 +4,7 @@
       $.has_place_cards({
         success: function(place) {
           if (place.parents('#slide_container').length) {
+            place.data('original').detach();
             $.hide_details();
           } else {
             place.detach();            

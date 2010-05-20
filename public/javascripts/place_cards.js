@@ -10,7 +10,9 @@
         $p.addClass('loading');
         $.ajax({
           url: $this.safe_href(),
-          success: function() {options.success($p, $this)},
+          success: function() {
+            options.success($p, $this)
+          },
           complete: function() { $p.removeClass('loading'); },
           error: function(request) {
             if (request.status == 401) { // redirect to new session
@@ -47,7 +49,7 @@
     // 1. copy, 2. position
     $('#slide_container')
       .append($('#nav').clone())
-      .append($p.clone())
+      .append($p.clone().data('original', $p))
       .css('top', $(window).scrollTop());
     
     // 3. slide
