@@ -11,7 +11,7 @@ class Image < ActiveRecord::Base
   has_attached_file :image, 
     :styles => {:medium => ["#{IMAGE_SIZES[:medium][:x]}x#{IMAGE_SIZES[:medium][:y]}#", :jpg],
                 :small => ["#{IMAGE_SIZES[:small][:x]}x#{IMAGE_SIZES[:small][:y]}#", :jpg]},
-    :convert_options => {:all => "-strip"},                                
+    :convert_options => {:all => "-strip -quality 80"},
     :default_style => :small,
     :default_url => "/images/default_image_:style.png",
     :path => ":rails_root/public/system/:attachment/:id_partition/:id/:style.:extension",
