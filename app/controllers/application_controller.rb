@@ -122,7 +122,6 @@ protected
   end
   
   def select_layout
-    logger.warn '!!!!!!!!!!!!!!selecting layout'
     if request.xhr?
       'xhr'
     elsif is_mobile_device?
