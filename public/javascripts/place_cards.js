@@ -73,12 +73,13 @@
     } else {
       // 3. slide
       $('body').bind('webkitTransitionEnd', function() {
+        document.body.scrollTop = 0;
+        
         // 4. hide
         $('body > *:not(.no_slide_left)').addClass('height_hidden');
 
         // 5. position
-        $('#slide_container')
-          .css('position', 'static').get(0).scrollIntoView(true);
+        $('#slide_container').css('position', 'static');
 
         $('body').unbind('webkitTransitionEnd');
       }).addClass('slide');      
