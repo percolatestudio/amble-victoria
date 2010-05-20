@@ -3,13 +3,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :places, :collection => [:quickedit], :member => [:save, :unsave]
   map.explore 'explore', :controller => :places, :action => :index
-  map.root :explore
 
   map.resource :user_session
   map.resources :users, :collection => [:get_location, :set_location, :my_places, :account, :update_location]
   map.my_places 'my_places', :controller => :users, :action => :my_places
   
   map.about 'about', :controller => :static, :action => :about
+  
+  map.root :controller => :static, :action => :home
   
   # The priority is based upon order of creation: first created -> highest priority.
 
