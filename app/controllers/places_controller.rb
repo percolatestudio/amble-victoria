@@ -149,7 +149,7 @@ public
     if @place.nil?
       render :text => 'no places found that can be quickedited'
     else
-      render :layout => 'website'
+      render :layout => 'application'
     end
   end
 
