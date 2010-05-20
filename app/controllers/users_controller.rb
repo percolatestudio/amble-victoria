@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def my_places
     @places = current_user.saved_places.all :select => 'places.*', :order => 'visits.updated_at', :origin => origin
     
-    render_standard :data => @places
+    render_standard :data => @places, :action => 'my_places.html'
   end
   
     

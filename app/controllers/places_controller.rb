@@ -46,8 +46,7 @@ class PlacesController < ApplicationController
       # paginated request
       render :partial => 'paginated', :locals => {:places => @places}
     else
-      logger.warn '!!!!!!!rendering standard!!!!!'
-      render_standard #:data => @places
+      render_standard :data => @places, :action => 'index.html'
     end
   end
 

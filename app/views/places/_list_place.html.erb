@@ -1,0 +1,26 @@
+<%= place = list_place %>
+
+<div class="place <%= saved_class(place) %>">
+  <div class="front face">
+    <%= image_tag place.primary_image.image.url(:small), :alt => place.name, :class => 'small_thumb polaroid' %>
+
+    <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
+
+    <h2 class="name"><%=h place.name %></h2>
+
+    <p class="category"><%=h place.category.name %></p>
+
+    <div class="distance detail">
+      <%= image_tag 'mobile/icon_logo/icon_shoe_18x18.png' %>Dist: 
+        <em><%= format_distance(place.distance) %></em>
+    </div>
+
+    <div class="actions">
+      <%= link_to 'Remove', unsave_place_path(place), :class => 'remove small_button' %>
+      <%= link_to 'Details', place, :class => 'small_button show_details' %>
+    </div>
+  </div>
+  <div class="back face">
+    <%= render :partial => 'places/place_detail.html', :object => place %>
+  </div>
+</div>
