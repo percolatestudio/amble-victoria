@@ -1,9 +1,13 @@
 (function($){
   usersMyPlaces = {
     onReady: function() {
-      $('.places').place_cards({
-        success: function(place) { 
-          place.detach();
+      $.has_place_cards({
+        success: function(place) {
+          if (place.parents('#slide_container').length) {
+            $.hide_details();
+          } else {
+            place.detach();            
+          }
         }
       });      
       
