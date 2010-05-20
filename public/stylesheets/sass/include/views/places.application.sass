@@ -1,8 +1,5 @@
 //placeholder
 
-#header
-  :display none
-  
 form
   :overflow hidden
   
@@ -19,14 +16,25 @@ form
   .place
     +grid(4, 12)
     :padding 0
-    :margin-bottom 5px
+    :margin-bottom 24px
     :background transparent none
-    :height 280px
     
     h2
       :font 16px Helvetica
       :font-weight bold
       :color #444444
+      :white-space nowrap
+      :overflow hidden
       
       
       
+.more_places
+  :text-align right
+  :font 14px Helvetica
+  :margin 24px 0px 24px 0px
+  
+  a
+    :color #666666
+    :text-decoration none  
+  &:hover
+    :text-decoration underline
