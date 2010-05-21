@@ -3,7 +3,7 @@
 <% end %>
 
 <% form_for :place_filter, @place_filter, 
-    :html => {'method' => 'get', 'id' => 'place_filter'} do |f| %>
+    :html => {'method' => 'get', 'id' => 'place_filter', 'autocomplete' => 'off'} do |f| %>
     
   <div id="places_filter" class="nav_bar">
     <%= f.select "category_id", Category.all.collect { |c| [c.name, c.id.to_s]}, 
