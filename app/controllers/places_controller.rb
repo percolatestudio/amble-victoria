@@ -144,7 +144,7 @@ public
 
     #sorting by rand() will be slow for large datasets, but should
     #be fine for us to begin with
-    @place = Place.invisible.find(:first, :order => 'rand()')    
+    @place = Place.needs_review.find(:first, :order => 'rand()')    
     
     if @place.nil?
       return render :text => 'no places found that can be quickedited'

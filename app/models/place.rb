@@ -32,6 +32,9 @@ class Place < ActiveRecord::Base
   named_scope :visible, 
     :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)'],
     :order => '(quality/distance) desc'
+    
+  named_scope :needs_review, :conditions => ['primary_image_id IS NULL AND (user_quality is null OR user_quality != 0)']
+    
   named_scope :invisible, :conditions => ['primary_image_id IS NULL OR user_quality = 0']
   
   before_validation :set_coords_from_address
@@ -88,8 +91,8 @@ class Place < ActiveRecord::Base
     end
   end
   
-  def set_coords_from_address
-    if self.location_changed?
+  def set_coords_from_address(force=false)
+    if force or self.location_changed?
       location = Geokit::Geocoders::MultiGeocoder.geocode(self.location)
       logger.info("location is: #{location.inspect}")
   
@@ -122,7 +125,6 @@ class Place < ActiveRecord::Base
   end
   
   def set_qualities
-    self.user_quality = 0 if self.user_quality.nil?
     self.system_quality = 1 # restart at 1, assume validations satisfy quality criteria of 1
     
     # calc real system quality
@@ -134,7 +136,7 @@ class Place < ActiveRecord::Base
     sq_weight = 1
     uq_weight = 3
     norm_sq = self.system_quality / 7.0 #MAX
-    norm_uq = self.user_quality / 3.0 #MAX
+    norm_uq = (self.user_quality || 0) / 3.0 #MAX
     
     self.quality = (norm_sq**sq_weight) * (norm_uq**uq_weight)
   end
