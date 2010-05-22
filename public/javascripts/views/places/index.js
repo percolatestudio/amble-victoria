@@ -60,8 +60,7 @@
       });
       
       // pagination
-      $('.more_places a').live('click', function(event) {
-        
+      $('.more_places a').die().live('click', function(event) {
         event.preventDefault();
         $.get($(this).safe_href(), function(data) {
           
