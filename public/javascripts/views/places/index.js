@@ -61,9 +61,19 @@
       
       // pagination
       $('.more_places a').live('click', function(event) {
+        
         event.preventDefault();
         $.get($(this).safe_href(), function(data) {
-          $('.more_places').replaceWith(data);
+          
+          //strip off returned content div
+          var unwrapped = jQuery(data).unwrap();
+          
+          //delete ourselves
+          $('.more_places').remove();
+          
+          //append to places
+          $('#places').append(unwrapped);
+          
         })
       });
       

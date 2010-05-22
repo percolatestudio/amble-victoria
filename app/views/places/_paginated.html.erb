@@ -1,9 +1,10 @@
 <div id="places" class="places">
   <%= render :partial => 'place.html', :collection => places %>
+  
+  <%- unless places.next_page.nil? -%>
+    <div class="nav_bar more_places">
+      <%= link_to 'Load more places »', :page => places.next_page %>
+    </div>
+  <%- end -%>
 </div>
 
-<%- unless places.next_page.nil? -%>
-  <div class="nav_bar more_places">
-    <%= link_to 'Load more places »', :page => places.next_page %>
-  </div>
-<%- end -%>
