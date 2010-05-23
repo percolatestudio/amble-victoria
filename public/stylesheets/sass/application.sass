@@ -110,19 +110,29 @@ a
 
 
 #slide_container
-  :border 10px solid #222
-  :-webkit-box-shadow 0px 1px 3px #a4a4a4
-  :-moz-box-shadow 0px 1px 3px #a4a4a4
   :position absolute  
-  :margin-top 80px
-  :left 50%
-  :margin-left = -0.5 * (320px + 20px)
-  :background #EBEBF1
-  
+  :left 0
+  :right 0
+  :top 0
+  :bottom 0
   :display none
+  :background transparent
+  :text-align center
   #nav
     :display none
-  
+  .place
+    :text-align left
+    :border 10px solid #222
+    :-webkit-box-shadow 0px 1px 3px #a4a4a4
+    :-moz-box-shadow 0px 1px 3px #a4a4a4
+    :background #EBEBF1
+    :margin-top 80px
+    :display inline-block 
+    // ie7 i-b hack
+    :zoom 1
+    :*display inline
+    
+    
 body.slide
   #slide_container
     :display block
