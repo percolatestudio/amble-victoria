@@ -71,6 +71,8 @@
     }
       
     $('body').addClass('slide');
+    
+    $('#slide_container').get(0).scrollIntoView(true);
   };
   
   $.hide_details = function($p, event) {
