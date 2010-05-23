@@ -23,6 +23,9 @@
       }
     });
     
+    // kill the dogear link FIXME
+    $('.place a.dogear').live('click', function(event) { event.preventDefault(); });
+    
     $('.place .show_details').live('click', function(event) {
       var $p = $(this).parents('.place');
       
