@@ -20,9 +20,9 @@
       <%= link_to 'Details', place, :class => 'small_button show_details' %>
     </div>
   </div>
-  <% unless is_mobile_device? %>
+  <%# unless is_mobile_device? %>
     <div class="back face">
       <%= render :partial => 'places/place_detail.html', :object => place %>
     </div>
-  <% end %>
+  <%# end %>
 </div>

@@ -64,21 +64,16 @@ body
       &#about
         :display none
 
-body > *, #slide_container > *
-  :-webkit-transition -webkit-transform 0.5s ease
-
 #slide_container
   :width 320px
   :overflow hidden
-  :position absolute
-  > * 
-    :-webkit-transform translate(320px)
+  :display none
   
 body.slide
   > *
-    :-webkit-transform translate(-320px)
-  .no_slide_left, #slide_container > *
-    :-webkit-transform none
+    :display none
+  > #header, #slide_container
+    :display block
 
 .height_hidden
   :height 0 !important
