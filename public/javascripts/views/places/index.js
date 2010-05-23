@@ -71,7 +71,7 @@
           $('.more_places').remove();
           
           //append to places
-          $('#places').append(unwrapped);
+          $('#places').append(unwrapped.html());
           
         })
       });
