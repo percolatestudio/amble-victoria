@@ -31,7 +31,7 @@ class Place < ActiveRecord::Base
   
   named_scope :visible, 
     :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)'],
-    :order => '(quality/(distance * distance)) desc'
+    :order => '(quality/(distance * distance * distance)) desc'
     
   named_scope :needs_review, :conditions => ['primary_image_id IS NULL AND (user_quality is null OR user_quality != 0)']
     
