@@ -55,7 +55,7 @@
     
     <ul>
       <% @place.images.each_with_index do |img, idx| %>
-        <li><%= image_tag img.image.url(:small), :id => "place_image#{idx + 1}", 
+        <li><%= image_tag img.image.url(:medium), :id => "place_image#{idx + 1}", 
               :class => img.id == @place.primary_image_id ? 'active' : '' %>
             <div class="image_source"><%= truncate(h(img.url), 35) %></div>
         </li>
