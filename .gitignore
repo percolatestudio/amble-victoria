@@ -2,3 +2,4 @@ log/
 tmp/
 public/system/
 public/stylesheets/include
+.sass-cache
