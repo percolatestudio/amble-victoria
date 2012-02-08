@@ -37,7 +37,7 @@ class PlacesController < ApplicationController
       conditions = ['category_id = ?', @place_filter[:category_id]]
     end
     
-    @places = Place.visible.paginate(:page => params[:page], :origin => origin, 
+    @places = Place.visible.interesting_at(origin).paginate(:page => params[:page], :origin => origin, 
       :conditions => conditions || "")
     
     if request.xhr? and not params[:page].nil?

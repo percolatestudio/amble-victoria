@@ -1,8 +1,8 @@
 # DRY database.yml
 common: &common
-  adapter: mysql
-  username: amble
-  password: amble
+  adapter: postgresql
+  username: root
+  password: 
   host: localhost
   encoding: utf8
   pool: 20

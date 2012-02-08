@@ -30,8 +30,12 @@ class Place < ActiveRecord::Base
   accepts_nested_attributes_for :source, :allow_destroy => true  
   
   named_scope :visible, 
-    :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)'],
-    :order => '(quality/(distance * distance * distance)) desc'
+    :conditions => ['primary_image_id IS NOT NULL AND (user_quality is null OR user_quality != 0)']
+  
+  named_scope :interesting_at, Proc.new {|origin| 
+    distance = distance_sql(normalize_point_to_lat_lng(origin))
+    { :order => "(quality/(#{distance} * #{distance} * #{distance})) desc" }
+  }
     
   named_scope :needs_review, :conditions => ['primary_image_id IS NULL AND (user_quality is null OR user_quality != 0)']
     
