@@ -1,8 +1,0 @@
---- 
-format: 1
-handler: 
-  commit: ad7bfe94ab9a712cd4423fe443afb94c32f945d5
-  branch: master
-lock: false
-repository_class: Piston::Git::Repository
-repository_url: git://github.com/redlinesoftware/css_asset_tagger.git
