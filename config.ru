@@ -1,5 +1,2 @@
-require "config/environment"
-
-use Rails::Rack::LogTailer
-use Rails::Rack::Static
+require File.dirname(__FILE__) + '/config/environment'
 run ActionController::Dispatcher.new
