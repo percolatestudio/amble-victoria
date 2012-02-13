@@ -7,7 +7,7 @@ gem 'paperclip', '~> 2.3.1.1'
 
 gem "flickr_fu"
 gem "authlogic"
-gem "facebooker"
+# gem "facebooker"
 gem "geokit"
 gem "geokit-rails"
 gem "mechanize"  

@@ -15,8 +15,6 @@ GEM
       activesupport
     domain_name (0.5.2)
       unf (~> 0.0.3)
-    facebooker (1.0.75)
-      json_pure (>= 1.0.0)
     flickr_fu (0.3.1)
       flickr_fu
       mime-types (> 0.0.0)
@@ -26,7 +24,6 @@ GEM
     geokit-rails (1.1.4)
       geokit (>= 1.5.0)
     haml (2.2.24)
-    json_pure (1.6.5)
     mechanize (2.1.1)
       domain_name (~> 0.5, >= 0.5.1)
       net-http-digest_auth (~> 1.1, >= 1.1.1)
@@ -62,7 +59,6 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
-  facebooker
   flickr_fu
   geokit
   geokit-rails
