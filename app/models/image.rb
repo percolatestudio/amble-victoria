@@ -14,8 +14,10 @@ class Image < ActiveRecord::Base
     :convert_options => {:all => "-strip -quality 80"},
     :default_style => :small,
     :default_url => "/images/default_image_:style.png",
-    :path => ":rails_root/public/system/:attachment/:id_partition/:id/:style.:extension",
-    :url => "/system/:attachment/:id_partition/:id/:style.:extension"
+    :storage => :s3,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :path => ":attachment/:id_partition/:id/:style.:extension",
+    :url => ":attachment/:id_partition/:id/:style.:extension"
   
   validates_presence_of :image_file_name
     

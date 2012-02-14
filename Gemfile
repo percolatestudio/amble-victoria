@@ -10,7 +10,8 @@ gem "authlogic"
 # gem "facebooker"
 gem "geokit"
 gem "geokit-rails"
-gem "mechanize"  
+gem "mechanize"
+gem "aws-s3"
 
 group :development do
   gem 'haml', '< 3.0'
