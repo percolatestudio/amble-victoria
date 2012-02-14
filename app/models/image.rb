@@ -8,16 +8,16 @@ class Image < ActiveRecord::Base
     :medium => {:x => 290, :y => 178},
   }            
   
-  has_attached_file :image, 
-    :styles => {:medium => ["#{IMAGE_SIZES[:medium][:x]}x#{IMAGE_SIZES[:medium][:y]}#", :jpg],
-                :small => ["#{IMAGE_SIZES[:small][:x]}x#{IMAGE_SIZES[:small][:y]}#", :jpg]},
-    :convert_options => {:all => "-strip -quality 80"},
-    :default_style => :small,
-    :default_url => "/images/default_image_:style.png",
-    :storage => :s3,
-    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-    :path => ":attachment/:id_partition/:id/:style.:extension",
-    :url => ":attachment/:id_partition/:id/:style.:extension"
+  # has_attached_file :image, 
+  #   :styles => {:medium => ["#{IMAGE_SIZES[:medium][:x]}x#{IMAGE_SIZES[:medium][:y]}#", :jpg],
+  #               :small => ["#{IMAGE_SIZES[:small][:x]}x#{IMAGE_SIZES[:small][:y]}#", :jpg]},
+  #   :convert_options => {:all => "-strip -quality 80"},
+  #   :default_style => :small,
+  #   :default_url => "/images/default_image_:style.png",
+  #   :storage => :s3,
+  #   :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+  #   :path => ":attachment/:id_partition/:id/:style.:extension",
+  #   :url => ":attachment/:id_partition/:id/:style.:extension"
   
   validates_presence_of :image_file_name
     
