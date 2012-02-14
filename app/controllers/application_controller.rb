@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   helper_method :current_user_session, :current_user, :logged_in?, :origin, :location
   
-  has_mobile_fu
+  # has_mobile_fu
   
   layout :select_layout
   
@@ -124,7 +124,7 @@ protected
   def select_layout
     if request.xhr?
       'xhr'
-    elsif is_mobile_device?
+    elsif false 
       'mobile'
     else
       'application'

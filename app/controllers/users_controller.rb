@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :places, :my_places, :account]
-  before_filter :require_location, :only => [:my_places]
+  # before_filter :require_location, :only => [:my_places]
   
   PLACE_FILTER = Struct.new(:category_id)
   def my_places

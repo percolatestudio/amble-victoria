@@ -1,8 +1,0 @@
---- 
-format: 1
-handler: 
-  commit: 8ec064b80ee94423692956e92992b0de3c51e177
-  branch: master
-lock: false
-repository_class: Piston::Git::Repository
-repository_url: http://github.com/andi/simple-navigation.git
