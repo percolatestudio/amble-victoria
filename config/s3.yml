@@ -1,7 +1,7 @@
 common: &common
   bucket: amble-production-attached-files
-  access_key_id: AKIAIHG7PL2CVFGFZZIQ
-  secret_access_key: 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
+  access_key_id: ENV['S3_KEY']
+  secret_access_key: ENV['S3_SECRET']
 
 development:
   <<: *common
