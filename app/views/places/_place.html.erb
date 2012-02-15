@@ -3,7 +3,7 @@
     <%= link_to image_tag(place.primary_image.image.url(:medium), :alt => place.name, :class => 'thumb polaroid'),
           place, :class => 'show_details' %>
     
-    <%= link_to ( image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' ) %>
+    <%= link_to image_tag('mobile/layout/card_dogear_36x36.png'), save_place_path(place), :class => 'dogear' %>
 
     <div class="actions">
       <div class="savers">
